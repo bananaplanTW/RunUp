@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/css/basic.css">
+  </head>
+  <body>
+    <div id="top-banner" class="top-banner">
+      <a href="/" class="logo"><p>Running Area</p></a>
+      <ul class="push-to-right">
+        <li class="runup-red-box">
+          <a href="/post">
+            Post Your Group
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="teaser">
+      <img src="/assets/images/cover.jpg">
+    </div>
+    <div class="search-area">
+      <form class="search-box">
+        <input type="text" class="search-input-box"/>
+        <input type="button" class="search-submit-button" value="Search Group"/>
+      </form>
+    </div>
+    <div class="main-container">
+      <div class="discover-region">
+        <div class="discover-headline">
+          <h2>Run in your Favorite SPOT!</h2>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <a href="/ca/la">
+                  <div class="discover-card hover-dark">
+                    <div class="discover-photo" style="background-image:url('/assets/images/la.jpg')"></div>
+                    <div class="discover-title">
+                      <p class="title">Los Angeles</p>
+                    </div>
+                  </div>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="/il/chi">
+                  <div class="discover-card hover-dark">
+                    <div class="discover-photo" style="background-image:url('/assets/images/chi.jpg')"></div>
+                    <div class="discover-title">
+                      <p class="title">Chicago</p>
+                    </div>
+                  </div>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="/ny/ny">
+                  <div class="discover-card hover-dark">
+                    <div class="discover-photo" style="background-image:url('/assets/images/ny.jpg')"></div>
+                    <div class="discover-title">
+                      <p class="title">New York</p>
+                    </div>
+                  </div>
+                </a>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="copy-right-container">
+        <p class="copy-right">Copy rights reserve by Bananaplan</p>
+      </div>
+    </div>
+  </body>
+</html>

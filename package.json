@@ -1,0 +1,25 @@
+{
+  "name": "run-up",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "4.x",
+    "dustjs-linkedin": "*",
+    "dustjs-helpers": "*",
+    "consolidate": "*",
+    "less-middleware": "*",
+    "mongoose": "*",
+    "musicmetadata": "*",
+    "xml2js": "*",
+    "mysql" : "*",
+    "timer" : "*",
+    "log"   : "*",
+    "body-parser" : "*",
+    "morgan" : "v1.4.0",
+    "method-override" : "v2.3.0"
+  }
+}
+
