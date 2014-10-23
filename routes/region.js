@@ -1,7 +1,7 @@
 var express = require('express'),
     router  = express.Router(),
     ModuleMysql = require('../modules/ModuleMysql').getInstance();
-
+//require('../lib/GetLatLngFromAddress');
 router.get('/:state/:city', function (req, res) {
 	// should set up checking process to prevent sql injectino
 	var city  = req.params.city;

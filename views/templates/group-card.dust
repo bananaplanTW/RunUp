@@ -1,4 +1,4 @@
-<div class="col-half group-card">
+<div class="col-half group-card" data-lat="{lat}" data-lng="{lng}">
   <div class="group-photo-container">
     <div class="discover-photo" style="background-image:url('/assets/images/chi.jpg')"></div>
   </div>
@@ -20,7 +20,7 @@
       </ul>
     </div>
     <div class="description-item">
-      <p>{group_name}</p>
+      <p id="group-name">{group_name}</p>
     </div>
     <div class="description-item sub-content">
       <p>{address}</p>

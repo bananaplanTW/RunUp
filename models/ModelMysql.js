@@ -17,7 +17,6 @@ var ModelMysql = function () {
 
 ModelMysql.prototype.execute = function (queryString, callback) {
     this.conn.query(queryString, function (error, rows) {
-        console.log("adfsd");
         if (error) {
             callback(error, null);
             return;

@@ -6,8 +6,6 @@ var ModuleMysql = (function () {
 		var a = 0;
 		return {
 			execute: function (queryString, callback) {
-				a ++;
-				console.log(a);
 				modelMysql.execute(queryString, callback);
 			},
 			close: function (callback) {
