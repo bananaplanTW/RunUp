@@ -1,5 +1,6 @@
 <html>
   <head>
+    
     <link rel="stylesheet" type="text/css" href="/css/global.css">
     <link rel="stylesheet" type="text/css" href="/css/home.css">
     <link rel="stylesheet" type="text/css" href="/css/basic.css">
@@ -20,8 +21,8 @@
     </div>
     <div class="search-area">
       <form class="search-box">
-        <input type="text" class="search-input-box"/>
-        <input type="button" class="search-submit-button" value="Search Group"/>
+        <input id="search-input-box" type="text" class="search-input-box" value="ZIP Code or Location"/>
+        <input type="button" class="search-submit-button" value="Search"/>
       </form>
     </div>
     <div class="main-container">
@@ -69,4 +70,5 @@
       </div>
     </div>
   </body>
+  <script type="text/javascript" src="/js/home.js"></script>
 </html>

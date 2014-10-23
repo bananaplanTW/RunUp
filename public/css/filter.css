@@ -1,0 +1,13 @@
+.filter-section {
+    padding: 20px;
+}
+
+.filter-checkbox-item {
+    margin: 10px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.filter-checkbox-item label:before {
+    border-radius: 3px;
+}

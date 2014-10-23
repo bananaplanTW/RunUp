@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCoq2mE4Ywhw2Lw5XzzBeWVc603qgA6RcE&sensor=true"></script>
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/css/region.css">
+    <link rel="stylesheet" type="text/css" href="/css/google-map.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/filter.css">
+    <link rel="stylesheet" type="text/css" href="/css/basic.css">
+  </head>
+  <body onload="">
+    <div id="top-banner" class="top-banner">
+      <a href="/" class="logo"><p>Running Area</p></a>
+      <ul class="push-to-right">
+        <li class="runup-red-box">
+          <a href="/post">
+            Post Your Group
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!--div class="search-area">
+      <form class="search-box">
+        <input id="search-input-box" type="text" class="search-input-box" value="ZIP Code or Location"/>
+        <input type="button" class="search-submit-button" value="Search"/>
+      </form>
+    </div-->
+    <div class="main-container">
+      <div class="map-search">
+        <div class="col-half">
+          <div class="filter-section">
+            <form>
+              <input class="search-input-box" type="text" value="Find Group"/>
+              <input class="search-submit-button" type="submit" value="Search"/>
+            </form>
+          </div>
+          <div class="filter-section">
+            <form>
+              <span class="filter-checkbox-item"><input name="day" type="checkbox" id="sun" value="0"/><label for="sun">Sun</label></span>
+              <span class="filter-checkbox-item"><input name="day" type="checkbox" id="mon" value="1"/><label for="mon">Mon</label></span>
+              <span class="filter-checkbox-item"><input name="day" type="checkbox" id="tue" value="2"/><label for="tue">Tue</label></span>
+              <span class="filter-checkbox-item"><input name="day" type="checkbox" id="wed" value="3"/><label for="wed">Wed</label></span>
+              <span class="filter-checkbox-item"><input name="day" type="checkbox" id="thu" value="4"/><label for="thu">Thu</label></span>
+              <span class="filter-checkbox-item"><input name="day" type="checkbox" id="fri" value="5"/><label for="fri">Fri</label></span>
+              <span class="filter-checkbox-item"><input name="day" type="checkbox" id="sat" value="6"/><label for="sat">Sat</label></span>
+              <br>
+              <span class="filter-checkbox-item"><input name="time" type="checkbox" id="morning" value="0"/><label for="morning">Morning</label></span>
+              <span class="filter-checkbox-item"><input name="time" type="checkbox" id="afternoon" value="1"/><label for="afternoon">Afternoon</label></span>
+              <span class="filter-checkbox-item"><input name="time" type="checkbox" id="night" value="2"/><label for="night">Night</label></span>
+            </form>
+          </div>
+          <div class="filter-section">
+            <form>
+              <span class="filter-checkbox-item"><input name="gender" type="checkbox" id="female" value="0"/><label for="female">Female</label></span>
+              <span class="filter-checkbox-item"><input name="gender" type="checkbox" id="male" value="1"/><label for="male">Male</label></span>
+          </div>
+          <div class="group-section">
+            {#data.groups}
+              {@math key=$idx method="mod" operand="2"}
+                {@eq value=0} {!even!}
+                  <div class="row">
+                    {>"templates/group-card"/}
+                {:else} {!odd!}
+                    {>"templates/group-card"/}
+                  </div>
+                {/eq}
+              {/math}
+            {:else}
+              <p>Group is not found in this area...</p>
+            {/data.groups}
+          </div>
+        </div>
+        <div class="col-half">
+          <div class="map">
+            <div id="map-canvas" class="map-canvas"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--div class="footer">
+      <div class="copy-right-container">
+        <p class="copy-right">Copy rights reserve by Bananaplan</p>
+      </div>
+    </div-->
+  </body>
+  <script type="text/javascript" src="/js/google-map.js"></script>
+</html>

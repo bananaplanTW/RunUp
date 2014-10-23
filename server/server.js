@@ -4,10 +4,13 @@ var express = require('express'),
     path = require('path'),
     methodOverride = require('method-override'),
     dust_engine = require('dustjs-linkedin'),
+    dust_helper = require('dustjs-helpers'),
     cons = require('consolidate'),
     app = express(),
     auth = require('../routes/auth'),
     home = require('../routes/home'),
+    region = require('../routes/region'),
+    error = require('../routes/error'),
     httpLogFile;
 
 // setting up template engine
@@ -23,6 +26,8 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(auth);
 app.use(home);
+app.use(region);
+app.use(error);
 
 app.listen(app.get('port'), function () {
 	console.log("server now listen to port", app.get('port'));

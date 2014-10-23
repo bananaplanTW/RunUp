@@ -9,6 +9,11 @@ a {
   text-decoration: none;
 }
 
+ul {
+  padding: 0px;
+  margin: 0px;
+}
+
 li {
   list-style-type: none; 
 }
@@ -19,6 +24,40 @@ form {
 
 p {
   margin: 0px;
+}
+
+label {
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px;
+  font-size: 14px;
+}
+
+label:before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  background-color: #fafafa;
+  box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px 0px rgba(255, 255, 255, 0.8);
+
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox]:checked + label:before {
+  content: '\2713';
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  font-size: 24px;
+  color: #ff5a5f;
+  text-align: center;
+  line-height: 13px;
 }
 
 .logo {
@@ -67,6 +106,7 @@ p {
 }
 
 .main-container {
+  min-height: 200px;
 }
 
 .hover-dark {
@@ -78,4 +118,16 @@ p {
   transition: opacity ease-in-out 0.2s;
   -webkit-transition: opacity ease-in-out 0.2s;
   -moz-transition: opacity ease-in-out 0.2s;
+}
+
+.error-container {
+  display: table;
+  width: 100%;
+}
+
+.error-message {
+  width: 100%;
+  text-align:center;
+  vertical-align: middle;
+  display: table-cell;
 }
