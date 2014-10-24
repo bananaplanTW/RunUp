@@ -1,5 +1,6 @@
 var map;
 var bounds;
+var infowindows = [];
 function initializeMap() {
 	var mapOptions = {
 	  center: new google.maps.LatLng(-34.397, 150.644),
@@ -19,18 +20,17 @@ function setIconOnMap () {
 	var groupCards = document.getElementsByClassName('group-card');
 	var groupName;
 	var marker, lat, lng, latlng;
-	var infowindow;
 
 	for (var i = 0; i < groupCards.length; i ++ ){
 		groupName = groupCards[i].querySelector("#group-name").innerHTML;
 		lat = parseFloat(groupCards[i].getAttribute('data-lat'));
 		lng = parseFloat(groupCards[i].getAttribute('data-lng'));
-		putIconOnMap(lat, lng, groupName);
+		putIconOnMap(lat, lng, groupName, groupCards[i]);
 	}
 	map.fitBounds(bounds);
 };
 
-function putIconOnMap(lat, lng, groupName) {
+function putIconOnMap(lat, lng, groupName, groupCard) {
 	var latlng = new google.maps.LatLng(lat, lng);
 	var marker = new google.maps.Marker({
 				    position: latlng,
@@ -43,7 +43,18 @@ function putIconOnMap(lat, lng, groupName) {
 	    content: groupName
 	});
 	google.maps.event.addListener(marker, 'click', function() {
+	  for (var i = 0; i < infowindows.length; i ++) {
+	  	infowindows[i].close();
+	  }
 	  infowindow.open(map,marker);
+	});
+	infowindows.push(infowindow);
+
+	groupCard.addEventListener('mouseover', function () {
+	  infowindow.open(map,marker);
+	});
+	groupCard.addEventListener('mouseout', function () {
+	  infowindow.close();
 	});
 }
 

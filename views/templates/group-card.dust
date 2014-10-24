@@ -1,4 +1,5 @@
 <div class="col-half group-card" data-lat="{lat}" data-lng="{lng}">
+  <a class="spread-link" href="/group?name={group_id}"></a>
   <div class="group-photo-container">
     <div class="discover-photo" style="background-image:url('/assets/images/chi.jpg')"></div>
   </div>

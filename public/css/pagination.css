@@ -1,0 +1,22 @@
+.pagination-section {
+
+}
+
+.pagination-section:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.pagination-container {
+  float: right;
+  padding: 10px;
+}
+
+.pagination-button {
+  color: #555555;
+  padding: 10px 14px 10px 14px;
+  border: 1px solid #DEDEDE;
+  border-radius: 5px;
+  margin-left: 1px;
+}

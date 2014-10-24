@@ -75,7 +75,6 @@
 }
 
 .discover-photo {
-  z-index: -1;
   position: absolute;
   top: 0px;
   right: 0px;

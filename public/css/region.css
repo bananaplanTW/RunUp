@@ -8,7 +8,8 @@ li {
 }
 
 .map-search {
-
+  top: 52px;
+  position: relative;
 }
 
 .map-search:after {
@@ -17,20 +18,25 @@ li {
   display: table;
 }
 
-.top-banner{
+.fixed-top-banner{
   position: fixed;
   width: 100%;
   z-index: 1;
   border-bottom: 1px solid #DEDEDE;
 }
 
-.main-container {
-  position: relative;
+.group-cards-container {
   top: 52px;
 }
 
 .group-card {
   height: 310px;
+
+}
+
+.group-card:hover {
+  cursor: pointer;
+  background-color: #DEDEDE;
 }
 
 .group-summary {

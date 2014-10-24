@@ -9,10 +9,11 @@
     <link rel="stylesheet" type="text/css" href="/css/google-map.css">
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/filter.css">
+    <link rel="stylesheet" type="text/css" href="/css/pagination.css">
     <link rel="stylesheet" type="text/css" href="/css/basic.css">
   </head>
   <body onload="">
-    <div id="top-banner" class="top-banner">
+    <div id="top-banner" class="top-banner fixed-top-banner">
       <a href="/" class="logo"><p>Running Area</p></a>
       <ul class="push-to-right">
         <li class="runup-red-box">
@@ -71,6 +72,16 @@
             {:else}
               <p>Group is not found in this area...</p>
             {/data.groups}
+          </div>
+          <div class="pagination-section">
+            <div class="row pagination-container">
+              {@select key=data.prevPage}
+                {@gt value=0}
+                  <a class="pagination-button" href="?p={data.prevPage}"><</a>
+                {/gt}
+              {/select}
+              <a class="pagination-button" href="?p={data.nextPage}">></a>
+            </div>
           </div>
         </div>
         <div class="col-half">

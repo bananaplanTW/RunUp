@@ -107,6 +107,8 @@ input[type=checkbox]:checked + label:before {
 
 .main-container {
   min-height: 200px;
+  margin-bottom: 30px;
+  position: relative;
 }
 
 .hover-dark {
