@@ -10,6 +10,7 @@ var express = require('express'),
     auth = require('../routes/auth'),
     home = require('../routes/home'),
     region = require('../routes/region'),
+    group = require('../routes/group'),
     error = require('../routes/error'),
     httpLogFile;
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(auth);
 app.use(home);
+app.use('/group', group);
 app.use(region);
 app.use(error);
 

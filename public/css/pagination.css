@@ -8,9 +8,10 @@
   display: table;
 }
 
-.pagination-container {
+div.pagination-container {
   float: right;
   padding: 10px;
+  margin-bottom: 50px;
 }
 
 .pagination-button {

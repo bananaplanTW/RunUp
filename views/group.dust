@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCoq2mE4Ywhw2Lw5XzzBeWVc603qgA6RcE&sensor=true"></script>
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/css/google-map.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/filter.css">
+    <link rel="stylesheet" type="text/css" href="/css/basic.css">
+    <link rel="stylesheet" type="text/css" href="/css/member.css">
+    <link rel="stylesheet" type="text/css" href="/css/group.css">
+  </head>
+  <body onload="">
+    <div id="top-banner fixed-top-banner" class="top-banner fixed-top-banner">
+      <a href="/" class="logo"><p>Running Area</p></a>
+      <ul class="push-to-right">
+        <li class="runup-red-box">
+          <a href="/post">
+            Post Your Group
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="teaser">
+      <img src="/assets/images/{data.city_short}.jpg">
+    </div>
+    <div class="main-container center-rail">
+      <div class="row description-item">
+        <div class="member-title">
+          <p>Members</p>
+        </div>
+        <div class="member-list">
+          <ul>
+            <li>
+              <span class="round-face border-icon user-head-image"><img src="/assets/images/kt.jpg"></span>
+            </li>
+            <li>
+              <span class="round-face border-icon user-head-image"><img src="/assets/images/danny.jpg"></span>
+            </li>
+            <li>
+              <span class="round-face border-icon user-head-image"><img src="/assets/images/male.jpg"></span>
+            </li>
+            <li>
+              <span class="round-face border-icon user-head-image"><img src="/assets/images/lai.jpg"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div id="group-name" data-lat="{data.lat}" data-lng="{data.lng}" class="description-item group-name">
+          <h2>{data.group_name}</h2>
+        </div>
+        <div class="description-item">
+          <p>{data.address}</p>
+        </div>
+        <div class="description-item">
+          <p>{data.contact}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-half">
+          <div class="row">
+            <div class="description-item">
+              <div class="col-4">
+                <p>Time</p>
+              </div>
+              <div class="col-8">
+                <p>Wed 20:00~22:00</p>
+              </div>
+            </div>
+            <div class="description-item">
+              <div class="col-4">
+                <p>Payment</p>
+              </div>
+              <div class="col-8">
+                <p>Only $5 per season </p>
+              </div>
+            </div>
+            <div class="description-item">
+              <div class="col-4">
+                <p>Restriction</p>
+              </div>
+              <div class="col-8">
+                <p>Female Only</p>
+              </div>
+            </div>
+            <div class="description-item">
+              <div class="col-4">
+                <p>Email</p>
+              </div>
+              <div class="col-8">
+                <p>{data.email}</p>
+              </div>
+            </div>
+            <div class="description-item">
+              <div class="col-4">
+                <p>Website</p>
+              </div>
+              <div class="col-8">
+                <p>{data.website}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-half">
+          <div class="row">
+            <div class="descrption-area">
+              this is description~~~~~~~~~~ this is description~~~~~~~~~~ this is description~~~~~~~~~~ this is description~~~~~~~~~~this is description~~~~~~~~~~ this is description~~~~~~~~~~ this is description~~~~~~~~~~ this is description~~~~~~~~~~this is description~~~~~~~~~~ this is description~~~~~~~~~~
+            </div>
+          </div>
+          <div class="row join-button-container display-table">
+            <div class="display-table-cell vertical-align-middle text-align-center">
+              <a class="join-button" href="/join">Join</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="map-container">
+          <div id="map-canvas" class="map-canvas"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <div class="copy-right-container">
+        <p class="copy-right">Copy rights reserve by Bananaplan</p>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="/js/google-map.js"></script>
+  <script type="text/javascript" src="/js/group.js"></script>
+</html>

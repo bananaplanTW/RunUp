@@ -111,6 +111,12 @@ input[type=checkbox]:checked + label:before {
   position: relative;
 }
 
+.main-container:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
 .hover-dark {
   opacity: 0.9;
 }

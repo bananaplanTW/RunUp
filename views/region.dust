@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/css/filter.css">
     <link rel="stylesheet" type="text/css" href="/css/pagination.css">
     <link rel="stylesheet" type="text/css" href="/css/basic.css">
+    <link rel="stylesheet" type="text/css" href="/css/member.css">
   </head>
   <body onload="">
     <div id="top-banner" class="top-banner fixed-top-banner">
@@ -74,7 +75,7 @@
             {/data.groups}
           </div>
           <div class="pagination-section">
-            <div class="row pagination-container">
+            <div class="pagination-container row">
               {@select key=data.prevPage}
                 {@gt value=0}
                   <a class="pagination-button" href="?p={data.prevPage}"><</a>
@@ -99,4 +100,5 @@
     </div-->
   </body>
   <script type="text/javascript" src="/js/google-map.js"></script>
+  <script type="text/javascript" src="/js/region.js"></script>
 </html>

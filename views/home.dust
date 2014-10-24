@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="/css/global.css">
     <link rel="stylesheet" type="text/css" href="/css/home.css">
     <link rel="stylesheet" type="text/css" href="/css/basic.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
   </head>
   <body>
     <div id="top-banner" class="top-banner">
@@ -26,11 +27,29 @@
       </form>
     </div>
     <div class="main-container">
-      <div class="discover-region">
+      <div class="center-rail">
         <div class="discover-headline">
           <h2>Run in your Favorite SPOT!</h2>
         </div>
-        <div class="row">
+          {#data.cities}
+            {@math key=$idx method="mod" operand="3"}
+              {@eq value=0} {!start!}
+                <div class="row">
+                  {>"templates/city-card"/}
+              {/eq}
+              {@eq value=2} {!end!}
+                  {>"templates/city-card"/}
+                </div>
+              {/eq}
+              {@default}
+                  {>"templates/city-card"/}
+              {/default}
+            {/math}
+          {/data.cities}
+        <!--div class="row">
+            
+              
+            
             <div class="col-4">
                 <a href="/ca/la">
                   <div class="discover-card hover-dark">
@@ -61,7 +80,7 @@
                   </div>
                 </a>
             </div>
-        </div>
+        </div-->
       </div>
     </div>
     <div class="footer">

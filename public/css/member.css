@@ -1,0 +1,19 @@
+.group-members {
+  position: absolute;
+}
+
+.group-photo-container {
+  position: relative;
+  height: 200px
+}
+
+.user-head-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+
+.user-head-image img {
+  width: 40px;
+  height: 40px;
+}

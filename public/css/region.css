@@ -18,13 +18,6 @@ li {
   display: table;
 }
 
-.fixed-top-banner{
-  position: fixed;
-  width: 100%;
-  z-index: 1;
-  border-bottom: 1px solid #DEDEDE;
-}
-
 .group-cards-container {
   top: 52px;
 }
@@ -45,34 +38,6 @@ li {
   position: relative;
 }
 
-.description-item{
-  font-size: 18px;
-  line-height: 16px;
-}
-
-.sub-content p {
-  font-size: 14px;
-  color: #888888;
-  line-height: 14px;
-}
-
-.group-members {
-  position: absolute;
+.group-members{
   top: -28px;
-}
-
-.group-photo-container {
-  position: relative;
-  height: 200px
-}
-
-.user-head-image {
-  width: 40px;
-  height: 40px;
-  margin-right: 5px;
-}
-
-.user-head-image img {
-  width: 40px;
-  height: 40px;
 }

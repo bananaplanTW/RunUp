@@ -38,3 +38,23 @@
 .push-to-back {
   z-index: -1;
 }
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+.display-table{
+  display: table;
+}
+
+.display-table-cell {
+  display: table-cell;
+}
+
+.vertical-align-middle {
+  vertical-align: middle;
+}
+
+.text-align-center {
+  text-align: center;
+}
