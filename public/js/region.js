@@ -41,14 +41,24 @@ function putIconOnMap(map, lat, lng, groupName, groupCard) {
 	
 
 	groupCard.addEventListener('mouseover', function () {
-	  for (var i = 0; i < infowindows.length; i ++) {
+	  /*for (var i = 0; i < infowindows.length; i ++) {
 	  	infowindows[i].close();
 	  }
-	  infowindow.open(map,marker);
+	  infowindow.open(map,marker);*/
+	  setAnimationBounce(marker);
 	});
 	groupCard.addEventListener('mouseout', function () {
-	  infowindow.close();
+	  //infowindow.close();
+	  removeAnimation(marker);
 	});
+};
+
+function setAnimationBounce (marker) {
+	marker.setAnimation(google.maps.Animation.BOUNCE);
+};
+
+function removeAnimation (marker) {
+	marker.setAnimation(null);
 };
 
 google.maps.event.addDomListener(window, 'load', function () {

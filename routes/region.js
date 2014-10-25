@@ -2,7 +2,7 @@ var util = require('util'),
 	express = require('express'),
     router  = express.Router(),
     ModuleMysql = require('../modules/ModuleMysql').getInstance(),
-    selectQueryStringBase = "SELECT a.*, b.city_short, b.city_origin, c.state_short, c.state_origin FROM running_group AS a, city AS b, state AS c WHERE a.city_id = b.id AND a.state_id = c.id AND b.city_short = '%s' AND c.state_short = '%s' LIMIT %s, 10";
+    selectQueryStringBase = "SELECT a.*, b.city_short, b.city_origin, c.state_short, c.state_origin FROM running_group AS a, city AS b, state AS c WHERE a.city_id = b.id AND a.state_id = c.id AND b.city_short = \"%s\" AND c.state_short = \"%s\" LIMIT %s, 10";
 //might useful
 //SELECT a.*, b.city_short, b.city_origin, c.state_short, c.state_origin FROM running_group AS a JOIN city AS b JOIN state AS c ON a.city_id = b.id AND a.state_id = c.id WHERE b.city_short = 'la' AND c.state_short = 'ca' LIMIT 0, 10
 //require('../lib/GetLatLngFromAddress');
