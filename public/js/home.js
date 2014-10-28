@@ -1,5 +1,4 @@
 var searchInputBox = document.getElementById('search-input-box');
-console.log(searchInputBox);
 searchInputBox.onfocus = function () {
 	searchInputBox.setAttribute("value", "");
 }

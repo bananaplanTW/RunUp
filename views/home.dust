@@ -1,22 +1,12 @@
 <html>
   <head>
-    
     <link rel="stylesheet" type="text/css" href="/css/global.css">
     <link rel="stylesheet" type="text/css" href="/css/home.css">
     <link rel="stylesheet" type="text/css" href="/css/basic.css">
     <link rel="stylesheet" type="text/css" href="/css/common.css">
   </head>
   <body>
-    <div id="top-banner" class="top-banner">
-      <a href="/" class="logo"><p>Running Area</p></a>
-      <ul class="push-to-right">
-        <li class="runup-red-box">
-          <a href="/post">
-            Post Your Group
-          </a>
-        </li>
-      </ul>
-    </div>
+    {>"templates/top-banner"/}
     <div class="teaser">
       <img src="/assets/images/cover.jpg">
     </div>
@@ -46,6 +36,11 @@
               {/default}
             {/math}
           {/data.cities}
+          {@math key=data.cities.length method="mod" operand="3"}
+            {@ne value=2}
+              </div>
+            {/ne}
+          {/math}
         <!--div class="row">
             
               
@@ -88,6 +83,8 @@
         <p class="copy-right">Copy rights reserve by Bananaplan</p>
       </div>
     </div>
+    {>"templates/signup-options"/}
   </body>
   <script type="text/javascript" src="/js/home.js"></script>
+  <script type="text/javascript" src="/js/signup.js"></script>
 </html>

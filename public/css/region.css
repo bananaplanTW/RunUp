@@ -3,9 +3,6 @@ clear: both;
 content: "";
 display: table;
 }
-li {
-  float: left;
-}
 
 .map-search {
   top: 52px;

@@ -13,16 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/css/group.css">
   </head>
   <body onload="">
-    <div id="top-banner fixed-top-banner" class="top-banner fixed-top-banner">
-      <a href="/" class="logo"><p>Running Area</p></a>
-      <ul class="push-to-right">
-        <li class="runup-red-box">
-          <a href="/post">
-            Post Your Group
-          </a>
-        </li>
-      </ul>
-    </div>
+    {>"templates/top-banner"/}
     <div class="teaser">
       <img src="/assets/images/{data.city_short}.jpg">
     </div>

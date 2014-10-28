@@ -1,0 +1,18 @@
+<div id="top-banner" class="top-banner fixed-top-banner">
+  <a href="/" class="logo"><p>Running Area</p></a>
+  <ul class="push-to-right">
+    <li id="signup" class="runup-green-box signup">
+        Sign up
+    </li>
+    <li id="login" class="runup-green-box login">
+        Login
+    </li>
+  </ul>
+  <ul class="push-to-right">
+    <li class="runup-red-box">
+      <a href="/post">
+        Post Your Group
+      </a>
+    </li>
+  </ul>
+</div>
