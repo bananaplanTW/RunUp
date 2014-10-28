@@ -11,7 +11,11 @@
       </div>
       <div class="signup-by-creating">
         <div>
-
+          <form>
+            <input id="account" class="signup-input-box" type="text" value="Account"/>
+            <input id="password" class="signup-input-box" type="password" value="password"/>
+            <input class="signup-input-box signup-input-submit" type="submit" />
+          </form> 
         </div>
       </div>
     </div>

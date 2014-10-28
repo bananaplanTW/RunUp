@@ -26,14 +26,22 @@
     });
 })();
 
-(function bindFBLogin () {
-    var FBLogin = document.getElementById('fb-login');
-})();
+var accountInputBox = document.getElementById('account');
+accountInputBox.onfocus = function () {
+    accountInputBox.setAttribute("value", "");
+}
+accountInputBox.onblur = function () {
+    if (accountInputBox.getAttribute("value").trim() === "") {
+        accountInputBox.setAttribute("value", "Account");
+    }
+}
 
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=803495859696013&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+var passwordInputBox = document.getElementById('password');
+passwordInputBox.onfocus = function () {
+    passwordInputBox.setAttribute("value", "");
+}
+passwordInputBox.onblur = function () {
+    if (accountInputBox.getAttribute("value").trim() === "") {
+        passwordInputBox.setAttribute("value", "password");
+    }
+}

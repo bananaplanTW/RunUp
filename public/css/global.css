@@ -178,6 +178,7 @@ input[type=checkbox]:checked + label:before {
   color: white;
   cursor: pointer;
   display: table;
+  width: 240px;
 }
 
 .fb-login:hover {
@@ -225,4 +226,31 @@ input[type=checkbox]:checked + label:before {
   vertical-align: middle;
   text-align: center;
   z-index: 15;
+}
+
+.signup-input-box {
+  width: 240px;
+  height: 40px;
+  margin-top: 5px;
+  font-size: 16px;
+  border: 1px solid #DEDEDE;
+  color: #DEDEDE;
+  padding-left: 10px;
+}
+
+.signup-input-submit {
+  color: white;
+  background-color: rgb(38, 214, 170);
+  border: none;
+  box-shadow: inset 0px -1px 1px 0px #999999;
+}
+
+.signup-by-creating {
+  margin-top: 20px;
+}
+
+.signup-by-creating:before {
+height: 1px;
+border: 1px solid #000000;
+margin-top: 10px;
 }
