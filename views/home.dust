@@ -41,41 +41,6 @@
               </div>
             {/ne}
           {/math}
-        <!--div class="row">
-            
-              
-            
-            <div class="col-4">
-                <a href="/ca/la">
-                  <div class="discover-card hover-dark">
-                    <div class="discover-photo push-to-back" style="background-image:url('/assets/images/la.jpg')"></div>
-                    <div class="discover-title">
-                      <p class="title">Los Angeles</p>
-                    </div>
-                  </div>
-                </a>
-            </div>
-            <div class="col-4">
-                <a href="/il/chi">
-                  <div class="discover-card hover-dark">
-                    <div class="discover-photo push-to-back" style="background-image:url('/assets/images/chi.jpg')"></div>
-                    <div class="discover-title">
-                      <p class="title">Chicago</p>
-                    </div>
-                  </div>
-                </a>
-            </div>
-            <div class="col-4">
-                <a href="/ny/ny">
-                  <div class="discover-card hover-dark">
-                    <div class="discover-photo push-to-back" style="background-image:url('/assets/images/ny.jpg')"></div>
-                    <div class="discover-title">
-                      <p class="title">New York</p>
-                    </div>
-                  </div>
-                </a>
-            </div>
-        </div-->
       </div>
     </div>
     <div class="footer">
