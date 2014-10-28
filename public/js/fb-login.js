@@ -2,9 +2,16 @@
     var FBLogin = document.getElementById('fb-login');
     FBLogin.addEventListener('click', function (e) {
         console.log("click fb login", FB);
-        FB.getLoginStatus(function(response) {
-            console.log(response);
-        });
+        FB.login(function (response) {
+          console.log(response);
+        }, {scope: 'public_profile,user_friends,email'});
+    });
+
+    var templogout = document.getElementById('login');
+    templogout.addEventListener('click', function (e) {
+      FB.logout(function (response) {
+        console.log(response);
+      });
     });
 })();
 
@@ -26,7 +33,11 @@ window.fbAsyncInit = function() {
     version    : 'v2.1' // use version 2.1
   });
   FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
+    console.log(response);
+    FB.api('/me/picture', function(response) {
+        console.log(response);
+    });
   });
+  
 
-  };
+};
