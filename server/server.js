@@ -28,8 +28,8 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(auth);
 app.use(home);
-app.use('/group', group);
-app.use(region);
+app.use('/g', group);
+app.use('/r', region);
 app.use(error);
 
 app.listen(app.get('port'), function () {

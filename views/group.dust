@@ -15,7 +15,7 @@
   <body onload="">
     {>"templates/top-banner"/}
     <div class="teaser">
-      <img src="/assets/images/{data.city_short}.jpg">
+      <img src="/assets/images/{data.state_short}.jpg">
     </div>
     <div class="main-container center-rail">
       <div class="row description-item">

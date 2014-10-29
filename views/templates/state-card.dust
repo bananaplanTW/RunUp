@@ -1,0 +1,10 @@
+<div class="col-4">
+    <a href="/r/{country_short}/{state_short}">
+      <div class="discover-card hover-dark">
+        <div class="discover-photo push-to-back" style="background-image:url('/assets/images/{state_short}.jpg')"></div>
+        <div class="discover-title">
+          <p class="title">{state_origin}</p>
+        </div>
+      </div>
+    </a>
+</div>

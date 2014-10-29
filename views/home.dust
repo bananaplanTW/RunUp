@@ -21,22 +21,22 @@
         <div class="discover-headline">
           <h2>Run in your Favorite SPOT!</h2>
         </div>
-          {#data.cities}
+          {#data.states}
             {@math key=$idx method="mod" operand="3"}
               {@eq value=0} {!start!}
                 <div class="row">
-                  {>"templates/city-card"/}
+                  {>"templates/state-card"/}
               {/eq}
               {@eq value=2} {!end!}
-                  {>"templates/city-card"/}
+                  {>"templates/state-card"/}
                 </div>
               {/eq}
               {@default}
-                  {>"templates/city-card"/}
+                  {>"templates/state-card"/}
               {/default}
             {/math}
-          {/data.cities}
-          {@math key=data.cities.length method="mod" operand="3"}
+          {/data.states}
+          {@math key=data.states.length method="mod" operand="3"}
             {@ne value=2}
               </div>
             {/ne}

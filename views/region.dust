@@ -49,6 +49,7 @@
             <form>
               <span class="filter-checkbox-item"><input name="gender" type="checkbox" id="female" value="0"/><label for="female">Female</label></span>
               <span class="filter-checkbox-item"><input name="gender" type="checkbox" id="male" value="1"/><label for="male">Male</label></span>
+            </form>
           </div>
           <div class="group-section">
             {#data.groups}
@@ -64,15 +65,24 @@
             {:else}
               <p>Group is not found in this area...</p>
             {/data.groups}
+            {@math key=data.groups.length method="mod" operand="2"}
+              {@eq value=1}
+                </div>
+              {/eq}
+            {/math}
           </div>
           <div class="pagination-section">
             <div class="pagination-container row">
-              {@select key=data.prevPage}
-                {@gt value=0}
-                  <a class="pagination-button" href="?p={data.prevPage}"><</a>
-                {/gt}
-              {/select}
-              <a class="pagination-button" href="?p={data.nextPage}">></a>
+              {?data.prevPage}
+                {@select key=data.prevPage}
+                  {@gt value=0}
+                    <a class="pagination-button" href="?p={data.prevPage}"><</a>
+                  {/gt}
+                {/select}
+              {/data.prevPage}
+              {?data.nextPage}
+                <a class="pagination-button" href="?p={data.nextPage}">></a>
+              {/data.nextPage}
             </div>
           </div>
         </div>

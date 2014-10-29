@@ -65,6 +65,7 @@ google.maps.event.addDomListener(window, 'load', function () {
 	var mapOptions = {
 	  center: new google.maps.LatLng(-34.397, 150.644),
 	  zoom: 8,
+	  maxZoom: 17,
 	  disableDefaultUI: true,
 	  zoomControl: true,
 	  style: google.maps.ZoomControlStyle.SMALL,
