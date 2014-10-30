@@ -1,11 +1,18 @@
 <div id="top-banner" class="top-banner fixed-top-banner">
   <a href="/" class="logo"><p>Running Area</p></a>
-  <ul class="push-to-right">
+  <ul id="auth" class="push-to-right auth">
     <li id="signup" class="runup-green-box signup">
         Sign up
     </li>
     <li id="login" class="runup-green-box login">
         Login
+    </li>
+  </ul>
+  <ul id="user" class="push-to-right user">
+    <li id="user-icon">
+        <span class="round-face border-icon top-banner-user-head-image">
+          <img src="/assets/images/kt.jpg">
+        </span>
     </li>
   </ul>
   <ul class="push-to-right">
