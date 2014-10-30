@@ -1,9 +1,30 @@
+function QueryString () {
+    
+}
+
+QueryString.prototype.stringify = function (json) {
+    var string = "";
+    for (var i in json) {
+        string += (i + "=" + json[i] + "&");
+    }
+    if (string.length > 0 ) {
+        string = string.slice(0, string.length -1)
+    }
+    return string;
+}
+
+var queryString = new QueryString();
+
 (function bindFBLogin () {
     var FBLogin = document.getElementById('fb-login');
     FBLogin.addEventListener('click', function (e) {
-        console.log("click fb login", FB);
         FB.login(function (response) {
-          console.log(response);
+            console.log(response);
+            if (response.status === 'connected') {
+                redirectToLogin();
+            } else {
+                //do nothing
+            }
         }, {scope: 'public_profile,user_friends,email'});
     });
 
@@ -15,7 +36,6 @@
     });
 })();
 
-
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -23,6 +43,44 @@
   js.src = "//connect.facebook.net/en_US/sdk.js";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+
+function redirectToLogin () {
+    var fields = "fields=id,email,first_name,last_name,gender,locale,timezone,picture";
+    FB.api('/me?' + fields, function(response) {
+        console.log("tostring", response.toString());
+        if (!response.picture.data.is_silhouette) {
+            response.picture = response.picture.data.url;
+        } else {
+            response.picture = null;
+        }
+        //var post = queryString.stringify(response);
+        ajaxPost(JSON.stringify(response));
+    });
+};
+
+function ajaxPost (post) {
+    var XHR;
+    if (window.XMLHttpRequest) {
+        XHR = new XMLHttpRequest();
+    } else {
+        XHR = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    XHR.onreadystatechange = function (status) {
+        if (XHR.readyState === 4 && XHR.status === 200) {
+            var body = document.getElementsByTagName("body")[0];
+            var bodyClass = body.className.replace(" no-scroll", "");
+            body.setAttribute('class', bodyClass); 
+            document.getElementById("signup-popup-container").style.display = "none";
+
+            //replace the login/signup button with head icon
+        }
+    }
+    XHR.open('POST', "/login", false);
+    XHR.setRequestHeader("Content-Type", "application/json;charset=utf-8");
+    XHR.send(post);
+}
+
+
 
 window.fbAsyncInit = function() {
     FB.init({
@@ -35,6 +93,7 @@ window.fbAsyncInit = function() {
     var fields = "fields=id,email,first_name,last_name,gender,locale,timezone,picture";
     FB.getLoginStatus(function(response) {
         console.log(response);
+        console.log("tostring", JSON.stringify(response));
         FB.api('/me?' + fields, function(response) {
             console.log(response);
         });
