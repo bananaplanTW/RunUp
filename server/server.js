@@ -1,7 +1,8 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
-    session = require('cookie-session'),
+    session = require('express-session'),
+    MongoStore = require('connect-mongo')(session),
     looger = require('morgan'),
     path = require('path'),
     methodOverride = require('method-override'),
@@ -27,7 +28,12 @@ cons.dust.debugLevel = 'DEBUG';
 app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(cookieParser())
-app.use(session());
+app.use(session({
+    key: "ra",
+    secret: "Gad@#$5fncd9$2230-=;SDf/][123f",
+    store: new MongoStore({
+        db: "running_area"
+    })}));
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(auth);

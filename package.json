@@ -21,7 +21,9 @@
     "morgan" : "v1.4.0",
     "method-override" : "v2.3.0",
     "cookie-parser" : "*",
-    "cookie-session" : "*"
+    "cookie-session" : "*",
+    "connect-mongo" : "*",
+    "express-session": "*"
   }
 }
 
