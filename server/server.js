@@ -12,6 +12,7 @@ var express = require('express'),
     app = express(),
     auth = require('../routes/auth'),
     login = require('../routes/login'),
+    logout = require('../routes/logout'),
     home = require('../routes/home'),
     region = require('../routes/region'),
     group = require('../routes/group'),
@@ -39,6 +40,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(auth);
 app.use('/login', login);
+app.use('/logout', logout);
 app.use(home);
 app.use('/g', group);
 app.use('/r', region);

@@ -1,6 +1,25 @@
 <div id="top-banner" class="top-banner fixed-top-banner">
   <a href="/" class="logo"><p>Running Area</p></a>
+  {?data.user}
+  <ul id="user" class="push-to-right user">
+  {:else}
+  <ul id="user" class="push-to-right user display-none">
+  {/data.user}
+    <li id="user-icon">
+        <span class="round-face border-icon top-banner-user-head-image">
+          <img class="head-image" src="{data.user.picture}">
+        </span>
+    </li>
+    <li id="logout" class="runup-green-box logout">
+        Logout
+    </li>
+  </ul>
+
+  {?data.user}
+  <ul id="auth" class="push-to-right auth display-none">
+  {:else}
   <ul id="auth" class="push-to-right auth">
+  {/data.user}
     <li id="signup" class="runup-green-box signup">
         Sign up
     </li>
@@ -8,13 +27,7 @@
         Login
     </li>
   </ul>
-  <ul id="user" class="push-to-right user">
-    <li id="user-icon">
-        <span class="round-face border-icon top-banner-user-head-image">
-          <img src="/assets/images/kt.jpg">
-        </span>
-    </li>
-  </ul>
+
   <ul class="push-to-right">
     <li class="runup-red-box">
       <a href="/post">

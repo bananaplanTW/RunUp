@@ -24,8 +24,15 @@ router.get('/:country/:state', function (req, res, next) {
 		}
 		var data = {};
 		data.groups = rows;
-		data.prevPage = parseInt(page) - 1;
-		data.nextPage = parseInt(page) + 1;
+		if (page > 1) {
+			data.prevPage = parseInt(page) - 1;
+		}
+		if (rows.length > 10) {
+			data.nextPage = parseInt(page) + 1;
+		}
+		//data.prevPage = parseInt(page) - 1;
+		//data.nextPage = parseInt(page) + 1;
+		data.user = req.user;
 		console.log(data);
 		res.render('region', {data : data});
 	});
@@ -54,7 +61,7 @@ router.get('/:country/:state/:city', function (req, res, next) {
 		if (rows.length > 10) {
 			data.nextPage = parseInt(page) + 1;
 		}
-		console.log(data);
+		data.user = req.user;
 		res.render('region', {data : data});
 	});
 });

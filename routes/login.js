@@ -40,7 +40,6 @@ router.use(function (req, res, next) {
             res.end();
     	}
     })
-    //next();
 });
 
 module.exports = router;

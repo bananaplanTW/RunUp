@@ -17,10 +17,7 @@
 .top-banner-user-head-image {
   width: 32px;
   height: 32px;
-}
-
-.user {
-  display: none;
+  margin-right: 5px;
 }
 
 .spread-link {

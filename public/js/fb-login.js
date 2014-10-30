@@ -28,11 +28,21 @@ var queryString = new QueryString();
         }, {scope: 'public_profile,user_friends,email'});
     });
 
-    var templogout = document.getElementById('login');
-    templogout.addEventListener('click', function (e) {
-      FB.logout(function (response) {
-        console.log(response);
-      });
+    var logout = document.getElementById('logout');
+    logout.addEventListener('click', function (e) {
+        
+        //FB.logout(function (response) {
+            //logout in the server
+            ajaxGet();
+
+            var user = document.getElementById("user");
+            var userClass = user.className + " display-none";
+            user.setAttribute('class', userClass);
+
+            var auth = document.getElementById("auth");
+            var authClass = auth.className.replace(" display-none", "");
+            auth.setAttribute('class', authClass);
+        //});
     });
 })();
 
@@ -73,6 +83,18 @@ function ajaxPost (post) {
             document.getElementById("signup-popup-container").style.display = "none";
 
             //replace the login/signup button with head icon
+            var user = document.getElementById("user");
+            var userClass = user.className.replace(" display-none", "");
+            user.setAttribute('class', userClass);
+
+            var headImage = user.querySelector('img.head-image');
+            var userData = JSON.parse(XHR.response);
+            console.log(XHR);
+            headImage.setAttribute('src', userData.picture);
+
+            var auth = document.getElementById("auth");
+            var authClass = auth.className + " display-none";
+            auth.setAttribute('class', authClass);
         }
     }
     XHR.open('POST', "/login", false);
@@ -80,7 +102,21 @@ function ajaxPost (post) {
     XHR.send(post);
 }
 
-
+function ajaxGet () {
+    var XHR;
+    if (window.XMLHttpRequest) {
+        XHR = new XMLHttpRequest();
+    } else {
+        XHR = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    XHR.onreadystatechange = function (status) {
+        if (XHR.readyState === 4 && XHR.status === 200) {
+            
+        }
+    }
+    XHR.open('GET', "/logout", false);
+    XHR.send();
+}
 
 window.fbAsyncInit = function() {
     FB.init({

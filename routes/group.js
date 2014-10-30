@@ -19,7 +19,7 @@ router.get('/:group_id', function (req, res, next) {
 		if (typeof(rows) !== undefined) {
 			data = rows[0];	
 		}
-		console.log(data);
+		data.user = req.user;
 		res.render('group', {data : data});
 	});
 });
