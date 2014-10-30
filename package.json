@@ -19,7 +19,9 @@
     "log"   : "*",
     "body-parser" : "*",
     "morgan" : "v1.4.0",
-    "method-override" : "v2.3.0"
+    "method-override" : "v2.3.0",
+    "cookie-parser" : "*",
+    "cookie-session" : "*"
   }
 }
 

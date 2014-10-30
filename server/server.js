@@ -1,5 +1,7 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser'),
+    session = require('cookie-session'),
     looger = require('morgan'),
     path = require('path'),
     methodOverride = require('method-override'),
@@ -24,6 +26,8 @@ cons.dust.debugLevel = 'DEBUG';
 //app.use(logger('combined', {stream: httpLogFile}))
 app.use(bodyParser.json());
 app.use(methodOverride());
+app.use(cookieParser())
+app.use(session());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(auth);
