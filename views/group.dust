@@ -22,20 +22,13 @@
         <div class="member-title">
           <p>Members</p>
         </div>
-        <div class="member-list">
-          <ul>
-            <li>
-              <span class="round-face border-icon user-head-image"><img src="/assets/images/kt.jpg"></span>
-            </li>
-            <li>
-              <span class="round-face border-icon user-head-image"><img src="/assets/images/danny.jpg"></span>
-            </li>
-            <li>
-              <span class="round-face border-icon user-head-image"><img src="/assets/images/male.jpg"></span>
-            </li>
-            <li>
-              <span class="round-face border-icon user-head-image"><img src="/assets/images/lai.jpg"></span>
-            </li>
+        <div class="member-list-container">
+          <ul id="member-list">
+            {#data.members}
+              {>"templates/group-member-icon-list"/}
+            {:else}
+
+            {/data.members}
           </ul>
         </div>
       </div>
@@ -103,7 +96,11 @@
           </div>
           <div class="row join-button-container display-table">
             <div class="display-table-cell vertical-align-middle text-align-center">
-              <a class="join-button" href="/join">Join</a>
+              {#data.is_member}
+              
+              {:else}
+              <a id="join-button" data-groupid="{data.group_id}" class="join-button">Join</a>
+              {/data.is_member}
             </div>
           </div>
         </div>
@@ -124,6 +121,8 @@
   </body>
   <script type="text/javascript" src="/js/google-map.js"></script>
   <script type="text/javascript" src="/js/group.js"></script>
+  <script type="text/javascript" src="/js/ajax.js"></script>
+  <script type="text/javascript" src="/js/join.js"></script>
   <script type="text/javascript" src="/js/signup.js"></script>
   <script type="text/javascript" src="/js/fb-login.js"></script>
 </html>

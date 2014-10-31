@@ -7,7 +7,7 @@
   {/data.user}
     <li id="user-icon">
         <span class="round-face border-icon top-banner-user-head-image">
-          <img class="head-image" src="{data.user.picture}">
+          <img id="user-icon-img" class="head-image" src="{data.user.picture}">
         </span>
     </li>
     <li id="logout" class="runup-green-box logout">

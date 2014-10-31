@@ -2,7 +2,8 @@ var util = require('util'),
 	express = require('express'),
     router  = express.Router(),
     ModuleMysql = require('../modules/ModuleMysql').getInstance(),
-    selectQueryStringBase = "SELECT a.*, b.state_short FROM running_group AS a, state AS b WHERE a.state_id = b.id AND group_id=\"%s\"";
+    selectQueryStringBase = "SELECT a.*, b.state_short FROM running_group AS a, state AS b WHERE a.state_id = b.id AND group_id=\"%s\"",
+    selectGroupMember = "SELECT a.id, a.first_name, a.picture FROM member AS a, group_member AS b WHERE a.id = b.member_id AND b.group_id=\"%s\"";
 
 //require('../lib/GetLatLngFromAddress');
 router.get('/:group_id', function (req, res, next) {
@@ -16,11 +17,25 @@ router.get('/:group_id', function (req, res, next) {
 			return;
 		}
 		var data = {};
-		if (typeof(rows) !== undefined) {
-			data = rows[0];	
-		}
+		data = rows[0];	
 		data.user = req.user;
-		res.render('group', {data : data});
+		queryString = util.format(selectGroupMember, data.id);
+		ModuleMysql.execute(queryString, function (error, rows) {
+			if (error) {
+				console.log(error);
+				res.render('group', {data : data});
+				return;
+			}
+			var isMember = false;
+			for (var i = 0; i < rows.length; i++) {
+				if (rows[i].id == req.user.id) {
+					isMember = true;
+				}
+			}
+			data.members   = rows;
+			data.is_member = isMember;
+			res.render('group', {data : data});
+		});
 	});
 });
 
