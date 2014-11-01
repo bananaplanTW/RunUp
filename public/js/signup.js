@@ -50,7 +50,7 @@
         e.stopPropagation();
     });
 })();
-
+/*
 var accountInputBox = document.getElementById('account');
 accountInputBox.onfocus = function () {
     accountInputBox.setAttribute("value", "");
@@ -69,4 +69,4 @@ passwordInputBox.onblur = function () {
     if (accountInputBox.getAttribute("value").trim() === "") {
         passwordInputBox.setAttribute("value", "password");
     }
-}
+}*/

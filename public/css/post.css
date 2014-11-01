@@ -1,0 +1,37 @@
+.post-group {
+	position: relative;
+	top: 70px;
+}
+
+.post-group-section {
+	padding: 10px 20px;
+}
+
+.input-box {
+  height: 36px;
+  padding-top: 6px;
+  border: none;
+  border-bottom: 1px solid #a9a9a9;
+  font-size: 20px;
+}
+
+.input-box:focus {
+  outline: 0;
+  border-bottom: 1px solid #0AD7A9;
+}
+
+.input-title {
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.input-button {
+  background: #ff5a5f;
+  height: 44px;
+  border: none;
+  font-size: 18px;
+  color: white;
+  padding-left: 16px;
+  padding-right: 16px;
+  cursor: pointer;
+}

@@ -16,6 +16,8 @@ var express = require('express'),
     join = require('../routes/join'),
     home = require('../routes/home'),
     region = require('../routes/region'),
+    post = require('../routes/post'),
+    geoCoding = require('../routes/geoCoding'),
     group = require('../routes/group'),
     error = require('../routes/error'),
     httpLogFile;
@@ -43,6 +45,8 @@ app.use(auth);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/join', join);
+app.use('/post', bodyParser.urlencoded(), post);
+app.use('/getGeoCoding', geoCoding);
 app.use(home);
 app.use('/g', group);
 app.use('/r', region);

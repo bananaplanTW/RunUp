@@ -53,3 +53,10 @@
 .clickable:hover {
   opacity: 0.85;
 }
+
+.clear-float:after {
+  clear: both;
+  content: "";
+  display: table;
+
+}

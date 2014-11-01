@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCoq2mE4Ywhw2Lw5XzzBeWVc603qgA6RcE&sensor=true"></script>
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/css/google-map.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/post.css">
+    <link rel="stylesheet" type="text/css" href="/css/group.css">
+    <link rel="stylesheet" type="text/css" href="/css/basic.css">
+    <link rel="stylesheet" type="text/css" href="/css/member.css">
+  </head>
+  <body onload="">
+    {>"templates/top-banner"/}
+    <div class="main-container">
+      <div class="post-group clear-float">
+        <div class="col-half">
+          <div class="post-group-section description-item">
+            <h2>Post Your Group!</h2>
+          </div>
+          <form action="/post/group" method="POST">
+            <div class="post-group-section clear-float">
+              <span class="input-title col-4">Group Name</span>
+              <input id="group-name" class="input-box col-8" type="text" name="group_name"/>
+            </div>
+            <div class="post-group-section clear-float">
+              <span class="input-title col-4">Address/Location</span>
+              <input id="address" class="input-box col-8" type="text" name="address"/>
+            </div>
+            <div class="post-group-section clear-float">
+              <span class="input-title col-4">Contact</span>
+              <input id="contact" class="input-box col-8" type="text" name="contact"/>
+            </div>
+            <div class="post-group-section clear-float">
+              <span class="input-title col-4">Email</span>
+              <input id="email" class="input-box col-8" type="text" name="email"/>
+            </div>
+            <div class="post-group-section clear-float">
+              <span class="input-title col-4">Website</span>
+              <input id="website" class="input-box col-8" type="text" name="website"/>
+            </div>
+            <div class="post-group-section clear-float">
+              <span class="input-title col-4">Cover Photo</span>
+              <input id="cover-photo" class="col-8" type="button" name="cover_photo" value="should upload here"/>
+            </div>
+            <div class="post-group-section clear-float">
+              <input id="submit" class="input-button clickable col-8 fl-r" type="submit" value="Submit!"/>
+            </div>
+          </form>
+        </div>
+        <div class="col-half">
+          <div class="map">
+            <div id="map-canvas" class="map-canvas"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {>"templates/signup-options"/}
+  </body>
+  <script type="text/javascript" src="/js/google-map.js"></script>
+  <script type="text/javascript" src="/js/ajax.js"></script>
+  <script type="text/javascript" src="/js/signup.js"></script>
+  <script type="text/javascript" src="/js/post.js"></script>
+  <script type="text/javascript" src="/js/fb-login.js"></script>
+</html>

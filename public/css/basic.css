@@ -25,6 +25,14 @@
   padding-right: 10px;
 }
 
+.col-all {
+  position: relative;
+  float: left;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .row {
   margin-bottom: 20px;
 }
@@ -61,4 +69,8 @@
 
 .text-align-center {
   text-align: center;
+}
+
+.fl-r {
+  float: right;
 }
