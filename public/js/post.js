@@ -22,14 +22,26 @@ function bindPost (map) {
             });
         }
     });
-};
 
+    var createGroupForm = document.getElementById('create-group');
+    createGroupForm.addEventListener('submit', function (e) {
+        console.log("click on submit");
+        console.log(createGroupForm.elements);
+        var elements = createGroupForm.elements;
+        if (!elements['group-name'].value) {
+            e.preventDefault();
+        }
+        if (!elements['address'].value) {
+            e.preventDefault();
+        }
+    });
+};
 
 google.maps.event.addDomListener(window, 'load', function () {
     var latlng = new google.maps.LatLng(25.0173405, 121.5397518);
     var mapOptions = {
       center: latlng,
-      zoom: 14,
+      zoom: 15,
       maxZoom: 17,
       disableDefaultUI: true,
       zoomControl: true,

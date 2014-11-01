@@ -20,7 +20,7 @@
           <div class="post-group-section description-item">
             <h2>Post Your Group!</h2>
           </div>
-          <form action="/post/group" method="POST">
+          <form id="create-group" action="/post/group" method="POST">
             <div class="post-group-section clear-float">
               <span class="input-title col-4">Group Name</span>
               <input id="group-name" class="input-box col-8" type="text" name="group_name"/>
