@@ -88,7 +88,7 @@ input[type=checkbox]:checked + label:before {
   background-color: #ff5a5f;
 }
 
-.login, .signup, .logout {
+.login, .signup, .logout, .post {
   color: white;
   cursor: pointer;
   margin-right: 5px;
@@ -226,6 +226,14 @@ input[type=checkbox]:checked + label:before {
   vertical-align: middle;
   text-align: center;
   z-index: 15;
+}
+
+.signup-title {
+  margin-bottom: 30px;
+  margin-top: 20px;
+  font-size: 20px;
+  color: #636363;
+  line-height: 18px;
 }
 
 .signup-input-box {

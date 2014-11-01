@@ -102,6 +102,7 @@
     {>"templates/signup-options"/}
   </body>
   <script type="text/javascript" src="/js/google-map.js"></script>
+  <script type="text/javascript" src="/js/ajax.js"></script>
   <script type="text/javascript" src="/js/region.js"></script>
   <script type="text/javascript" src="/js/signup.js"></script>
   <script type="text/javascript" src="/js/fb-login.js"></script>

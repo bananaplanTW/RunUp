@@ -3,38 +3,77 @@ var util = require('util'),
     router  = express.Router(),
     ModuleMysql = require('../modules/ModuleMysql').getInstance(),
     selectCityQueryStringBase = "SELECT a.*, b.country_short, b.country_origin, c.state_short, c.state_origin, d.city_origin FROM running_group AS a, country AS b, state AS c, city AS d WHERE a.country_id = b.id AND a.state_id = c.id AND a.city_id = d.id AND c.state_short = \"%s\" AND d.city_origin = \"%s\" LIMIT %s, 10";
-    selectStateQueryStringBase = "SELECT a.*, b.country_short, b.country_origin, c.state_short, c.state_origin FROM running_group AS a, country AS b, state AS c WHERE a.country_id = b.id AND a.state_id = c.id AND c.state_short = \"%s\" LIMIT %s, 10";
-//might useful
-//SELECT a.*, b.city_short, b.city_origin, c.state_short, c.state_origin FROM running_group AS a JOIN city AS b JOIN state AS c ON a.city_id = b.id AND a.state_id = c.id WHERE b.city_short = 'la' AND c.state_short = 'ca' LIMIT 0, 10
+    selectStateQueryStringBase = "SELECT a.*, b.country_short, b.country_origin, c.state_short, c.state_origin FROM running_group AS a, country AS b, state AS c WHERE a.country_id = b.id AND a.state_id = c.id AND c.state_short = \"%s\" LIMIT %s, 10",
+    selectGroupMember = "SELECT a.id, a.first_name, a.picture, b.group_id FROM member AS a, group_member AS b WHERE a.id = b.member_id AND (",
+    andGroupIdEqualsTo = " b.group_id=%s ";
+
 //require('../lib/GetLatLngFromAddress');
 router.get('/:country/:state', function (req, res, next) {
 	// should set up checking process to prevent sql injection
-	var country = encodeURIComponent(req.params.country);
-	var state = encodeURIComponent(req.params.state);
+	var country = escape(req.params.country);
+	var state = escape(req.params.state);
 	var page  = req.query.p || '1';
 	var offset = ((parseInt(page) - 1)*10).toString();
 	var queryString = util.format(selectStateQueryStringBase, state, offset);
-	console.log(queryString);
-	console.log("in state");
-	ModuleMysql.execute(queryString, function (error, rows) {
+
+	ModuleMysql.execute(queryString, function (error, groups) {
 		if (error) {
 			console.log(error);
 			next('route');
 			//return;
 		}
 		var data = {};
-		data.groups = rows;
-		if (page > 1) {
-			data.prevPage = parseInt(page) - 1;
-		}
-		if (rows.length > 10) {
-			data.nextPage = parseInt(page) + 1;
-		}
-		//data.prevPage = parseInt(page) - 1;
-		//data.nextPage = parseInt(page) + 1;
-		data.user = req.user;
-		console.log(data);
-		res.render('region', {data : data});
+		data.groups = groups;
+
+		// construct the string of finding members in group
+		queryString = selectGroupMember;
+		groups.forEach (function (group) {
+			queryString += util.format(andGroupIdEqualsTo, group.id);
+			queryString += "OR ";
+		});
+		queryString = queryString.slice(0, queryString.length - 3);
+		queryString += ')';
+
+		ModuleMysql.execute(queryString, function (error, groupMemberPair) {
+			if (error) {
+				console.log(error);
+				//res.render('region', {data : data});
+				return;
+			}
+
+			// matching the pair of members to groups
+			for (var i = 0; i < groupMemberPair.length; i ++) {
+				var group_id = groupMemberPair[i].group_id;
+				for (var j = 0; j < data.groups.length; j ++) {
+					if (data.groups[j].id === group_id) {
+						if (!data.groups[j].members) {
+							data.groups[j].members = [];
+						}
+						if (data.groups[j].members.length < 5) {
+							data.groups[j].members.push(groupMemberPair[i]);
+						}
+						break;
+					}
+				}
+			}
+
+			for (var j = 0; j < data.groups.length; j ++) {
+				data.groups[j].group_name = unescape(data.groups[j].group_name);
+			}
+
+			// pagination
+			if (page > 1) {
+				data.prevPage = parseInt(page) - 1;
+			}
+			if (groups.length == 10) {
+				data.nextPage = parseInt(page) + 1;
+			}
+
+			// send user data back
+			data.user = req.user;
+			res.render('region', {data : data});
+		});
+
 	});
 });
 

@@ -30,19 +30,19 @@ var queryString = new QueryString();
 
     var logout = document.getElementById('logout');
     logout.addEventListener('click', function (e) {
-        
-        //FB.logout(function (response) {
-            //logout in the server
-            ajaxGet();
+        getAjax('/logout', null, function (XHR, status) {
+            if (XHR.readyState === 4 && XHR.status === 200) {
+                location.reload();
+            }
+        })
 
-            var user = document.getElementById("user");
-            var userClass = user.className + " display-none";
-            user.setAttribute('class', userClass);
+        var user = document.getElementById("user");
+        var userClass = user.className + " display-none";
+        user.setAttribute('class', userClass);
 
-            var auth = document.getElementById("auth");
-            var authClass = auth.className.replace(" display-none", "");
-            auth.setAttribute('class', authClass);
-        //});
+        var auth = document.getElementById("auth");
+        var authClass = auth.className.replace(" display-none", "");
+        auth.setAttribute('class', authClass);
     });
 })();
 
@@ -57,50 +57,39 @@ var queryString = new QueryString();
 function redirectToLogin () {
     var fields = "fields=id,email,first_name,last_name,gender,locale,timezone,picture";
     FB.api('/me?' + fields, function(response) {
-        console.log("tostring", response.toString());
         if (!response.picture.data.is_silhouette) {
             response.picture = response.picture.data.url;
         } else {
             response.picture = null;
         }
-        //var post = queryString.stringify(response);
-        ajaxPost(JSON.stringify(response));
+        // post to login
+        postAjax('/login', JSON.stringify(response), function (XHR, status) {
+            if (XHR.readyState === 4 && XHR.status === 200) {
+                var body = document.getElementsByTagName("body")[0];
+                var bodyClass = body.className.replace(" no-scroll", "");
+                body.setAttribute('class', bodyClass); 
+                document.getElementById("signup-popup-container").style.display = "none";
+
+                //replace the login/signup button with head icon
+                var user = document.getElementById("user");
+                var userClass = user.className.replace(" display-none", "");
+                user.setAttribute('class', userClass);
+
+                // setting user head image
+                var headImage = user.querySelector('img.head-image');
+                var userData = JSON.parse(XHR.response);
+                headImage.setAttribute('src', userData.picture);
+
+                // hiding signup/login button
+                var auth = document.getElementById("auth");
+                var authClass = auth.className + " display-none";
+                auth.setAttribute('class', authClass);
+
+                location.reload();
+            }
+        });
     });
 };
-
-function ajaxPost (post) {
-    var XHR;
-    if (window.XMLHttpRequest) {
-        XHR = new XMLHttpRequest();
-    } else {
-        XHR = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    XHR.onreadystatechange = function (status) {
-        if (XHR.readyState === 4 && XHR.status === 200) {
-            var body = document.getElementsByTagName("body")[0];
-            var bodyClass = body.className.replace(" no-scroll", "");
-            body.setAttribute('class', bodyClass); 
-            document.getElementById("signup-popup-container").style.display = "none";
-
-            //replace the login/signup button with head icon
-            var user = document.getElementById("user");
-            var userClass = user.className.replace(" display-none", "");
-            user.setAttribute('class', userClass);
-
-            var headImage = user.querySelector('img.head-image');
-            var userData = JSON.parse(XHR.response);
-            console.log(XHR);
-            headImage.setAttribute('src', userData.picture);
-
-            var auth = document.getElementById("auth");
-            var authClass = auth.className + " display-none";
-            auth.setAttribute('class', authClass);
-        }
-    }
-    XHR.open('POST', "/login", false);
-    XHR.setRequestHeader("Content-Type", "application/json;charset=utf-8");
-    XHR.send(post);
-}
 
 function ajaxGet () {
     var XHR;
@@ -129,7 +118,6 @@ window.fbAsyncInit = function() {
     var fields = "fields=id,email,first_name,last_name,gender,locale,timezone,picture";
     FB.getLoginStatus(function(response) {
         console.log(response);
-        console.log("tostring", JSON.stringify(response));
         FB.api('/me?' + fields, function(response) {
             console.log(response);
         });

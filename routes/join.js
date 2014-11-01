@@ -7,9 +7,18 @@ var selectGroupQuery = "SELECT id FROM running_group WHERE group_id='%s'";
 var insertGroupMemberQuery = "INSERT INTO group_member (member_id, group_id) VALUES (%s, %s)";
 
 router.post('/',function (req, res, next) {
-    console.log("in join, user=", req.user.id);
+    var responseJson = {};
+    if (!req.user) {
+        res.writeHead(200, {
+            "Content-Type": "application/json"
+        });
+        responseJson.status = 1;
+        res.write(JSON.stringify(responseJson));
+        res.end();
+        return;
+    }
+
     var body = req.body;
-    console.log(body);
     var member_id = req.user.id;
     var group_id = req.body.group_id;
     var queryString = util.format(selectGroupQuery, group_id);
@@ -23,7 +32,8 @@ router.post('/',function (req, res, next) {
             res.end();
             return;
         }
-        console.log("group found!, id is " , rows[0].id);
+
+        // 
         var id = rows[0].id;
         queryString = util.format(insertGroupMemberQuery, member_id, id);
         moduleLogin.execute(queryString, function (error, _rows) {
@@ -39,6 +49,8 @@ router.post('/',function (req, res, next) {
             res.writeHead(200, {
                 "Content-Type": "application/json"
             });
+            responseJson.status = 0;
+            res.write(JSON.stringify(responseJson));
             res.end();
         });
     });

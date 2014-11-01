@@ -1,6 +1,9 @@
 <div id="signup-popup-container" class="focus-page">
   <div class="popup-container">
     <div id="signup-popup" class="popup">
+      <div id="signup-title" class="signup-title">
+        Please Sign up!
+      </div>
       <div class="social-logins">
         <ul>
           <li id="fb-login" class="fb-login">
@@ -9,7 +12,7 @@
           </li>
         </ul>
       </div>
-      <div class="signup-by-creating">
+      <!--div class="signup-by-creating">
         <div>
           <form>
             <input id="account" class="signup-input-box" type="text" value="Account"/>
@@ -17,7 +20,7 @@
             <input class="signup-input-box signup-input-submit" type="submit" />
           </form> 
         </div>
-      </div>
+      </div-->
     </div>
   </div>
 </div>

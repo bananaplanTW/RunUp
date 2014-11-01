@@ -10,7 +10,7 @@
           <img id="user-icon-img" class="head-image" src="{data.user.picture}">
         </span>
     </li>
-    <li id="logout" class="runup-green-box logout">
+    <li id="logout" class="runup-green-box clickable logout">
         Logout
     </li>
   </ul>
@@ -20,19 +20,18 @@
   {:else}
   <ul id="auth" class="push-to-right auth">
   {/data.user}
-    <li id="signup" class="runup-green-box signup">
+    <li id="signup" class="runup-green-box clickable signup">
         Sign up
     </li>
-    <li id="login" class="runup-green-box login">
+    <li id="login" class="runup-green-box clickable login">
         Login
     </li>
   </ul>
 
   <ul class="push-to-right">
-    <li class="runup-red-box">
-      <a href="/post">
-        Post Your Group
-      </a>
+    <li class="runup-red-box post spread-link-container clickable">
+      <a class="spread-link" href="/post"></a>
+      Post Your Group
     </li>
   </ul>
 </div>

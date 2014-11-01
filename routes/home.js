@@ -12,7 +12,7 @@ router.get('/', function (req, res) {
 			return;
 		}
 		for (var i = 0; i < rows.length; i ++) {
-			rows[i].state_origin = decodeURIComponent(rows[i].state_origin);
+			rows[i].state_origin = unescape(rows[i].state_origin);
 		}
 		var data = {};
 		data.states = rows;

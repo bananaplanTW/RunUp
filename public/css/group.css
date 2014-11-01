@@ -8,9 +8,13 @@ ul:after {
   display: table;
 }
 
+.member-list-container {
+  height: 40px;
+}
+
 .member-title {
   float: left;
-  top: 10px;
+  top: 11px;
   position: relative;
 }
 

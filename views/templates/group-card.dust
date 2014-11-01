@@ -6,18 +6,9 @@
   <div class="group-summary">
     <div class="description-item group-members">
       <ul>
-        <li>
-          <span class="round-face border-icon user-head-image"><img src="/assets/images/kt.jpg"></span>
-        </li>
-        <li>
-          <span class="round-face border-icon user-head-image"><img src="/assets/images/danny.jpg"></span>
-        </li>
-        <li>
-          <span class="round-face border-icon user-head-image"><img src="/assets/images/male.jpg"></span>
-        </li>
-        <li>
-          <span class="round-face border-icon user-head-image"><img src="/assets/images/lai.jpg"></span>
-        </li>
+        {#members}
+          {>"templates/group-member-icon-list"/}
+        {/members}
       </ul>
     </div>
     <div class="description-item">
