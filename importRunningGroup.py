@@ -1,7 +1,8 @@
 import MySQLdb
 import sys
+import urllib
 
-db = MySQLdb.connect(host='localhost', user='root', db='running_area')
+db = MySQLdb.connect(host='localhost', user='running_area', passwd='Sunflower123', db='running_area')
 cursor = db.cursor()
 f = open(sys.argv[1], 'r')
 
@@ -13,7 +14,7 @@ for line in lines:
 	   i = i + 1
 	   continue
 	club_data = line.split('\t')
-	name = club_data[1].strip("\"")
+	name = urllib.quote(club_data[1].strip("\""))
 	group_id = name.lower().replace(" ", "_")
 	address = club_data[3].strip("\"")
 	contact = club_data[4].strip("\"")

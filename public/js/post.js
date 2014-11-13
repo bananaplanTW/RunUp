@@ -1,13 +1,16 @@
 function bindPost (map) {
     var that = this;
     var address = document.getElementById('address');
+    var geoCodingResult = {};
     address.addEventListener('focusout', function (e) {
         console.log(address.value);
         if (address.value) {
             var addressString = "address=" + address.value;
             getAjax("/getGeoCoding", addressString, function (XHR, status) {
                 if (XHR.readyState === 4 && XHR.status == 200) {
-                    var geoCodingResult = JSON.parse(XHR.response);
+                    geoCodingResult = JSON.parse(XHR.response);
+                    console.log(geoCodingResult);
+                    bindFormInputs(geoCodingResult);
                     var latlng = new google.maps.LatLng(geoCodingResult.lat, geoCodingResult.lng);
                     if (!that.marker) {
                         that.marker = new google.maps.Marker({
@@ -35,6 +38,25 @@ function bindPost (map) {
             e.preventDefault();
         }
     });
+};
+
+function bindFormInputs (geoCodingResult) {
+    var lat           = document.getElementById('lat');
+    var lng           = document.getElementById('lng');
+    var city          = document.getElementById('city');
+    var county        = document.getElementById('county');
+    var state         = document.getElementById('state');
+    var state_short   = document.getElementById('state_short');
+    var country       = document.getElementById('country');
+    var country_short = document.getElementById('country_short');
+    lat.value           = geoCodingResult.lat;
+    lng.value           = geoCodingResult.lng;
+    city.value          = geoCodingResult.city;
+    county.value        = geoCodingResult.county;
+    state.value         = geoCodingResult.state;
+    state_short.value   = geoCodingResult.state_short;
+    country.value       = geoCodingResult.country;
+    country_short.value = geoCodingResult.country_short;
 };
 
 google.maps.event.addDomListener(window, 'load', function () {

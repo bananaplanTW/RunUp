@@ -8,8 +8,8 @@ var insertUserQuery = "INSERT INTO member (account, email, first_name, last_name
 
 router.post('/',function (req, res, next) {
     var body = req.body;
-    console.log("in login, user=", req.session.user);
     var queryString = util.format(selectUserQuery, body.id);
+    // checking the user existence
     moduleLogin.execute(queryString, function (error, rows) {
         if (error) {
             console.log(error);
@@ -24,6 +24,8 @@ router.post('/',function (req, res, next) {
                     return;
                 }
                 console.log("register successed", _rows);
+                req.session.user = rows[0].account;
+                req.session.save();
                 res.writeHead(200, {
                     "Content-Type": "application/json"
                 });

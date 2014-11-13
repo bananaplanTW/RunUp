@@ -23,7 +23,7 @@ var express = require('express'),
     httpLogFile;
 
 // setting up template engine
-app.set('port', process.env.PORT | 3000);
+app.set('port', process.env.PORT | 8051);
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'dust');
 app.engine('dust', cons.dust);

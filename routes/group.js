@@ -8,9 +8,8 @@ var util = require('util'),
 //require('../lib/GetLatLngFromAddress');
 router.get('/:group_id', function (req, res, next) {
 	// should set up checking process to prevent sql injection
-	var groupId = escape(req.params.group_id);
+	var groupId = encodeURIComponent(req.params.group_id);
 	var queryString = util.format(selectQueryStringBase, groupId);
-console.log(groupId);
 	ModuleMysql.execute(queryString, function (error, rows) {
 		if (error) {
 			console.log(error);
@@ -24,7 +23,11 @@ console.log(groupId);
 			next('route');
 			return;
 		}
-		data.group_name = unescape(data.group_name);
+		data.group_name = decodeURIComponent(data.group_name);
+		data.address = decodeURIComponent(data.address);
+		data.contact = decodeURIComponent(data.contact);
+		data.email = decodeURIComponent(data.email);
+		data.website = decodeURIComponent(data.website);
 		data.user = req.user;
 		queryString = util.format(selectGroupMember, data.id);
 		ModuleMysql.execute(queryString, function (error, rows) {

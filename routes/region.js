@@ -10,8 +10,8 @@ var util = require('util'),
 //require('../lib/GetLatLngFromAddress');
 router.get('/:country/:state', function (req, res, next) {
 	// should set up checking process to prevent sql injection
-	var country = escape(req.params.country);
-	var state = escape(req.params.state);
+	var country = encodeURIComponent(req.params.country);
+	var state = encodeURIComponent(req.params.state);
 	var page  = req.query.p || '1';
 	var offset = ((parseInt(page) - 1)*10).toString();
 	var queryString = util.format(selectStateQueryStringBase, state, offset);
@@ -58,7 +58,7 @@ router.get('/:country/:state', function (req, res, next) {
 			}
 
 			for (var j = 0; j < data.groups.length; j ++) {
-				data.groups[j].group_name = unescape(data.groups[j].group_name);
+				data.groups[j].group_name = decodeURIComponent(data.groups[j].group_name);
 			}
 
 			// pagination

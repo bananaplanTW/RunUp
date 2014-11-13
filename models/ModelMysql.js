@@ -3,8 +3,9 @@ var mysql = require('mysql');
 var ModelMysql = function () {
     this.conn = mysql.createConnection({
                     host: 'localhost',
-                    user: 'root',
-                    database: 'running_area'
+                    user: 'running_area',
+                    database: 'running_area',
+                    password: 'Sunflower123'
                 });
     this.conn.connect(function (error) {
         if (error) {

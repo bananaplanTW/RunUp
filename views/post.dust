@@ -42,6 +42,16 @@
               <input id="website" class="input-box col-8" type="text" name="website"/>
             </div>
             <div class="post-group-section clear-float">
+              <input id="lat" class="input-box col-8 display-none" type="text" name="lat"/>
+              <input id="lng" class="input-box col-8 display-none" type="text" name="lng"/>
+              <input id="city" class="input-box col-8 display-none" type="text" name="city"/>
+              <input id="county" class="input-box col-8 display-none" type="text" name="county"/>
+              <input id="state" class="input-box col-8 display-none" type="text" name="state"/>
+              <input id="state_short" class="input-box col-8 display-none" type="text" name="state_short"/>
+              <input id="country" class="input-box col-8 display-none" type="text" name="country"/>
+              <input id="country_short" class="input-box col-8 display-none" type="text" name="country_short"/>
+            </div>
+            <div class="post-group-section clear-float">
               <span class="input-title col-4">Cover Photo</span>
               <input id="cover-photo" class="col-8" type="button" name="cover_photo" value="should upload here"/>
             </div>
