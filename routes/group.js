@@ -2,7 +2,8 @@ var util = require('util'),
 	express = require('express'),
     router  = express.Router(),
     ModuleMysql = require('../modules/ModuleMysql').getInstance(),
-    selectQueryStringBase = "SELECT a.*, b.state_short FROM running_group AS a, state AS b WHERE a.state_id = b.id AND group_id=\"%s\"",
+    //selectQueryStringBase = "SELECT a.*, b.state_short FROM running_group AS a, state AS b WHERE a.state_id = b.id AND group_id=\"%s\"",
+    selectQueryStringBase = "SELECT a.* FROM running_group AS a WHERE group_id=\"%s\"",
     selectGroupMember = "SELECT a.id, a.first_name, a.picture FROM member AS a, group_member AS b WHERE a.id = b.member_id AND b.group_id=\"%s\"";
 
 //require('../lib/GetLatLngFromAddress');

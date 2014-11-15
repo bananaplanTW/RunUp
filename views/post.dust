@@ -20,7 +20,7 @@
           <div class="post-group-section description-item">
             <h2>Post Your Group!</h2>
           </div>
-          <form id="create-group" action="/post/group" method="POST">
+          <form id="create-group" action="/post/group" method="POST" enctype="multipart/form-data">
             <div class="post-group-section clear-float">
               <span class="input-title col-4">Group Name</span>
               <input id="group-name" class="input-box col-8" type="text" name="group_name"/>
@@ -51,19 +51,20 @@
               <input id="country" class="input-box col-8 display-none" type="text" name="country"/>
               <input id="country_short" class="input-box col-8 display-none" type="text" name="country_short"/>
             </div>
+          <!--/form>
+          <form id="cover-photo-form" action="/post/group/coverphoto" method="POST"-->
             <div class="post-group-section clear-float">
               <span class="input-title col-4">Cover Photo</span>
-              <input id="cover-photo" class="col-8" type="button" name="cover_photo" value="should upload here"/>
-            </div>
-            <div class="post-group-section clear-float">
-              <input id="submit" class="input-button clickable col-8 fl-r" type="submit" value="Submit!"/>
+              <input id="cover-photo" class="col-8 " type="file" name="cover_photo"/>
             </div>
           </form>
+          <div class="post-group-section clear-float">
+            <button id="submit-button" class="input-button clickable col-8 fl-r">Submit!</button>
+          </div>
         </div>
         <div class="col-half">
           <div class="map">
             <div id="map-canvas" class="map-canvas"></div>
-
           </div>
         </div>
       </div>
@@ -74,6 +75,7 @@
   <script type="text/javascript" src="/js/google-map.js"></script>
   <script type="text/javascript" src="/js/ajax.js"></script>
   <script type="text/javascript" src="/js/signup.js"></script>
-  <script type="text/javascript" src="/js/post.js"></script>
   <script type="text/javascript" src="/js/fb-login.js"></script>
-</html>
+  <script type="text/javascript" src="/js/post.js"></script>
+  <script type="text/javascript" src="/js/common.js"></script>
+</html>>

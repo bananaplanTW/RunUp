@@ -1,11 +1,11 @@
 (function registerSignupPopup () {
     
-    var signup = document.getElementById("signup");
+    //var signup = document.getElementById("signup");
     var login  = document.getElementById("login");
     var signupPopupContainer = document.getElementById("signup-popup-container");
 
     //binding signup button click event
-    signup.addEventListener('click', function (e) {
+    /*signup.addEventListener('click', function (e) {
         var top = window.pageYOffset;
         signupPopupContainer.style.display = "table";
         signupPopupContainer.style.top = top.toString() + "px";
@@ -18,7 +18,7 @@
         var body = document.getElementsByTagName("body")[0];
         var bodyClass = body.className + " no-scroll";
         body.setAttribute('class', bodyClass);
-    });
+    });*/
     
     //binding login button click event
     login.addEventListener('click', function (e) {

@@ -25,10 +25,6 @@ router.use(function (req, res, next) {
     	// user is not login
     	next();
     }
-
-    // use this to check what the user type is
-    console.log("in auth, need to set up authentication process");
-    
 });
 
 module.exports = router;

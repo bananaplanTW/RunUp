@@ -15,7 +15,7 @@
   <body onload="">
     {>"templates/top-banner"/}
     <div class="teaser">
-      <img src="/assets/images/{data.state_short}.jpg">
+      <div class="discover-photo" style="background-image:url('{data.cover_photo}')"></div>
     </div>
     <div class="main-container center-rail">
       <div class="row description-item">

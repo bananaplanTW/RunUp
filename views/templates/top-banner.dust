@@ -20,9 +20,9 @@
   {:else}
   <ul id="auth" class="push-to-right auth">
   {/data.user}
-    <li id="signup" class="runup-green-box clickable signup">
+    <!--li id="signup" class="runup-green-box clickable signup">
         Sign up
-    </li>
+    </li-->
     <li id="login" class="runup-green-box clickable login">
         Login
     </li>
@@ -30,7 +30,7 @@
 
   <ul class="push-to-right">
     <li class="runup-red-box post spread-link-container clickable">
-      <a class="spread-link" href="/post"></a>
+      <a id="post-group" class="spread-link" href="/post"></a>
       Post Your Group
     </li>
   </ul>

@@ -1,5 +1,6 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
+    multer = require('multer'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
@@ -11,6 +12,7 @@ var express = require('express'),
     cons = require('consolidate'),
     app = express(),
     auth = require('../routes/auth'),
+    status = require('../routes/status'),
     login = require('../routes/login'),
     logout = require('../routes/logout'),
     join = require('../routes/join'),
@@ -31,6 +33,12 @@ cons.dust.debugLevel = 'DEBUG';
 
 //app.use(logger('combined', {stream: httpLogFile}))
 app.use(bodyParser.json());
+app.use(multer({
+    dest: path.join(__dirname, '../public/assets/images/uploads'), 
+    fileSize: 1000,
+    onFileUploadStart: function (file) {
+        console.log("file starts to upload");
+    }}));
 app.use(methodOverride());
 app.use(cookieParser())
 app.use(session({
@@ -42,6 +50,7 @@ app.use(session({
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(auth);
+app.use('/status', status);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/join', join);

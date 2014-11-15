@@ -17,6 +17,7 @@ router.get('/', function (req, res) {
 		var data = {};
 		data.states = rows;
 		data.user = req.user;
+		console.log(data.user);
 		res.render('home', {data : data});
 	});
 });

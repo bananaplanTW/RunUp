@@ -3,7 +3,7 @@ var express = require('express'),
     util = require('util'),
     moduleLogin = require('../modules/ModuleLogin').getInstance();
 
-var selectGroupQuery = "SELECT id FROM running_group WHERE group_id='%s'";
+var selectGroupQuery = "SELECT id FROM running_group WHERE group_id=\"%s\"";
 var insertGroupMemberQuery = "INSERT INTO group_member (member_id, group_id) VALUES (%s, %s)";
 
 router.post('/',function (req, res, next) {

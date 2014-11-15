@@ -26,17 +26,58 @@ function bindPost (map) {
         }
     });
 
-    var createGroupForm = document.getElementById('create-group');
-    createGroupForm.addEventListener('submit', function (e) {
-        console.log("click on submit");
-        console.log(createGroupForm.elements);
-        var elements = createGroupForm.elements;
-        if (!elements['group-name'].value) {
-            e.preventDefault();
-        }
-        if (!elements['address'].value) {
-            e.preventDefault();
-        }
+    var createGroupForm    = document.getElementById('create-group');
+    var submitButton       = document.getElementById('submit-button');
+    var emailRegex = /.+\@.+\..+/g;
+    submitButton.addEventListener('click', function (e) {
+        getAjax("/status", "", function(XHR, status) {
+            if (XHR.readyState === 4 && XHR.status === 200) {
+                var loginStatus = JSON.parse(XHR.response);
+                if (loginStatus.status ==='OK') {
+                    var createGroupElements = createGroupForm.elements;
+                    //var coverPhotoFormElements = coverPhotoForm.elements;
+                    var isPass = true;
+                    if (!createGroupElements['group-name'].value) {
+                        addClassName.call(createGroupElements['group-name'], "red-bottom-line");
+                        isPass = false;
+                    } else {
+                        removeClassName.call(createGroupElements['group-name'], "red-bottom-line");
+                    }
+
+                    if (!createGroupElements['address'].value) {
+                        addClassName.call(createGroupElements['address'], "red-bottom-line");
+                        isPass = false;
+                    } else {
+                        removeClassName.call(createGroupElements['address'], "red-bottom-line");
+                    }
+
+                    if (!createGroupElements['contact'].value) {
+                        addClassName.call(createGroupElements['contact'], "red-bottom-line");
+                        isPass = false;
+                    } else {
+                        removeClassName.call(createGroupElements['contact'], "red-bottom-line");
+                    }
+
+                    if (!createGroupElements['email'].value) {
+                        addClassName.call(createGroupElements['email'], "red-bottom-line");
+                        isPass = false;
+                    } else if (!emailRegex.test(createGroupElements['email'].value)) {
+                        addClassName.call(createGroupElements['email'], "red-bottom-line");
+                        isPass = false;
+                    } else {
+                        removeClassName.call(createGroupElements['email'], "red-bottom-line");
+                    }
+
+                    if (isPass) {
+                        createGroupForm.submit();
+                    }
+                } else {
+                    // need to login
+                    var login = document.getElementById("login");
+                    login.click();
+                }
+            }
+        });
     });
 };
 
@@ -62,13 +103,13 @@ function bindFormInputs (geoCodingResult) {
 google.maps.event.addDomListener(window, 'load', function () {
     var latlng = new google.maps.LatLng(25.0173405, 121.5397518);
     var mapOptions = {
-      center: latlng,
-      zoom: 15,
-      maxZoom: 17,
-      disableDefaultUI: true,
-      zoomControl: true,
-      style: google.maps.ZoomControlStyle.SMALL,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+        center: latlng,
+        zoom: 15,
+        maxZoom: 17,
+        disableDefaultUI: true,
+        zoomControl: true,
+        style: google.maps.ZoomControlStyle.SMALL,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var marker = new google.maps.Marker({
                         position: latlng

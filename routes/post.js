@@ -3,10 +3,12 @@ var express = require('express'),
     util = require('util'),
     moduleLogin = require('../modules/ModuleLogin').getInstance(),
     HttpsGet = require('../lib/HttpsGet'),
-    ModuleMysql = require('../modules/ModuleMysql').getInstance();
+    ModuleMysql = require('../modules/ModuleMysql').getInstance(),
+    fs = require('fs'),
+    multer = require('multer');
 
-var insertToRunningGroupQuery = "INSERT INTO running_group (group_id, group_name, contact, email, website, city_id, county_id, state_id, country_id, address, lat, lng, owner_id) \
-													VALUES ('%s', '%s', '%s', '%s', '%s', %s, %s, %s, %s, '%s', '%s', '%s', %s)";
+var insertToRunningGroupQuery = "INSERT INTO running_group (group_id, group_name, contact, email, website, city_id, county_id, state_id, country_id, address, lat, lng, owner_id, cover_photo) \
+													VALUES (\"%s\", \"%s\", '%s', '%s', '%s', %s, %s, %s, %s, '%s', '%s', '%s', %s, '%s')";
 
 var selectCityQueryString = "SELECT * FROM city WHERE city_origin='%s'";
 var insertCityQueryString = "INSERT city (city_origin, under_county_id, under_country_id) VALUES ('%s', %s, %s)";
@@ -23,20 +25,24 @@ var insertCountryQueryString = "INSERT INTO country (country_origin, country_sho
 var instertGroupMemberQueryString = "INSERT INTO group_member (member_id, group_id) VALUES (%s, %s)";
 
 router.get("/", function (req, res) {
-    res.render("post");    
+	var data = {};
+	data.user = req.user;
+	console.log(data);
+    res.render("post", {data : data});    
 });
 
 router.post("/group", function (req, res) {
     var groupInfo = req.body;
     if (req.user) {
 	    var userId = req.user.id;
-
+	    var coverPhotoName = req.files.cover_photo.name;
 	    getCountry(groupInfo, function (countryId) {
 	    	getState(groupInfo, countryId, function (stateId) {
 	    		getCounty(groupInfo, stateId, countryId, function (countyId) {
 	    			getCity(groupInfo, countyId, countryId, function (cityId) {
-	    				createGroup(groupInfo, countryId, stateId, countyId, cityId, userId, function (error, groupData) {
+	    				createGroup(groupInfo, countryId, stateId, countyId, cityId, userId, coverPhotoName, function (error, groupData) {
 	    					if (error) {
+	    						console.error("error", error);
 	    						res.render("post");
 	    						return;
 	    					}
@@ -57,7 +63,7 @@ router.post("/group", function (req, res) {
 	}
 });
 
-function createGroup (groupInfo, countryId, stateId, countyId, cityId, userId, callback) {
+function createGroup (groupInfo, countryId, stateId, countyId, cityId, userId, coverPhotoName, callback) {
 	var groupName = encodeURIComponent(groupInfo.group_name);
 	var groupId = encodeURIComponent(groupInfo.group_name.toLowerCase());
 	var contact = encodeURIComponent(groupInfo.contact);
@@ -66,7 +72,8 @@ function createGroup (groupInfo, countryId, stateId, countyId, cityId, userId, c
 	var address = encodeURIComponent(groupInfo.address);
 	var lat = groupInfo.lat;
 	var lng = groupInfo.lng;
-	var queryString = util.format(insertToRunningGroupQuery, groupId, groupName, contact, email, website, cityId, countyId, stateId, countryId, address, lat, lng, userId);
+	var coverPhotoPath = "/assets/images/uploads/" + coverPhotoName;
+	var queryString = util.format(insertToRunningGroupQuery, groupId, groupName, contact, email, website, cityId, countyId, stateId, countryId, address, lat, lng, userId, coverPhotoPath);
 	console.log(queryString);
 	ModuleMysql.execute(queryString, function (error, rows) {
 		if (error) {

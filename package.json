@@ -23,7 +23,8 @@
     "cookie-parser" : "*",
     "cookie-session" : "*",
     "connect-mongo" : "*",
-    "express-session": "*"
+    "express-session": "*",
+    "multer": "*"
   }
 }
 

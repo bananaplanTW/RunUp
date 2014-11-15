@@ -15,16 +15,19 @@ router.get('/:country/:state', function (req, res, next) {
 	var page  = req.query.p || '1';
 	var offset = ((parseInt(page) - 1)*10).toString();
 	var queryString = util.format(selectStateQueryStringBase, state, offset);
-
 	ModuleMysql.execute(queryString, function (error, groups) {
 		if (error) {
 			console.log(error);
 			next('route');
 			//return;
 		}
-		var data = {};
-		data.groups = groups;
+		if (groups.length == 0) {
+			res.render('region');
+			return;
+		}
 
+		var data = {};
+		data.groups = groups;		
 		// construct the string of finding members in group
 		queryString = selectGroupMember;
 		groups.forEach (function (group) {
@@ -33,7 +36,6 @@ router.get('/:country/:state', function (req, res, next) {
 		});
 		queryString = queryString.slice(0, queryString.length - 3);
 		queryString += ')';
-
 		ModuleMysql.execute(queryString, function (error, groupMemberPair) {
 			if (error) {
 				console.log(error);
@@ -59,6 +61,7 @@ router.get('/:country/:state', function (req, res, next) {
 
 			for (var j = 0; j < data.groups.length; j ++) {
 				data.groups[j].group_name = decodeURIComponent(data.groups[j].group_name);
+				data.groups[j].address = decodeURIComponent(data.groups[j].address);
 			}
 
 			// pagination
