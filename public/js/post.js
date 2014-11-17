@@ -100,6 +100,28 @@ function bindFormInputs (geoCodingResult) {
     country_short.value = geoCodingResult.country_short;
 };
 
+(function bindAddTimeSlotButton () {
+    var scheduleContainer = document.getElementById('schedule-container');
+    var addTimeSlotButton = document.getElementById('add-time-slot');
+    addTimeSlotButton.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        var scheduleSelector = document.getElementById('schedule-selector');
+        var newScheduleSelector = scheduleSelector.cloneNode(true);
+        var deleteTimeSlotButton = newScheduleSelector.querySelector('#delete-time-slot');
+        addClassName.call(newScheduleSelector, 'mt-30');
+        removeClassName.call(deleteTimeSlotButton, "display-none");
+
+        deleteTimeSlotButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            scheduleContainer.removeChild(newScheduleSelector);
+        });
+
+        scheduleContainer.appendChild(newScheduleSelector);
+        
+    });
+})();
+
 google.maps.event.addDomListener(window, 'load', function () {
     var latlng = new google.maps.LatLng(25.0173405, 121.5397518);
     var mapOptions = {

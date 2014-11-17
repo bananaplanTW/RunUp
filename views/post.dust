@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/css/google-map.css">
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/post.css">
+    <link rel="stylesheet" type="text/css" href="/css/filter.css">
     <link rel="stylesheet" type="text/css" href="/css/group.css">
     <link rel="stylesheet" type="text/css" href="/css/basic.css">
     <link rel="stylesheet" type="text/css" href="/css/member.css">
@@ -16,7 +17,7 @@
     {>"templates/top-banner"/}
     <div class="main-container">
       <div class="post-group clear-float">
-        <div class="col-half">
+        <div class="col-half pb-50">
           <div class="post-group-section description-item">
             <h2>Post Your Group!</h2>
           </div>
@@ -38,8 +39,55 @@
               <input id="email" class="input-box col-8" type="text" name="email"/>
             </div>
             <div class="post-group-section clear-float">
+              <span class="input-title col-4">Description</span>
+              <textarea id="description" class="input-box col-8 description" type="text" name="description" row="40" col="3"></textarea>
+              <!--input id="description" class="input-box col-8 description" type="text" name="description"/-->
+            </div>
+            <div class="post-group-section clear-float">
               <span class="input-title col-4">Website</span>
               <input id="website" class="input-box col-8" type="text" name="website"/>
+            </div>
+            <div id="schedule-container" class="post-group-section clear-float">
+              <span class="input-title col-4">Schedule</span>
+              <div id="schedule-selector" class="col-8 fl-r">
+                <select id="day" name="day" class="input-box col-all">
+                  <option value="0">Sunday</option>
+                  <option value="1">Monday</option>
+                  <option value="2">Tuesday</option>
+                  <option value="3">Wednesday</option>
+                  <option value="4">Thirsday</option>
+                  <option value="5">Friday</option>
+                  <option value="6">Saturday</option>
+                </select>
+                <select id="ampm" name="ampm" class="input-box time-selector nm-left">
+                  <option value="0">am</option>
+                  <option value="1">pm</option>
+                </select>
+                <select id="hour" name="hour" class="input-box time-selector">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>:
+                <select id="minute" name="minute" class="input-box time-selector">
+                  <option value="0">00</option>
+                  <option value="15">15</option>
+                  <option value="30">30</option>
+                  <option value="45">45</option>
+                </select>
+                <button id="delete-time-slot" class="input-button input-delete-button fl-r clickable display-none">x</button>
+              </div>
+            </div>
+            <div class="post-group-section clear-float">
+              <button id="add-time-slot" class="input-button input-add-button col-8 fl-r clickable">+</button>
             </div>
             <div class="post-group-section clear-float">
               <input id="lat" class="input-box col-8 display-none" type="text" name="lat"/>
@@ -51,8 +99,6 @@
               <input id="country" class="input-box col-8 display-none" type="text" name="country"/>
               <input id="country_short" class="input-box col-8 display-none" type="text" name="country_short"/>
             </div>
-          <!--/form>
-          <form id="cover-photo-form" action="/post/group/coverphoto" method="POST"-->
             <div class="post-group-section clear-float">
               <span class="input-title col-4">Cover Photo</span>
               <input id="cover-photo" class="col-8 " type="file" name="cover_photo"/>
@@ -78,4 +124,4 @@
   <script type="text/javascript" src="/js/fb-login.js"></script>
   <script type="text/javascript" src="/js/post.js"></script>
   <script type="text/javascript" src="/js/common.js"></script>
-</html>>
+</html>

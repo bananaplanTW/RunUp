@@ -7,8 +7,8 @@ var express = require('express'),
     fs = require('fs'),
     multer = require('multer');
 
-var insertToRunningGroupQuery = "INSERT INTO running_group (group_id, group_name, contact, email, website, city_id, county_id, state_id, country_id, address, lat, lng, owner_id, cover_photo) \
-													VALUES (\"%s\", \"%s\", '%s', '%s', '%s', %s, %s, %s, %s, '%s', '%s', '%s', %s, '%s')";
+var insertToRunningGroupQuery = "INSERT INTO running_group (group_id, group_name, contact, email, website, city_id, county_id, state_id, country_id, address, lat, lng, owner_id, cover_photo, description) \
+													VALUES (\"%s\", \"%s\", '%s', '%s', '%s', %s, %s, %s, %s, '%s', '%s', '%s', %s, '%s', \"%s\")";
 
 var selectCityQueryString = "SELECT * FROM city WHERE city_origin='%s'";
 var insertCityQueryString = "INSERT city (city_origin, under_county_id, under_country_id) VALUES ('%s', %s, %s)";
@@ -23,6 +23,9 @@ var selectCountryQueryString = "SELECT * FROM country WHERE country_origin='%s'"
 var insertCountryQueryString = "INSERT INTO country (country_origin, country_short) VALUES ('%s', '%s')";
 
 var instertGroupMemberQueryString = "INSERT INTO group_member (member_id, group_id) VALUES (%s, %s)";
+
+var instertGroupScheduleQueryString = "INSERT INTO group_schedule (group_id, day, hour, minute, ampm) VALUES ";
+var instertGroupScheduleValues = "(%s, %s, %s, %s, %s)";
 
 router.get("/", function (req, res) {
 	var data = {};
@@ -47,7 +50,7 @@ router.post("/group", function (req, res) {
 	    						return;
 	    					}
 	    					console.log(groupData);
-	    					updateGroupMemberInfo (userId, groupData.insertId, function (_error, rows) {
+	    					updateGroupMemberAndScheduleInfo (userId, groupData.insertId, groupInfo, function (_error, rows) {
 	    						if (error) {
 	    							console.log(error);
 	    						}
@@ -70,10 +73,11 @@ function createGroup (groupInfo, countryId, stateId, countyId, cityId, userId, c
 	var email = encodeURIComponent(groupInfo.email);
 	var website = encodeURIComponent(groupInfo.website);
 	var address = encodeURIComponent(groupInfo.address);
+	var description = encodeURIComponent(groupInfo.description);
 	var lat = groupInfo.lat;
 	var lng = groupInfo.lng;
 	var coverPhotoPath = "/assets/images/uploads/" + coverPhotoName;
-	var queryString = util.format(insertToRunningGroupQuery, groupId, groupName, contact, email, website, cityId, countyId, stateId, countryId, address, lat, lng, userId, coverPhotoPath);
+	var queryString = util.format(insertToRunningGroupQuery, groupId, groupName, contact, email, website, cityId, countyId, stateId, countryId, address, lat, lng, userId, coverPhotoPath, description);
 	console.log(queryString);
 	ModuleMysql.execute(queryString, function (error, rows) {
 		if (error) {
@@ -85,7 +89,7 @@ function createGroup (groupInfo, countryId, stateId, countyId, cityId, userId, c
 	});
 };
 
-function updateGroupMemberInfo (mid, gid, callback) {
+function updateGroupMemberAndScheduleInfo (mid, gid, groupInfo, callback) {
 	// mid : member_id, gid: group_id in group member
 	var queryString = util.format(instertGroupMemberQueryString, mid, gid);
 	ModuleMysql.execute(queryString, function (error, rows) {
@@ -94,7 +98,27 @@ function updateGroupMemberInfo (mid, gid, callback) {
 			callback(error, null);
 			return;
 		}
-		callback(null, rows);
+
+		var length = groupInfo.day.length;
+		if (length > 0) {
+			var values = "";
+			for (var i = 0; i < length; i ++) {
+				values += util.format(instertGroupScheduleValues, gid, groupInfo.day[i], groupInfo.hour[i], groupInfo.minute[i], groupInfo.ampm[i]);
+				values += ","
+			}
+			values = values.slice(0, values.length-1);
+			queryString = instertGroupScheduleQueryString + values;
+			ModuleMysql.execute(queryString, function (error, _rows) {
+				if (error) {
+					console.log(error);
+					callback(error, null);
+					return;
+				}
+				callback(null, _rows);
+			});
+		} else {
+			callback(null, rows);
+		}
 	});
 };
 

@@ -35,3 +35,29 @@
   padding-right: 16px;
   cursor: pointer;
 }
+
+button.input-add-button {
+  background-color: rgb(38, 214, 170);
+  width: 44px;
+  border-radius: 30px;
+}
+
+button.input-delete-button {
+  width: 30px;
+  height: 30px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.description {
+  height: 200px;
+}
+
+.time-selector {
+  width: 70px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
