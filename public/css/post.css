@@ -54,9 +54,15 @@ button.input-delete-button {
 .description {
   height: 200px;
 }
-
+.day-selector {
+  font-size: 14px;
+  width: 105px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
 .time-selector {
-  width: 70px;
+  font-size: 14px;
+  width: 55px;
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;

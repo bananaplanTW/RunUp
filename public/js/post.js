@@ -68,6 +68,13 @@ function bindPost (map) {
                         removeClassName.call(createGroupElements['email'], "red-bottom-line");
                     }
 
+                    if (!createGroupElements['cover-photo'].value) {
+                        addClassName.call(createGroupElements['cover-photo'], "red-bottom-line");
+                        isPass = false;
+                    } else {
+                        removeClassName.call(createGroupElements['cover-photo'], "red-bottom-line");
+                    }
+
                     if (isPass) {
                         createGroupForm.submit();
                     }
@@ -109,7 +116,7 @@ function bindFormInputs (geoCodingResult) {
         var scheduleSelector = document.getElementById('schedule-selector');
         var newScheduleSelector = scheduleSelector.cloneNode(true);
         var deleteTimeSlotButton = newScheduleSelector.querySelector('#delete-time-slot');
-        addClassName.call(newScheduleSelector, 'mt-30');
+        addClassName.call(newScheduleSelector, 'mt-10');
         removeClassName.call(deleteTimeSlotButton, "display-none");
 
         deleteTimeSlotButton.addEventListener('click', function (e) {

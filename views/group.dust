@@ -51,25 +51,35 @@
                 <p>Time</p>
               </div>
               <div class="col-8">
-                <p>Wed 20:00~22:00</p>
+                {#data.schedule}
+                  <p>{hour}:{minute} {ampm}, {day}</p>
+                {/data.schedule}
               </div>
             </div>
             <div class="description-item">
               <div class="col-4">
-                <p>Payment</p>
+                <p>
+                  Payment
+                </p>
               </div>
               <div class="col-8">
-                <p>Only $5 per season </p>
+                <p>
+                  {?data.payment}
+                    {data.payment}
+                  {:else}
+                    Free to join
+                  {/data.payment}
+                </p>
               </div>
             </div>
-            <div class="description-item">
+            <!--div class="description-item">
               <div class="col-4">
                 <p>Restriction</p>
               </div>
               <div class="col-8">
                 <p>Female Only</p>
               </div>
-            </div>
+            </div-->
             <div class="description-item">
               <div class="col-4">
                 <p>Email</p>
@@ -91,7 +101,7 @@
         <div class="col-half">
           <div class="row">
             <div class="descrption-area">
-              this is description~~~~~~~~~~ this is description~~~~~~~~~~ this is description~~~~~~~~~~ this is description~~~~~~~~~~this is description~~~~~~~~~~ this is description~~~~~~~~~~ this is description~~~~~~~~~~ this is description~~~~~~~~~~this is description~~~~~~~~~~ this is description~~~~~~~~~~
+              {data.description}
             </div>
           </div>
           <div class="row join-button-container display-table">

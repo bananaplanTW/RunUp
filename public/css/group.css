@@ -28,6 +28,7 @@ ul:after {
 
 .description-item p {
   color: #777777;
+  margin-bottom: 5px;
 }
 
 .description-item:after {
@@ -51,7 +52,7 @@ ul:after {
 .join-button-container {
   height: 100px;
   width: 100%;
-  margin: 70px 0px;
+  margin: 50px 0px;
 }
 
 .join-button {

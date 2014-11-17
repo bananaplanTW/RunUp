@@ -7,8 +7,8 @@ var express = require('express'),
     fs = require('fs'),
     multer = require('multer');
 
-var insertToRunningGroupQuery = "INSERT INTO running_group (group_id, group_name, contact, email, website, city_id, county_id, state_id, country_id, address, lat, lng, owner_id, cover_photo, description) \
-													VALUES (\"%s\", \"%s\", '%s', '%s', '%s', %s, %s, %s, %s, '%s', '%s', '%s', %s, '%s', \"%s\")";
+var insertToRunningGroupQuery = "INSERT INTO running_group (group_id, group_name, contact, email, website, city_id, county_id, state_id, country_id, address, lat, lng, owner_id, cover_photo, description, payment) \
+													VALUES (\"%s\", \"%s\", '%s', '%s', '%s', %s, %s, %s, %s, '%s', '%s', '%s', %s, '%s', \"%s\", \"%s\")";
 
 var selectCityQueryString = "SELECT * FROM city WHERE city_origin='%s'";
 var insertCityQueryString = "INSERT city (city_origin, under_county_id, under_country_id) VALUES ('%s', %s, %s)";
@@ -67,18 +67,19 @@ router.post("/group", function (req, res) {
 });
 
 function createGroup (groupInfo, countryId, stateId, countyId, cityId, userId, coverPhotoName, callback) {
-	var groupName = encodeURIComponent(groupInfo.group_name);
-	var groupId = encodeURIComponent(groupInfo.group_name.toLowerCase());
-	var contact = encodeURIComponent(groupInfo.contact);
-	var email = encodeURIComponent(groupInfo.email);
-	var website = encodeURIComponent(groupInfo.website);
-	var address = encodeURIComponent(groupInfo.address);
-	var description = encodeURIComponent(groupInfo.description);
-	var lat = groupInfo.lat;
-	var lng = groupInfo.lng;
+	var groupName   = encodeURIComponent(groupInfo.group_name);
+	var groupId     = encodeURIComponent(groupInfo.group_name.toLowerCase());
+	var contact     = encodeURIComponent(groupInfo.contact);
+	var email       = encodeURIComponent(groupInfo.email);
+	var website     = typeof(groupInfo.website) === 'undefined'? "N/A" : encodeURIComponent(groupInfo.website);
+	var address     = encodeURIComponent(groupInfo.address);
+	var description =  typeof(groupInfo.website) === 'undefined'? "No description" : encodeURIComponent(groupInfo.description);
+	var payment     =  typeof(groupInfo.website) === 'undefined'? "Free" : encodeURIComponent(groupInfo.payment);
+	var lat         = groupInfo.lat;
+	var lng         = groupInfo.lng;
 	var coverPhotoPath = "/assets/images/uploads/" + coverPhotoName;
-	var queryString = util.format(insertToRunningGroupQuery, groupId, groupName, contact, email, website, cityId, countyId, stateId, countryId, address, lat, lng, userId, coverPhotoPath, description);
-	console.log(queryString);
+	var queryString = util.format(insertToRunningGroupQuery, groupId, groupName, contact, email, website, cityId, countyId, stateId, countryId, address, lat, lng, userId, coverPhotoPath, description, payment);
+
 	ModuleMysql.execute(queryString, function (error, rows) {
 		if (error) {
 			callback(error, null)

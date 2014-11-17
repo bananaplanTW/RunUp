@@ -23,34 +23,53 @@
           </div>
           <form id="create-group" action="/post/group" method="POST" enctype="multipart/form-data">
             <div class="post-group-section clear-float">
-              <span class="input-title col-4">Group Name</span>
-              <input id="group-name" class="input-box col-8" type="text" name="group_name"/>
+              <span class="input-title col-4">Group Name<em>*</em></span>
+              <input id="group-name" class="input-box col-8" type="text" name="group_name" placeholder="Runnning Love"/>
             </div>
             <div class="post-group-section clear-float">
-              <span class="input-title col-4">Address/Location</span>
-              <input id="address" class="input-box col-8" type="text" name="address"/>
+              <span class="input-title col-4">Address/Location<em>*</em></span>
+              <input id="address" class="input-box col-8" type="text" name="address"placeholder="Statue of Liberty"/>
             </div>
             <div class="post-group-section clear-float">
-              <span class="input-title col-4">Contact</span>
-              <input id="contact" class="input-box col-8" type="text" name="contact"/>
+              <span class="input-title col-4">Phone Number<em>*</em></span>
+              <input id="contact" class="input-box col-8" type="text" name="contact" placeholder="0000-000-000"/>
             </div>
             <div class="post-group-section clear-float">
-              <span class="input-title col-4">Email</span>
-              <input id="email" class="input-box col-8" type="text" name="email"/>
+              <span class="input-title col-4">Email<em>*</em></span>
+              <input id="email" class="input-box col-8" type="text" name="email" placeholder="example@bananaplan.com"/>
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">Description</span>
-              <textarea id="description" class="input-box col-8 description" type="text" name="description" row="40" col="3"></textarea>
+              <textarea id="description" class="input-box col-8 description" type="text" name="description" row="40" col="3" placeholder="describe your group!"></textarea>
               <!--input id="description" class="input-box col-8 description" type="text" name="description"/-->
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">Website</span>
-              <input id="website" class="input-box col-8" type="text" name="website"/>
+              <input id="website" class="input-box col-8" type="text" name="website" placeholder="www.example.com"/>
+            </div>
+            
+            <div class="post-group-section clear-float">
+              <span class="input-title col-4">Payment</span>
+              <input id="payment" class="input-box col-8" type="text" name="payment" placeholder="Pay desrciption, blank for Free"/>
+            </div>
+            <div class="post-group-section clear-float">
+              <input id="lat" class="input-box col-8 display-none" type="text" name="lat"/>
+              <input id="lng" class="input-box col-8 display-none" type="text" name="lng"/>
+              <input id="city" class="input-box col-8 display-none" type="text" name="city"/>
+              <input id="county" class="input-box col-8 display-none" type="text" name="county"/>
+              <input id="state" class="input-box col-8 display-none" type="text" name="state"/>
+              <input id="state_short" class="input-box col-8 display-none" type="text" name="state_short"/>
+              <input id="country" class="input-box col-8 display-none" type="text" name="country"/>
+              <input id="country_short" class="input-box col-8 display-none" type="text" name="country_short"/>
+            </div>
+            <div class="post-group-section clear-float">
+              <span class="input-title col-4">Cover Photo<em>*</em></span>
+              <input id="cover-photo" class="col-8 " type="file" name="cover_photo" accept="image/jpg"/>
             </div>
             <div id="schedule-container" class="post-group-section clear-float">
               <span class="input-title col-4">Schedule</span>
               <div id="schedule-selector" class="col-8 fl-r">
-                <select id="day" name="day" class="input-box col-all">
+                <select id="day" name="day" class="input-box day-selector">
                   <option value="0">Sunday</option>
                   <option value="1">Monday</option>
                   <option value="2">Tuesday</option>
@@ -59,7 +78,7 @@
                   <option value="5">Friday</option>
                   <option value="6">Saturday</option>
                 </select>
-                <select id="ampm" name="ampm" class="input-box time-selector nm-left">
+                <select id="ampm" name="ampm" class="input-box time-selector nm-left nm-right">
                   <option value="0">am</option>
                   <option value="1">pm</option>
                 </select>
@@ -88,20 +107,6 @@
             </div>
             <div class="post-group-section clear-float">
               <button id="add-time-slot" class="input-button input-add-button col-8 fl-r clickable">+</button>
-            </div>
-            <div class="post-group-section clear-float">
-              <input id="lat" class="input-box col-8 display-none" type="text" name="lat"/>
-              <input id="lng" class="input-box col-8 display-none" type="text" name="lng"/>
-              <input id="city" class="input-box col-8 display-none" type="text" name="city"/>
-              <input id="county" class="input-box col-8 display-none" type="text" name="county"/>
-              <input id="state" class="input-box col-8 display-none" type="text" name="state"/>
-              <input id="state_short" class="input-box col-8 display-none" type="text" name="state_short"/>
-              <input id="country" class="input-box col-8 display-none" type="text" name="country"/>
-              <input id="country_short" class="input-box col-8 display-none" type="text" name="country_short"/>
-            </div>
-            <div class="post-group-section clear-float">
-              <span class="input-title col-4">Cover Photo</span>
-              <input id="cover-photo" class="col-8 " type="file" name="cover_photo"/>
             </div>
           </form>
           <div class="post-group-section clear-float">
