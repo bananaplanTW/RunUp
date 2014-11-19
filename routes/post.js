@@ -5,7 +5,8 @@ var express = require('express'),
     HttpsGet = require('../lib/HttpsGet'),
     ModuleMysql = require('../modules/ModuleMysql').getInstance(),
     fs = require('fs'),
-    multer = require('multer');
+    multer = require('multer'),
+    constructSearchIndexTable = require('../lib/ConstructSearchIndexTable');;
 
 var insertToRunningGroupQuery = "INSERT INTO running_group (group_id, group_name, contact, email, website, city_id, county_id, state_id, country_id, address, lat, lng, owner_id, cover_photo, description, payment) \
 													VALUES (\"%s\", \"%s\", '%s', '%s', '%s', %s, %s, %s, %s, '%s', '%s', '%s', %s, '%s', \"%s\", \"%s\")";
@@ -54,6 +55,7 @@ router.post("/group", function (req, res) {
 	    						if (error) {
 	    							console.log(error);
 	    						}
+	    						constructSearchIndexTable.update();
 	    						res.redirect("/g/" + groupData.groupId);
 	    					})
 	    				});
@@ -73,8 +75,8 @@ function createGroup (groupInfo, countryId, stateId, countyId, cityId, userId, c
 	var email       = encodeURIComponent(groupInfo.email);
 	var website     = typeof(groupInfo.website) === 'undefined'? "N/A" : encodeURIComponent(groupInfo.website);
 	var address     = encodeURIComponent(groupInfo.address);
-	var description =  typeof(groupInfo.website) === 'undefined'? "No description" : encodeURIComponent(groupInfo.description);
-	var payment     =  typeof(groupInfo.website) === 'undefined'? "Free" : encodeURIComponent(groupInfo.payment);
+	var description = typeof(groupInfo.description) === 'undefined'? "No description" : encodeURIComponent(groupInfo.description);
+	var payment     = typeof(groupInfo.payment) === 'undefined'? "Free" : encodeURIComponent(groupInfo.payment);
 	var lat         = groupInfo.lat;
 	var lng         = groupInfo.lng;
 	var coverPhotoPath = "/assets/images/uploads/" + coverPhotoName;

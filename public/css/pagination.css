@@ -20,4 +20,5 @@ div.pagination-container {
   border: 1px solid #DEDEDE;
   border-radius: 5px;
   margin-left: 1px;
-}
+  cursor: pointer;
+}}

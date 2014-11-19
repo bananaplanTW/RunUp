@@ -74,6 +74,8 @@ router.get('/:country/:state', function (req, res, next) {
 
 			// send user data back
 			data.user = req.user;
+			data.country_short = country;
+			data.state_short = decodeURIComponent(state);
 			res.render('region', {data : data});
 		});
 

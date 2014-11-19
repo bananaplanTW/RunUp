@@ -52,6 +52,27 @@ function putIconOnMap(map, lat, lng, groupName, groupCard) {
 	  removeAnimation(marker);
 	});
 };
+console.log(location);
+(function registerPaginationButton () {
+	var paginationButtons = document.getElementsByClassName('pagination-button');
+	var length = paginationButtons.length;
+	for (var i = 0; i < length; i ++) {
+		paginationButtons[i].addEventListener('click', function (e) {
+			var page = this.getAttribute('data-page');
+			if (location.search.indexOf("?") === -1) {
+				location.href += ("?p=" + page);
+			} else {
+				var qs = location.search.slice(1, location.search.length);
+				console.log(MyQueryString);
+				var query = MyQueryString.parse(qs);
+				query.p = page;
+				qs = MyQueryString.stringify(query);
+				console.log(qs);
+				location.search = "?" + qs;
+			}
+		});
+	}
+})();
 
 function setAnimationBounce (marker) {
 	marker.setAnimation(google.maps.Animation.BOUNCE);

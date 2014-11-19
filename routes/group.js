@@ -9,6 +9,7 @@ var util = require('util'),
     selectGroupMember = "SELECT a.id, a.first_name, a.picture FROM member AS a, group_member AS b WHERE a.id = b.member_id AND b.group_id=\"%s\"";
 
 //require('../lib/GetLatLngFromAddress');
+//require('../lib/ConstructSearchIndexTable');
 router.get('/:group_id', function (req, res, next) {
 	// should set up checking process to prevent sql injection
 	var groupId = encodeURIComponent(req.params.group_id);

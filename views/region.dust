@@ -25,13 +25,18 @@
       <div class="map-search">
         <div class="col-half">
           <div class="filter-section">
-            <form>
-              <input class="search-input-box" type="text" value="Find Group"/>
+            {?data.state_short}
+            <form action="/s/{data.country_short}/{data.state_short}" method="GET">
+              <input class="search-input-box" type="text" name="q" placeholder="Find Groups in {data.state_short}" value="{data.q}"/>
+              {:else}
+            <form action="/search" method="GET">
+              <input class="search-input-box" type="text" name="q" placeholder="Find Groups" value="{data.q}"/>
+            {/data.state_short}
               <input class="search-submit-button" type="submit" value="Search"/>
-            </form>
+            
           </div>
           <div class="filter-section">
-            <form>
+
               <span class="filter-checkbox-item"><input name="day" type="checkbox" id="sun" value="0"/><label for="sun">Sun</label></span>
               <span class="filter-checkbox-item"><input name="day" type="checkbox" id="mon" value="1"/><label for="mon">Mon</label></span>
               <span class="filter-checkbox-item"><input name="day" type="checkbox" id="tue" value="2"/><label for="tue">Tue</label></span>
@@ -46,10 +51,10 @@
             </form>
           </div>
           <div class="filter-section">
-            <form>
+            <!--form>
               <span class="filter-checkbox-item"><input name="gender" type="checkbox" id="female" value="0"/><label for="female">Female</label></span>
               <span class="filter-checkbox-item"><input name="gender" type="checkbox" id="male" value="1"/><label for="male">Male</label></span>
-            </form>
+            </form-->
           </div>
           <div class="group-section">
             {#data.groups}
@@ -76,12 +81,12 @@
               {?data.prevPage}
                 {@select key=data.prevPage}
                   {@gt value=0}
-                    <a class="pagination-button" href="?p={data.prevPage}"><</a>
+                    <a class="pagination-button" data-page="{data.prevPage}"><</a>
                   {/gt}
                 {/select}
               {/data.prevPage}
               {?data.nextPage}
-                <a class="pagination-button" href="?p={data.nextPage}">></a>
+                <a class="pagination-button" data-page="{data.nextPage}">></a>
               {/data.nextPage}
             </div>
           </div>
@@ -89,7 +94,6 @@
         <div class="col-half">
           <div class="map">
             <div id="map-canvas" class="map-canvas"></div>
-
           </div>
         </div>
       </div>
@@ -103,6 +107,7 @@
   </body>
   <script type="text/javascript" src="/js/google-map.js"></script>
   <script type="text/javascript" src="/js/ajax.js"></script>
+  <script type="text/javascript" src="/js/common.js"></script>
   <script type="text/javascript" src="/js/region.js"></script>
   <script type="text/javascript" src="/js/signup.js"></script>
   <script type="text/javascript" src="/js/fb-login.js"></script>

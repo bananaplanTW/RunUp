@@ -11,9 +11,9 @@
       <img src="/assets/images/cover.jpg">
     </div>
     <div class="search-area">
-      <form class="search-box">
-        <input id="search-input-box" type="text" class="search-input-box" value="ZIP Code or Location"/>
-        <input type="button" class="search-submit-button" value="Search"/>
+      <form class="search-box" action="/search">
+        <input id="search-input-box" type="text" class="search-input-box" placeholder="ZIP Code or Location" name="q"/>
+        <input type="submit" class="search-submit-button" value="Search"/>
       </form>
     </div>
     <div class="main-container">

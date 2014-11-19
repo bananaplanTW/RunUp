@@ -18,6 +18,7 @@ var express = require('express'),
     join = require('../routes/join'),
     home = require('../routes/home'),
     region = require('../routes/region'),
+    search = require('../routes/search'),
     post = require('../routes/post'),
     geoCoding = require('../routes/geoCoding'),
     group = require('../routes/group'),
@@ -54,6 +55,8 @@ app.use('/status', status);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/join', join);
+app.use('/search', search);
+app.use('/s', search);
 app.use('/post', bodyParser.urlencoded(), post);
 app.use('/getGeoCoding', geoCoding);
 app.use(home);
