@@ -28,7 +28,7 @@ function bindPost (map) {
 
     var createGroupForm    = document.getElementById('create-group');
     var submitButton       = document.getElementById('submit-button');
-    var emailRegex = /.+\@.+\..+/g;
+
     submitButton.addEventListener('click', function (e) {
         getAjax("/status", "", function(XHR, status) {
             if (XHR.readyState === 4 && XHR.status === 200) {

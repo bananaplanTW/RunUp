@@ -63,7 +63,7 @@ function redirectToLogin () {
             response.picture = null;
         }
         // post to login
-        postAjax('/login', JSON.stringify(response), function (XHR, status) {
+        postAjax('/fblogin', JSON.stringify(response), function (XHR, status) {
             if (XHR.readyState === 4 && XHR.status === 200) {
                 var body = document.getElementsByTagName("body")[0];
                 var bodyClass = body.className.replace(" no-scroll", "");

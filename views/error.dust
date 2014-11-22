@@ -13,6 +13,7 @@
       <div class="error-message">Oops... error</div>
     </div>
     {>"templates/signup-options"/}
+    <script type="text/javascript" src="/js/common.js"></script>
     <script type="text/javascript" src="/js/signup.js"></script>
     <script type="text/javascript" src="/js/fb-login.js"></script>
   </body>

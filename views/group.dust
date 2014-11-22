@@ -133,6 +133,7 @@
   <script type="text/javascript" src="/js/group.js"></script>
   <script type="text/javascript" src="/js/ajax.js"></script>
   <script type="text/javascript" src="/js/join.js"></script>
+  <script type="text/javascript" src="/js/common.js"></script>
   <script type="text/javascript" src="/js/signup.js"></script>
   <script type="text/javascript" src="/js/fb-login.js"></script>
 </html>

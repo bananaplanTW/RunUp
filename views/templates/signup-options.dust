@@ -2,25 +2,40 @@
   <div class="popup-container">
     <div id="signup-popup" class="popup">
       <div id="signup-title" class="signup-title">
-        Please Sign up!
+        Please Login!
       </div>
       <div class="social-logins">
         <ul>
           <li id="fb-login" class="fb-login">
             <img class="fb-login-icon" src="https://fbstatic-a.akamaihd.net/rsrc.php/v2/y6/r/yeKliSMc_m4.png">
-            <span class="fb-login-string">Signup with Facebook</span>
+            <span class="fb-login-string">Login with Facebook</span>
           </li>
         </ul>
       </div>
-      <!--div class="signup-by-creating">
+      <div id="signup-title" class="signup-title">
+        Login with Email
+      </div>
+      <div class="signup-by-creating">
         <div>
-          <form>
-            <input id="account" class="signup-input-box" type="text" value="Account"/>
-            <input id="password" class="signup-input-box" type="password" value="password"/>
-            <input class="signup-input-box signup-input-submit" type="submit" />
+          <form id="email-login-form" action="/login" method="POST" enctype="application/json">
+            <input id="account" name="account" class="signup-input-box" type="text" placeholder="example@example.com"/>
+            <input id="password" name="password" class="signup-input-box" type="password" placeholder="password"/>
+            <input id="email-login" class="signup-input-box signup-input-submit" type="button" value="Login"/>
           </form> 
         </div>
-      </div-->
+      </div>
+      <div id="signup-title" class="signup-title">
+        Signup with Email
+      </div>
+      <div class="signup-by-creating">
+        <div>
+          <form id="email-signup-form" action="/signup" method="POST" enctype="application/json">
+            <input id="account" name="account" class="signup-input-box" type="text" placeholder="example@example.com"/>
+            <input id="password" name="password" class="signup-input-box" type="password" placeholder="password"/>
+            <input id="email-signup" class="signup-input-box signup-input-submit" type="button" value="Signup"/>
+          </form> 
+        </div>
+      </div>
     </div>
   </div>
 </div>

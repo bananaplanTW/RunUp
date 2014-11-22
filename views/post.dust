@@ -64,7 +64,7 @@
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">Cover Photo<em>*</em></span>
-              <input id="cover-photo" class="col-8 " type="file" name="cover_photo" accept="image/jpg"/>
+              <input id="cover-photo" class="col-8 " type="file" name="cover_photo" accept="image/*"/>
             </div>
             <div id="schedule-container" class="post-group-section clear-float">
               <span class="input-title col-4">Schedule</span>
@@ -125,8 +125,8 @@
   </body>
   <script type="text/javascript" src="/js/google-map.js"></script>
   <script type="text/javascript" src="/js/ajax.js"></script>
+  <script type="text/javascript" src="/js/common.js"></script>
   <script type="text/javascript" src="/js/signup.js"></script>
   <script type="text/javascript" src="/js/fb-login.js"></script>
   <script type="text/javascript" src="/js/post.js"></script>
-  <script type="text/javascript" src="/js/common.js"></script>
 </html>

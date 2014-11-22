@@ -6,7 +6,7 @@ var express = require('express'),
 var selectUserQuery = "SELECT * FROM member WHERE account='%s'";
 
 router.use(function (req, res, next) {
-	console.log("session:", req.session);
+	console.log("session:", req.session.user);
     if (req.session.user) {
     	// user data is here
     	var queryString = util.format(selectUserQuery, req.session.user);
@@ -19,7 +19,7 @@ router.use(function (req, res, next) {
     		}
     		// user is login
     		req.user = row[0];
-    		next()
+    		next();
     	})
     } else {
     	// user is not login

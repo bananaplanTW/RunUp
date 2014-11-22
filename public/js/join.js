@@ -29,6 +29,8 @@
                     console.log(memberHeadIconContainer);
 
                     joinButton.className += " display-none";
+
+                    alert("Congrats! Join Success! :D");
                 } else if (response.status === 1) {
                     // user not login
                     // decide the position of signup popup

@@ -233,8 +233,8 @@ em {
 }
 
 .signup-title {
-  margin-bottom: 30px;
-  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-top: 30px;
   font-size: 20px;
   color: #636363;
   line-height: 18px;
@@ -246,7 +246,6 @@ em {
   margin-top: 5px;
   font-size: 16px;
   border: 1px solid #DEDEDE;
-  color: #DEDEDE;
   padding-left: 10px;
 }
 

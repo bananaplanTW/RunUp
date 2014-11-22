@@ -13,6 +13,8 @@ var express = require('express'),
     app = express(),
     auth = require('../routes/auth'),
     status = require('../routes/status'),
+    fblogin = require('../routes/fblogin'),
+    signup = require('../routes/signup'),
     login = require('../routes/login'),
     logout = require('../routes/logout'),
     join = require('../routes/join'),
@@ -52,7 +54,9 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(auth);
 app.use('/status', status);
-app.use('/login', login);
+app.use('/fblogin', fblogin);
+app.use('/signup', bodyParser.urlencoded(), signup);
+app.use('/login', bodyParser.urlencoded(), login);
 app.use('/logout', logout);
 app.use('/join', join);
 app.use('/search', search);
