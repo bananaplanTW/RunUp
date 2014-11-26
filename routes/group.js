@@ -6,7 +6,7 @@ var util = require('util'),
     //selectQueryStringBase = "SELECT a.*, b.state_short FROM running_group AS a, state AS b WHERE a.state_id = b.id AND group_id=\"%s\"",
     selectQueryStringBase = "SELECT a.* FROM running_group AS a WHERE a.group_id=\"%s\"",
     selectGroupSchedule = "SELECT day, hour, minute, ampm FROM group_schedule WHERE group_id=\"%s\"",
-    selectGroupMember = "SELECT a.id, a.first_name, a.picture FROM member AS a, group_member AS b WHERE a.id = b.member_id AND b.group_id=\"%s\"";
+    selectGroupMember = "SELECT a.id, c.first_name, c.picture FROM account_info AS a, group_member AS b, settings AS c WHERE a.id = b.member_id AND a.account = c.account AND b.group_id=\"%s\"";
 
 //require('../lib/GetLatLngFromAddress');
 //require('../lib/ConstructSearchIndexTable');

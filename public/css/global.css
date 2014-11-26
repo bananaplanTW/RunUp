@@ -78,12 +78,18 @@ em {
 
 .logo {
   float: left;
+  position: absolute;
+  top: 3px;
 }
 
 .logo p{
   font-size: 30px;
   line-height: 30px;
   color: #ff5a5f;
+}
+
+.logo img {
+  height: 45px;
 }
 
 .footer {

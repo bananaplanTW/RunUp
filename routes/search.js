@@ -2,6 +2,7 @@ var util = require('util'),
 	express = require('express'),
     router  = express.Router(),
     ModuleMysql = require('../modules/ModuleMysql').getInstance(),
+    selectGroupMember = "SELECT a.id, c.first_name, c.picture, b.group_id FROM account_info AS a, group_member AS b, settings AS c WHERE a.id = b.member_id AND a.account = c.account AND (",
     selectStateQueryStringBase = "SELECT i.* FROM (\
 SELECT a.*, b.country_short, b.country_origin, c.state_short, c.state_origin FROM running_group AS a, country AS b, state AS c WHERE a.country_id = b.id AND a.state_id = c.id AND c.state_short = \"%s\" \
 ) AS i JOIN group_schedule AS j ON i.id = j.group_id",
@@ -220,6 +221,7 @@ function handleGroupData (req, res, query, groups, country_short, state_short, p
 	});
 	queryString = queryString.slice(0, queryString.length - 3);
 	queryString += ')';
+console.log(queryString);
 	ModuleMysql.execute(queryString, function (error, groupMemberPair) {
 		if (error) {
 			console.log(error);

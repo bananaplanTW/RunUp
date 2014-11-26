@@ -30,7 +30,7 @@
 
                     joinButton.className += " display-none";
 
-                    alert("Congrats! Join Success! :D");
+                    alert("恭喜你加入成功! :D");
                 } else if (response.status === 1) {
                     // user not login
                     // decide the position of signup popup

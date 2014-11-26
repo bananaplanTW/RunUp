@@ -2,7 +2,8 @@ function bindPost (map) {
     var that = this;
     var address = document.getElementById('address');
     var geoCodingResult = {};
-    address.addEventListener('focusout', function (e) {
+    console.log('focusout');
+    address.addEventListener('blur', function (e) {
         if (address.value) {
             var addressString = "address=" + address.value;
             getAjax("/getGeoCoding", addressString, function (XHR, status) {

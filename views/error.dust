@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/basic.css">
   </head>
+  {>"templates/title-favicon"/}
   <body>
     {>"templates/top-banner"/}
 

@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/css/basic.css">
     <link rel="stylesheet" type="text/css" href="/css/member.css">
   </head>
+  {>"templates/title-favicon"/}
   <body onload="">
     {>"templates/top-banner"/}
     <!--div class="search-area">
@@ -68,7 +69,7 @@
                 {/eq}
               {/math}
             {:else}
-              <p>Group is not found in this area...</p>
+              <p>找不到跑團..</p>
             {/data.groups}
             {@math key=data.groups.length method="mod" operand="2"}
               {@eq value=1}

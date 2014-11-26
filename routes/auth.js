@@ -3,7 +3,7 @@ var express = require('express'),
     util = require('util'),
     moduleLogin = require('../modules/ModuleLogin').getInstance();
 
-var selectUserQuery = "SELECT * FROM member WHERE account='%s'";
+var selectUserQuery = "SELECT a.id, a.account, b.picture FROM account_info AS a, settings AS b WHERE a.account = b.account && a.account='%s'";
 
 router.use(function (req, res, next) {
 	console.log("session:", req.session.user);

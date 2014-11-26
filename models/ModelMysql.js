@@ -2,9 +2,9 @@ var mysql = require('mysql');
 
 var ModelMysql = function () {
     this.conn = mysql.createConnection({
-                    host: 'localhost',
-                    user: 'running_area',
-                    database: 'running_area',
+                    host: 'db.bitnamiapp.com',
+                    user: 'root',
+                    database: 'musicrun',
                     password: 'Sunflower123'
                 });
     this.conn.connect(function (error) {

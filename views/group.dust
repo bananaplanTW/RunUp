@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCoq2mE4Ywhw2Lw5XzzBeWVc603qgA6RcE&sensor=true"></script>
     <link rel="stylesheet" type="text/css" href="/css/global.css">
     <link rel="stylesheet" type="text/css" href="/css/home.css">
@@ -12,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/css/member.css">
     <link rel="stylesheet" type="text/css" href="/css/group.css">
   </head>
+  {>"templates/title-favicon"/}
   <body onload="">
     {>"templates/top-banner"/}
     <div class="teaser">
@@ -39,9 +39,9 @@
         <div class="description-item">
           <p>{data.address}</p>
         </div>
-        <div class="description-item">
+        <!--div class="description-item">
           <p>{data.contact}</p>
-        </div>
+        </div-->
       </div>
       <div class="row">
         <div class="col-half">
@@ -67,7 +67,7 @@
                   {?data.payment}
                     {data.payment}
                   {:else}
-                    Free to join
+                    免費
                   {/data.payment}
                 </p>
               </div>
@@ -109,7 +109,7 @@
               {#data.is_member}
               
               {:else}
-              <a id="join-button" data-groupid="{data.group_id}" class="join-button">Join</a>
+              <a id="join-button" data-groupid="{data.group_id}" class="join-button">加入跑團</a>
               {/data.is_member}
             </div>
           </div>

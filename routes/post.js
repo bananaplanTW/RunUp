@@ -120,7 +120,7 @@ function createGroup (groupInfo, countryId, stateId, countyId, cityId, userId, c
 	var lng         = groupInfo.lng;
 	var coverPhotoPath = coverPhotoName;
 	var queryString = util.format(insertToRunningGroupQuery, groupId, groupName, contact, email, website, cityId, countyId, stateId, countryId, address, lat, lng, userId, coverPhotoPath, description, payment);
-
+console.log(queryString);
 	ModuleMysql.execute(queryString, function (error, rows) {
 		if (error) {
 			callback(error, null)

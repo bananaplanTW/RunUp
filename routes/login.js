@@ -4,8 +4,8 @@ var express = require('express'),
     moduleLogin = require('../modules/ModuleLogin').getInstance(),
     bcrypt = require('bcryptjs');;
 
-var selectUserQuery = "SELECT salt, password FROM member WHERE account='%s'";
-var insertUserQuery = "INSERT INTO member (account, password, salt, email, account_type) VALUES ('%s', '%s', '%s', '%s', 'email')";
+var selectUserQuery = "SELECT salt, password FROM account_info WHERE account='%s'";
+//var insertUserQuery = "INSERT INTO member (account, password, salt, email, account_type) VALUES ('%s', '%s', '%s', '%s', 'email')";
 
 router.post('/',function (req, res, next) {
     var body = req.body;

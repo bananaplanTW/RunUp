@@ -1,5 +1,5 @@
 <div id="top-banner" class="top-banner fixed-top-banner">
-  <a href="/" class="logo"><p>Running Area</p></a>
+  <a href="/" class="logo"><img src="/assets/images/logo.png"/></a>
   {?data.user}
   <ul id="user" class="push-to-right user">
   {:else}
@@ -7,7 +7,11 @@
   {/data.user}
     <li id="user-icon">
         <span class="round-face border-icon top-banner-user-head-image">
-          <img id="user-icon-img" class="head-image" src="{data.user.picture}">
+          {?data.user.picture}
+            <img id="user-icon-img" class="head-image" src="{data.user.picture}">
+          {:else}
+            <img id="user-icon-img" class="head-image" src="/assets/images/pal.png">
+          {/data.user.picture}
         </span>
     </li>
     <li id="logout" class="runup-green-box clickable logout">

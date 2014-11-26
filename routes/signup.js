@@ -4,8 +4,10 @@ var express = require('express'),
     moduleLogin = require('../modules/ModuleLogin').getInstance(),
     bcrypt = require('bcryptjs');;
 
-var selectUserQuery = "SELECT * FROM member WHERE account='%s'";
-var insertUserQuery = "INSERT INTO member (account, password, salt, email, account_type) VALUES ('%s', '%s', '%s', '%s', 'email')";
+var selectUserQuery = "SELECT * FROM account_info WHERE account='%s'";
+//var insertUserQuery = "INSERT INTO member (account, password, salt, email, account_type) VALUES ('%s', '%s', '%s', '%s', 'email')";
+var insertUserQuery = "INSERT INTO account_info (account, password, salt, account_type) VALUES ('%s', '%s', '%s','email')";
+var insertSettingsQuery = "INSERT INTO settings (account, email) VALUES ('%s', '%s')";
 
 router.post('/',function (req, res, next) {
     var body = req.body;
@@ -21,23 +23,30 @@ console.log("signup");
             console.log("not registered yet");
             var salt = bcrypt.genSaltSync(10);
             var hashedPassword = bcrypt.hashSync(body.password, salt);
-            queryString = util.format(insertUserQuery, body.account, hashedPassword, salt, body.account);
+            queryString = util.format(insertUserQuery, body.account, hashedPassword, salt);
+            console.log(queryString);
             moduleLogin.execute(queryString, function (error, _rows) {
                 if (error) {
                     console.log(error);
                     return;
                 }
-                req.session.user = body.account;
-                req.session.save();
+                queryString = util.format(insertSettingsQuery, body.account, body.account);
+                moduleLogin.execute(queryString, function (error, __rows) {
+                    if (error) {
+                        console.log(error);
+                    }
+                    req.session.user = body.account;
+                    req.session.save();
 
-                var responseData = {
-                    account: body.account
-                };
-                res.writeHead(200, {
-                    "Content-Type": "application/json"
+                    var responseData = {
+                        account: body.account
+                    };
+                    res.writeHead(200, {
+                        "Content-Type": "application/json"
+                    });
+                    res.write(JSON.stringify(responseData));
+                    res.end();
                 });
-                res.write(JSON.stringify(responseData));
-                res.end();
             })
         } else { // account has been taken
             res.writeHead(601, {

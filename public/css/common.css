@@ -20,6 +20,11 @@
   margin-right: 5px;
 }
 
+.top-banner-user-head-image img {
+  width: 32px;
+  height: 32px;
+}
+
 .spread-link-container {
   position: relative;
 }
