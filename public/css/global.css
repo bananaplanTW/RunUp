@@ -88,8 +88,8 @@ em {
 
 .footer {
   margin-top: 50px;
-  height: 200px;
-  background-color: #ff5a5f;
+  height: 100px;
+  background-color: #26d6aa;
 }
 
 .login, .signup, .logout, .post {
@@ -124,8 +124,9 @@ em {
 }
 
 .runup-green-box {
-  background-color: rgb(38, 214, 170);
+  background-color: #26d6aa;
   padding: 10px 15px 10px 15px;
+  border-radius: 5px;
 }
 
 .runup-red-box a {

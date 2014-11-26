@@ -11,7 +11,7 @@
         </span>
     </li>
     <li id="logout" class="runup-green-box clickable logout">
-        Logout
+        登出
     </li>
   </ul>
 
@@ -21,17 +21,17 @@
   <ul id="auth" class="push-to-right auth">
   {/data.user}
     <!--li id="signup" class="runup-green-box clickable signup">
-        Sign up
+        註冊
     </li-->
     <li id="login" class="runup-green-box clickable login">
-        Login
+        登入
     </li>
   </ul>
 
   <ul class="push-to-right">
-    <li class="runup-red-box post spread-link-container clickable">
+    <li class="runup-green-box post spread-link-container clickable">
       <a id="post-group" class="spread-link" href="/post"></a>
-      Post Your Group
+      登錄您的跑團
     </li>
   </ul>
 </div>

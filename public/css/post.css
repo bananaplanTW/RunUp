@@ -26,7 +26,7 @@
 }
 
 .input-button {
-  background: #ff5a5f;
+  background: #26d6aa;
   height: 44px;
   border: none;
   font-size: 18px;
@@ -34,10 +34,11 @@
   padding-left: 16px;
   padding-right: 16px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 button.input-add-button {
-  background-color: rgb(38, 214, 170);
+  background-color: #26d6aa;
   width: 44px;
   border-radius: 30px;
 }

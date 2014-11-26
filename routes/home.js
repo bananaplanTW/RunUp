@@ -2,7 +2,7 @@ var util = require('util'),
 	express = require('express'),
     router  = express.Router(),
     ModuleMysql = require('../modules/ModuleMysql').getInstance(),
-    queryString = "SELECT a.state_short, a.state_origin, b.country_short FROM state AS a, country AS b WHERE a.under_country_id = b.id";
+    queryString = "SELECT a.state_short, a.state_origin, b.country_short FROM state AS a, country AS b WHERE a.under_country_id = b.id AND a.state_short != \'undefined\'";
 
 router.get('/', function (req, res) {
     ModuleMysql.execute(queryString, function (error, rows) {

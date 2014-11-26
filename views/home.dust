@@ -12,14 +12,14 @@
     </div>
     <div class="search-area">
       <form class="search-box" action="/search">
-        <input id="search-input-box" type="text" class="search-input-box" placeholder="ZIP Code or Location" name="q"/>
-        <input type="submit" class="search-submit-button" value="Search"/>
+        <input id="search-input-box" type="text" class="search-input-box" placeholder="輸入跑團關鍵字" name="q"/>
+        <input type="submit" class="search-submit-button" value="搜尋跑團"/>
       </form>
     </div>
     <div class="main-container">
       <div class="center-rail">
         <div class="discover-headline">
-          <h2>Run in your Favorite SPOT!</h2>
+          <h2>選擇喜歡的區域吧！</h2>
         </div>
           {#data.states}
             {@math key=$idx method="mod" operand="3"}
@@ -43,11 +43,7 @@
           {/math}
       </div>
     </div>
-    <div class="footer">
-      <div class="copy-right-container">
-        <p class="copy-right">Copy rights reserve by Bananaplan</p>
-      </div>
-    </div>
+    {>"templates/footer"/}
     {>"templates/signup-options"/}
   </body>
   <script type="text/javascript" src="/js/home.js"></script>

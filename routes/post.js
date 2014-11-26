@@ -45,7 +45,7 @@ router.post("/group", function (req, res) {
     	console.log(req.files);
 	    if (req.files.cover_photo.overLimit) {
 	    	var data = {
-	    		warning: "照片請小於1mb"
+	    		warning: "照片大小請小於1mb"
 	    	};
 	    	res.render("post", {data: data});
 	    	return;

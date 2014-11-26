@@ -3,24 +3,28 @@ function bindPost (map) {
     var address = document.getElementById('address');
     var geoCodingResult = {};
     address.addEventListener('focusout', function (e) {
-        console.log(address.value);
         if (address.value) {
             var addressString = "address=" + address.value;
             getAjax("/getGeoCoding", addressString, function (XHR, status) {
                 if (XHR.readyState === 4 && XHR.status == 200) {
                     geoCodingResult = JSON.parse(XHR.response);
                     console.log(geoCodingResult);
-                    bindFormInputs(geoCodingResult);
-                    var latlng = new google.maps.LatLng(geoCodingResult.lat, geoCodingResult.lng);
-                    if (!that.marker) {
-                        that.marker = new google.maps.Marker({
-                                            position: latlng
-                                        });
-                        marker.setMap(map);
+                    if (geoCodingResult.status === "NOTFOUND") {
+                        alert(geoCodingResult.message);
                     } else {
-                        marker.setPosition(latlng);
+                        bindFormInputs(geoCodingResult);
+                        var latlng = new google.maps.LatLng(geoCodingResult.lat, geoCodingResult.lng);
+                        if (!that.marker) {
+                            that.marker = new google.maps.Marker({
+                                                position: latlng
+                                            });
+                            marker.setMap(map);
+                        } else {
+                            marker.setPosition(latlng);
+                        }
+                        map.setCenter(latlng);
                     }
-                    map.setCenter(latlng);
+                    
                 }
             });
         }
@@ -35,11 +39,13 @@ function bindPost (map) {
                 var loginStatus = JSON.parse(XHR.response);
                 if (loginStatus.status ==='OK') {
                     var createGroupElements = createGroupForm.elements;
+                    var message = "";
                     //var coverPhotoFormElements = coverPhotoForm.elements;
                     var isPass = true;
                     if (!createGroupElements['group-name'].value) {
                         addClassName.call(createGroupElements['group-name'], "red-bottom-line");
                         isPass = false;
+                        message += "請填入跑團名稱\n";
                     } else {
                         removeClassName.call(createGroupElements['group-name'], "red-bottom-line");
                     }
@@ -47,6 +53,15 @@ function bindPost (map) {
                     if (!createGroupElements['address'].value) {
                         addClassName.call(createGroupElements['address'], "red-bottom-line");
                         isPass = false;
+                        message += "請填入地址\n";
+                    } else {
+                        removeClassName.call(createGroupElements['address'], "red-bottom-line");
+                    }
+
+                    if (!createGroupElements['lat'].value && !createGroupElements['lng'].value) {
+                        addClassName.call(createGroupElements['address'], "red-bottom-line");
+                        isPass = false;
+                        message += "請填入正確地址\n";
                     } else {
                         removeClassName.call(createGroupElements['address'], "red-bottom-line");
                     }
@@ -54,6 +69,7 @@ function bindPost (map) {
                     if (!createGroupElements['contact'].value) {
                         addClassName.call(createGroupElements['contact'], "red-bottom-line");
                         isPass = false;
+                        message += "請填入聯絡方式\n";
                     } else {
                         removeClassName.call(createGroupElements['contact'], "red-bottom-line");
                     }
@@ -61,24 +77,27 @@ function bindPost (map) {
                     if (!createGroupElements['email'].value) {
                         addClassName.call(createGroupElements['email'], "red-bottom-line");
                         isPass = false;
+                        message += "請填入email\n";
                     } else if (!emailRegex.test(createGroupElements['email'].value)) {
                         addClassName.call(createGroupElements['email'], "red-bottom-line");
                         isPass = false;
+                        message += "請檢查email格式\n";
                     } else {
                         removeClassName.call(createGroupElements['email'], "red-bottom-line");
                     }
 
-console.log(createGroupElements['cover-photo'].size);
-debugger;
                     if (!createGroupElements['cover-photo'].value) {
                         addClassName.call(createGroupElements['cover-photo'], "red-bottom-line");
                         isPass = false;
+                        message += "請上傳跑團封面照\n";
                     } else {
                         removeClassName.call(createGroupElements['cover-photo'], "red-bottom-line");
                     }
 
                     if (isPass) {
                         createGroupForm.submit();
+                    } else {
+                        alert("請檢查: \n" + message);
                     }
                 } else {
                     // need to login

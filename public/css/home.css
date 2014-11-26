@@ -47,10 +47,12 @@
   border: 1px solid #a9a9a9;
   font-size: 16px;
   padding-left: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .search-submit-button {
-  background: #ff5a5f;
+  background: #26d6aa;
   height: 44px;
   border: none;
   font-size: 18px;
@@ -58,6 +60,8 @@
   padding-left: 16px;
   padding-right: 16px;
   cursor: pointer;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .discover-headline{

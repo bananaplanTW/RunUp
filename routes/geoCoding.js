@@ -57,7 +57,8 @@ router.get("/", function (req, res) {
 				'Content-Type' : 'application/json'
 			});
 			var result = {
-				status : "Cannot Find Address"
+				status : "NOTFOUND",
+				message : "找不到地址"
 			};
 			res.write(JSON.stringify(result));
 			res.end();

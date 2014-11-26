@@ -19,7 +19,7 @@
       <div class="post-group clear-float">
         <div class="col-half pb-50">
           <div class="post-group-section description-item">
-            <h2>Post Your Group!</h2>
+            <h2>登錄你的跑團！</h2>
           </div>
           <form id="create-group" action="/post/group" method="POST" enctype="multipart/form-data">
             <div class="post-group-section clear-float">
@@ -63,8 +63,8 @@
               <input id="country_short" class="input-box col-8 display-none" type="text" name="country_short"/>
             </div>
             <div class="post-group-section clear-float">
-              <span class="input-title col-4">首頁照片<em>*</em></span>
-              <input id="cover-photo" class="col-8 " type="file" name="cover_photo" accept="image/*"/>
+              <span class="input-title col-4">封面照片<em>*</em></span>
+              <input id="cover-photo" class="col-8 " type="file" name="cover_photo" accept="image/*"/><span class="hint">上限為1mb<span>
             </div>
             <div id="schedule-container" class="post-group-section clear-float">
               <span class="input-title col-4">團跑行程</span>
@@ -90,7 +90,7 @@
                   <option value="5">5</option>
                   <option value="6">6</option>
                   <option value="7">7</option>
-                  <option value="8">8</option>
+                  <option value="8" selected>8</option>
                   <option value="9">9</option>
                   <option value="10">10</option>
                   <option value="11">11</option>
@@ -122,11 +122,6 @@
     </div>
 
     {>"templates/signup-options"/}
-    {#data.warning}
-      <script type="text/javascript">
-        alert("\"" + {data.warning} + "\"");
-      </script>
-    {/data.warning}
   </body>
   <script type="text/javascript" src="/js/google-map.js"></script>
   <script type="text/javascript" src="/js/ajax.js"></script>
@@ -134,4 +129,9 @@
   <script type="text/javascript" src="/js/signup.js"></script>
   <script type="text/javascript" src="/js/fb-login.js"></script>
   <script type="text/javascript" src="/js/post.js"></script>
+  {#data.warning}
+    <script type="text/javascript">
+      alert("{data.warning}");
+    </script>
+  {/data.warning}
 </html>
