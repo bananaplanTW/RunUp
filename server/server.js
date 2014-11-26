@@ -6,6 +6,7 @@ var express = require('express'),
     MongoStore = require('connect-mongo')(session),
     looger = require('morgan'),
     path = require('path'),
+    fs = require('fs'),
     methodOverride = require('method-override'),
     dust_engine = require('dustjs-linkedin'),
     dust_helper = require('dustjs-helpers'),
@@ -38,7 +39,14 @@ cons.dust.debugLevel = 'DEBUG';
 app.use(bodyParser.json());
 app.use(multer({
     dest: path.join(__dirname, '../public/assets/images/uploads'), 
-    fileSize: 1000,
+    limits: {
+        fileSize: 1000000// 1mb
+    },
+    onFileSizeLimit: function (file) {
+        console.log('Failed: ', file.originalname)
+        fs.unlink('' + file.path);
+        file.overLimit = true;
+    },
     onFileUploadStart: function (file) {
         console.log("file starts to upload");
     }}));
@@ -71,3 +79,4 @@ app.use(error);
 app.listen(app.get('port'), function () {
 	console.log("server now listen to port", app.get('port'));
 });
+

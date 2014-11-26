@@ -25,7 +25,8 @@
     "connect-mongo" : "*",
     "express-session": "*",
     "multer": "*",
-    "bcryptjs": "*"
+    "bcryptjs": "*",
+    "request": "*"
   }
 }
 

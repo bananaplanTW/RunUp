@@ -1,8 +1,12 @@
 var express = require('express'),
     router  = express.Router(),
     util = require('util'),
+    fs = require('fs'),
+    request = require('request'),
+    crypto = require('crypto'),
     moduleLogin = require('../modules/ModuleLogin').getInstance(),
     HttpsGet = require('../lib/HttpsGet'),
+    HTTPSRequest = require('../lib/HttpsRequest'),
     ModuleMysql = require('../modules/ModuleMysql').getInstance(),
     fs = require('fs'),
     multer = require('multer'),
@@ -38,7 +42,16 @@ router.get("/", function (req, res) {
 router.post("/group", function (req, res) {
     var groupInfo = req.body;
     if (req.user) {
-	    var userId = req.user.id;
+    	console.log(req.files);
+	    if (req.files.cover_photo.overLimit) {
+	    	var data = {
+	    		warning: "照片請小於1mb"
+	    	};
+	    	res.render("post", {data: data});
+	    	return;
+	    }
+
+		var userId = req.user.id;
 	    var coverPhotoName = req.files.cover_photo.name;
 	    getCountry(groupInfo, function (countryId) {
 	    	getState(groupInfo, countryId, function (stateId) {
@@ -56,7 +69,15 @@ router.post("/group", function (req, res) {
 	    							console.log(error);
 	    						}
 	    						constructSearchIndexTable.update();
-	    						res.redirect("/g/" + groupData.groupId);
+	    						savePhotoToImageServer(req.files, function (__error, result) {
+	    							if (__error) {
+	    								res.redirect("/g/" + groupData.groupId);
+	    								console.log(__error);
+	    								return;
+	    							}
+	    							res.redirect("/g/" + groupData.groupId);
+	    						});
+	    						
 	    					})
 	    				});
 	    			});
@@ -67,6 +88,24 @@ router.post("/group", function (req, res) {
 		res.render("post");
 	}
 });
+
+function savePhotoToImageServer (files, callback) {
+	var formData = {
+		my_field: 'my_value',
+		my_buffer: new Buffer([1,2,3]),
+		my_file: fs.createReadStream(files.cover_photo.path)
+	}
+	request.post({url:'http:\/\/image.bitnamiapp.com:3000\/upload', formData: formData}, function (error, response, body) {
+		if (error) {
+			console.log(error);
+			callback(error, null);
+			return;
+		}
+		callback(null, {status: "OK"});
+	});
+}
+
+//savePhotoToImageServer();
 
 function createGroup (groupInfo, countryId, stateId, countyId, cityId, userId, coverPhotoName, callback) {
 	var groupName   = encodeURIComponent(groupInfo.group_name);
@@ -79,7 +118,7 @@ function createGroup (groupInfo, countryId, stateId, countyId, cityId, userId, c
 	var payment     = typeof(groupInfo.payment) === 'undefined'? "Free" : encodeURIComponent(groupInfo.payment);
 	var lat         = groupInfo.lat;
 	var lng         = groupInfo.lng;
-	var coverPhotoPath = "/assets/images/uploads/" + coverPhotoName;
+	var coverPhotoPath = coverPhotoName;
 	var queryString = util.format(insertToRunningGroupQuery, groupId, groupName, contact, email, website, cityId, countyId, stateId, countryId, address, lat, lng, userId, coverPhotoPath, description, payment);
 
 	ModuleMysql.execute(queryString, function (error, rows) {

@@ -109,7 +109,7 @@ function ajaxGet () {
 
 window.fbAsyncInit = function() {
     FB.init({
-        appId      : '816452901748097',
+        appId      : '708954652520589',
         cookie     : true,  // enable cookies to allow the server to access 
                             // the session
         xfbml      : true,  // parse social plugins on this page

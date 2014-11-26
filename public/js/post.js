@@ -68,6 +68,8 @@ function bindPost (map) {
                         removeClassName.call(createGroupElements['email'], "red-bottom-line");
                     }
 
+console.log(createGroupElements['cover-photo'].size);
+debugger;
                     if (!createGroupElements['cover-photo'].value) {
                         addClassName.call(createGroupElements['cover-photo'], "red-bottom-line");
                         isPass = false;
