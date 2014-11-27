@@ -25,43 +25,43 @@
           <form id="create-group" action="/post/group" method="POST" enctype="multipart/form-data">
             <div class="post-group-section clear-float">
               <span class="input-title col-4">跑團名稱<em>*</em></span>
-              <input id="group-name" class="input-box col-8" type="text" name="group_name" placeholder="愛跑步"/>
+              <input id="group-name" class="post-input-box col-8" type="text" name="group_name" placeholder="愛跑步"/>
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">跑步地址/位置<em>*</em></span>
-              <input id="address" class="input-box col-8" type="text" name="address"placeholder="中正紀念堂"/>
+              <input id="address" class="post-input-box col-8" type="text" name="address"placeholder="中正紀念堂"/>
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">電話<em>*</em></span>
-              <input id="contact" class="input-box col-8" type="text" name="contact" placeholder="0000-000-000"/>
+              <input id="contact" class="post-input-box col-8" type="text" name="contact" placeholder="0000-000-000"/>
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">Email<em>*</em></span>
-              <input id="email" class="input-box col-8" type="text" name="email" placeholder="example@bananaplan.com"/>
+              <input id="email" class="post-input-box col-8" type="text" name="email" placeholder="example@bananaplan.com"/>
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">描述您的跑團</span>
-              <textarea id="description" class="input-box col-8 description" type="text" name="description" row="40" col="3" placeholder="描述您的跑團"></textarea>
-              <!--input id="description" class="input-box col-8 description" type="text" name="description"/-->
+              <textarea id="description" class="post-input-box col-8 description" type="text" name="description" row="40" col="3" placeholder="描述您的跑團"></textarea>
+              <!--input id="description" class="post-input-box col-8 description" type="text" name="description"/-->
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">網站</span>
-              <input id="website" class="input-box col-8" type="text" name="website" placeholder="www.example.com"/>
+              <input id="website" class="post-input-box col-8" type="text" name="website" placeholder="www.example.com"/>
             </div>
             
             <div class="post-group-section clear-float">
               <span class="input-title col-4">費用</span>
-              <input id="payment" class="input-box col-8" type="text" name="payment" placeholder="費用資訊，空白為免費"/>
+              <input id="payment" class="post-input-box col-8" type="text" name="payment" placeholder="費用資訊，空白為免費"/>
             </div>
             <div class="post-group-section clear-float">
-              <input id="lat" class="input-box col-8 display-none" type="text" name="lat"/>
-              <input id="lng" class="input-box col-8 display-none" type="text" name="lng"/>
-              <input id="city" class="input-box col-8 display-none" type="text" name="city"/>
-              <input id="county" class="input-box col-8 display-none" type="text" name="county"/>
-              <input id="state" class="input-box col-8 display-none" type="text" name="state"/>
-              <input id="state_short" class="input-box col-8 display-none" type="text" name="state_short"/>
-              <input id="country" class="input-box col-8 display-none" type="text" name="country"/>
-              <input id="country_short" class="input-box col-8 display-none" type="text" name="country_short"/>
+              <input id="lat" class="post-input-box col-8 display-none" type="text" name="lat"/>
+              <input id="lng" class="post-input-box col-8 display-none" type="text" name="lng"/>
+              <input id="city" class="post-input-box col-8 display-none" type="text" name="city"/>
+              <input id="county" class="post-input-box col-8 display-none" type="text" name="county"/>
+              <input id="state" class="post-input-box col-8 display-none" type="text" name="state"/>
+              <input id="state_short" class="post-input-box col-8 display-none" type="text" name="state_short"/>
+              <input id="country" class="post-input-box col-8 display-none" type="text" name="country"/>
+              <input id="country_short" class="post-input-box col-8 display-none" type="text" name="country_short"/>
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">封面照片<em>*</em></span>
@@ -70,7 +70,7 @@
             <div id="schedule-container" class="post-group-section clear-float">
               <span class="input-title col-4">團跑行程</span>
               <div id="schedule-selector" class="col-8 fl-r">
-                <select id="day" name="day" class="input-box day-selector">
+                <select id="day" name="day" class="post-input-box day-selector">
                   <option value="0">禮拜日</option>
                   <option value="1">禮拜一</option>
                   <option value="2">禮拜二</option>
@@ -79,11 +79,11 @@
                   <option value="5">禮拜五</option>
                   <option value="6">禮拜六</option>
                 </select>
-                <select id="ampm" name="ampm" class="input-box time-selector nm-left nm-right">
+                <select id="ampm" name="ampm" class="post-input-box time-selector nm-left nm-right">
                   <option value="0">am</option>
                   <option value="1">pm</option>
                 </select>
-                <select id="hour" name="hour" class="input-box time-selector">
+                <select id="hour" name="hour" class="post-input-box time-selector">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -97,7 +97,7 @@
                   <option value="11">11</option>
                   <option value="12">12</option>
                 </select>:
-                <select id="minute" name="minute" class="input-box time-selector">
+                <select id="minute" name="minute" class="post-input-box time-selector">
                   <option value="0">00</option>
                   <option value="15">15</option>
                   <option value="30">30</option>

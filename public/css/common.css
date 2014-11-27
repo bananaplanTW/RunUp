@@ -57,6 +57,7 @@
 
 .clickable:hover {
   opacity: 0.85;
+  cursor: pointer;;
 }
 
 .clear-float:after {

@@ -20,6 +20,7 @@ var express = require('express'),
     logout = require('../routes/logout'),
     join = require('../routes/join'),
     home = require('../routes/home'),
+    email = require('../routes/email'),
     region = require('../routes/region'),
     search = require('../routes/search'),
     post = require('../routes/post'),
@@ -66,6 +67,7 @@ app.use('/fblogin', fblogin);
 app.use('/signup', bodyParser.urlencoded(), signup);
 app.use('/login', bodyParser.urlencoded(), login);
 app.use('/logout', logout);
+app.use('/email', email);
 app.use('/join', join);
 app.use('/search', search);
 app.use('/s', search);

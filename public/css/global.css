@@ -115,7 +115,7 @@ em {
   font-size: 20px;
   display: table-cell;
   vertical-align: middle;
-  text-align: center;
+  padding-left: 20px;
 }
 
 .push-to-right{
@@ -239,7 +239,7 @@ em {
   z-index: 15;
 }
 
-.signup-title {
+.signup-title, .popup-title {
   margin-bottom: 20px;
   margin-top: 30px;
   font-size: 20px;
@@ -247,7 +247,7 @@ em {
   line-height: 18px;
 }
 
-.signup-input-box {
+.signup-input-box, .input-box {
   width: 240px;
   height: 40px;
   margin-top: 5px;
@@ -256,9 +256,9 @@ em {
   padding-left: 10px;
 }
 
-.signup-input-submit {
+.input-submit, .signup-input-submit {
   color: white;
-  background-color: rgb(38, 214, 170);
+  background-color: #26d6aa;
   border: none;
   box-shadow: inset 0px -1px 1px 0px #999999;
 }
@@ -271,4 +271,34 @@ em {
 height: 1px;
 border: 1px solid #000000;
 margin-top: 10px;
+}
+
+.email {
+  color: white;
+  font-size: 20px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.email-popup {
+  width: 500px;
+}
+
+.email-title {
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+
+.email-input-box {
+  width: 400px;
+}
+
+.email-comment {
+  height: 200px;
+}
+
+.email-input-submit {
+  width: 130px;
+  height: 40px;
+  margin-right: 5px;
 }

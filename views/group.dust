@@ -121,12 +121,7 @@
         </div>
       </div>
     </div>
-    
-    <div class="footer">
-      <div class="copy-right-container">
-        <p class="copy-right">Copy rights reserve by Bananaplan</p>
-      </div>
-    </div>
+    {>"templates/footer"/}
     {>"templates/signup-options"/}
   </body>
   <script type="text/javascript" src="/js/google-map.js"></script>

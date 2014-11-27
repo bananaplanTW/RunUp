@@ -66,7 +66,7 @@ router.get('/', function (req, res, next) {
 
 		if (groups.length === 0) {
 			queryString = getSearchQueryString(query, day, time, offset, true);
-			console.log(queryString);
+console.log(queryString);
 			ModuleMysql.execute(queryString, function (error, fullSearchGroups) {
 				if (error) {
 					console.log(error);
@@ -75,7 +75,8 @@ router.get('/', function (req, res, next) {
 				}
 				if (fullSearchGroups.length == 0) {
 					res.render('region', {data: {
-						user: req.user
+						user: req.user,
+						q: query
 					}});
 					return;
 				}
@@ -97,7 +98,7 @@ router.get('/:country_short/:state_short', function (req, res, next) {
 	var page  = req.query.p || '1';
 	var offset = ((parseInt(page) - 1)*10).toString();
 	var queryString = getSearchInARegionQueryString(query, offset, day, time, country_short, state_short, false);
-console.log(queryString);
+	console.log(queryString);
 	ModuleMysql.execute(queryString, function (error, groups) {
 		if (error) {
 			console.log(error);
@@ -116,7 +117,8 @@ console.log(queryString);
 				}
 				if (fullSearchGroups.length == 0) {
 					res.render('region', {data: {
-						user: req.user
+						user: req.user,
+						q: query
 					}});
 					return;
 				}
@@ -263,7 +265,6 @@ console.log(queryString);
 		data.country_short = country_short? country_short : null;
 		data.state_short   = state_short? decodeURIComponent(state_short) : null;
 		data.q = query;
-		console.log(data)
 		res.render('region', {data : data});
 	});
 }
