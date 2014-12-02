@@ -1,7 +1,7 @@
 <div class="footer">
   <div class="copy-right-container">
     <p class="copy-right">Copyrights reserved by BananaPlan</p>
-    <p class="email clickable" id="email">email us</p>
+    <p class="email clickable" id="email">與我們聯繫</p>
   </div>
   
 </div>

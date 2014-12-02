@@ -58,9 +58,9 @@ ul:after {
 .join-button {
   color: white;
   font-size: 36px;
-  padding: 40px 100px;
+  padding: 20px 100px;
   background-color: #ff5a5f;
-  border-radius: 3px;
+  border-radius: 10px;
   text-align: center;
   cursor: pointer;
   box-shadow: inset 0px -1px 3px 0px rgba(0,0,0,0.3);

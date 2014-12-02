@@ -35,6 +35,7 @@ form {
 }
 
 p {
+  word-wrap: break-word;
   margin: 0px;
 }
 
@@ -75,6 +76,10 @@ input[type=checkbox]:checked + label:before {
 em {
   color: red;
 }
+pre {
+  word-wrap: break-word;
+}
+
 
 .logo {
   float: left;
@@ -273,9 +278,15 @@ border: 1px solid #000000;
 margin-top: 10px;
 }
 
+.email:before {
+  content: '\2709';
+  font-size: 35px;
+  vertical-align: top;
+}
+
 .email {
   color: white;
-  font-size: 20px;
+  font-size: 24px;
   display: table-cell;
   vertical-align: middle;
 }

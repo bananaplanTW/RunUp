@@ -93,7 +93,7 @@
                 <p>Website</p>
               </div>
               <div class="col-8">
-                <p>{data.website}</p>
+                <p><a href="{data.website}">{data.website}</a></p>
               </div>
             </div>
           </div>
@@ -101,7 +101,7 @@
         <div class="col-half">
           <div class="row">
             <div class="descrption-area">
-              {data.description}
+              <pre>{data.description}</pre>
             </div>
           </div>
           <div class="row join-button-container display-table">
