@@ -1,12 +1,12 @@
 .email:before {
   content: '\2709';
-  font-size: 35px;
+  font-size: 25px;
   vertical-align: top;
 }
 
 .email {
   color: white;
-  font-size: 24px;
+  font-size: 12px;
   display: table-cell;
   vertical-align: middle;
 }

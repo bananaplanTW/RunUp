@@ -84,6 +84,24 @@ pre {
   word-wrap: break-word;
 }
 
+.top-banner {
+  background-color: white;
+  padding: 10px 20px 10px 20px;
+}
+
+.top-banner:after {
+  clear:both;
+  content:"";
+  display: table;
+}
+
+.fixed-top-banner{
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  border-bottom: 1px solid #DEDEDE;
+  top: 0px;
+}
 
 .logo {
   float: left;
@@ -102,9 +120,9 @@ pre {
 }
 
 .footer {
-  margin-top: 50px;
-  height: 100px;
-  background-color: #26d6aa;
+  /*margin-top: 50px;*/
+  height: 30px;
+  background-color: #808080;
 }
 
 .login, .signup, .logout, .post {
@@ -120,8 +138,10 @@ pre {
 }
 
 .copy-right{
-  color: white;
-  font-size: 20px;
+  font-family: Futura-CondensedMedium;
+  font-size: 12px;
+  color: #F2F2F2;
+  line-height: 15px;
   display: table-cell;
   vertical-align: middle;
   padding-left: 20px;
@@ -138,3 +158,4 @@ pre {
   vertical-align: middle;
   display: table-cell;
 }
+

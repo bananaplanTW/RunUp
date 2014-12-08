@@ -8,6 +8,16 @@ ul:after {
   display: table;
 }
 
+.group-teasor {
+  width: 100%;
+  height: 500px;
+  min-width: 700px;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
 .member-list-container {
   height: 40px;
 }

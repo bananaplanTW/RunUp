@@ -17,7 +17,7 @@
   {>"templates/title-favicon"/}
   <body onload="">
     {>"templates/top-banner"/}
-    <div class="teaser">
+    <div class="group-teasor">
       <div class="discover-photo" style="background-image:url('http://image.bitnamiapp.com:3000/assets/images/uploads/{data.cover_photo}')"></div>
     </div>
     <div class="main-container center-rail">

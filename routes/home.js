@@ -18,7 +18,7 @@ router.get('/', function (req, res) {
 		data.states = rows;
 		data.user = req.user;
 		console.log(data.user);
-		res.render('home', {data : data});
+		res.render('home2', {data : data});
 	});
 });
 

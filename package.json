@@ -7,6 +7,9 @@
   },
   "dependencies": {
     "express": "4.x",
+    "grunt": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-watch": "*",
     "dustjs-linkedin": "*",
     "dustjs-helpers": "*",
     "consolidate": "*",
