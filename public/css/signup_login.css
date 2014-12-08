@@ -1,0 +1,43 @@
+.social-logins {
+  text-align: center;
+}
+
+.social-logins ul {
+  display: inline-block;
+}
+
+.fb-login {
+  padding: 15px 20px;
+  background-color:  #3b5998;
+  border-radius: 2px;
+  color: white;
+  cursor: pointer;
+  display: table;
+  width: 240px;
+}
+
+.fb-login:hover {
+  background-color: #4568b2;
+}
+
+.fb-login-icon {
+  display: table-cell;
+  width: 20px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.fb-login-string {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.signup-by-creating {
+  margin-top: 20px;
+}
+
+.signup-by-creating:before {
+height: 1px;
+border: 1px solid #000000;
+margin-top: 10px;
+}

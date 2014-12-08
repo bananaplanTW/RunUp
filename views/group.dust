@@ -7,6 +7,9 @@
     <link rel="stylesheet" type="text/css" href="/css/google-map.css">
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/filter.css">
+    <link rel="stylesheet" type="text/css" href="/css/layout.css">
+    <link rel="stylesheet" type="text/css" href="/css/signup_login.css">
+    <link rel="stylesheet" type="text/css" href="/css/email.css">
     <link rel="stylesheet" type="text/css" href="/css/basic.css">
     <link rel="stylesheet" type="text/css" href="/css/member.css">
     <link rel="stylesheet" type="text/css" href="/css/group.css">
@@ -93,7 +96,12 @@
                 <p>Website</p>
               </div>
               <div class="col-8">
-                <p><a href="{data.website}">{data.website}</a></p>
+                {@eq key=data.website value="N/A"}
+                  <p>{data.website}</p>
+                {:else}
+                  <p><a href="{data.website}">{data.website}</a></p>
+                {/eq}
+                
               </div>
             </div>
           </div>
@@ -131,4 +139,5 @@
   <script type="text/javascript" src="/js/common.js"></script>
   <script type="text/javascript" src="/js/signup.js"></script>
   <script type="text/javascript" src="/js/fb-login.js"></script>
+  <script type="text/javascript" src="/js/email.js"></script>
 </html>

@@ -1,0 +1,35 @@
+.email:before {
+  content: '\2709';
+  font-size: 35px;
+  vertical-align: top;
+}
+
+.email {
+  color: white;
+  font-size: 24px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.email-popup {
+  width: 500px;
+}
+
+.email-title {
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+
+.email-input-box {
+  width: 400px;
+}
+
+.email-comment {
+  height: 200px;
+}
+
+.email-input-submit {
+  width: 130px;
+  height: 40px;
+  margin-right: 5px;
+}

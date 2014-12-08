@@ -1,0 +1,51 @@
+.col-8 {
+  position: relative;
+  float: left;
+  width: 66.66667%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.col-4 {
+  position: relative;
+  float: left;
+  width: 33.33333%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.col-half {
+  position: relative;
+  float: left;
+  width: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.col-all {
+  position: relative;
+  float: left;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+.row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.push-to-back {
+  z-index: -1;
+}
+
+.push-to-right{
+  float: right;
+  padding: 0px;
+  margin: 0px 10px 0px 10px;
+}

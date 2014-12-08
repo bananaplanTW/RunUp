@@ -10,8 +10,11 @@
     <link rel="stylesheet" type="text/css" href="/css/post.css">
     <link rel="stylesheet" type="text/css" href="/css/filter.css">
     <link rel="stylesheet" type="text/css" href="/css/group.css">
+    <link rel="stylesheet" type="text/css" href="/css/layout.css">
     <link rel="stylesheet" type="text/css" href="/css/basic.css">
     <link rel="stylesheet" type="text/css" href="/css/member.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/signup_login.css">
   </head>
   {>"templates/title-favicon"/}
   <body onload="">

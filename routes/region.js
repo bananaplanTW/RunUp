@@ -23,7 +23,7 @@ router.get('/:country/:state', function (req, res, next) {
 		}
 		if (groups.length == 0) {
 			data.user = req.user;
-			res.render('region', {data: data});
+			res.render('search', {data: data});
 			return;
 		}
 
@@ -77,7 +77,7 @@ router.get('/:country/:state', function (req, res, next) {
 			data.user = req.user;
 			data.country_short = country;
 			data.state_short = decodeURIComponent(state);
-			res.render('region', {data : data});
+			res.render('search', {data : data});
 		});
 
 	});
@@ -107,7 +107,7 @@ router.get('/:country/:state/:city', function (req, res, next) {
 			data.nextPage = parseInt(page) + 1;
 		}
 		data.user = req.user;
-		res.render('region', {data : data});
+		res.render('search', {data : data});
 	});
 });
 

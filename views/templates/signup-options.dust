@@ -1,7 +1,7 @@
 <div id="signup-popup-container" class="focus-page">
   <div class="popup-container">
     <div id="signup-popup" class="popup">
-      <div id="signup-title" class="signup-title">
+      <div id="signup-title" class="popup-title">
         Please Login!
       </div>
       <div class="social-logins">
@@ -12,27 +12,27 @@
           </li>
         </ul>
       </div>
-      <div id="signup-title" class="signup-title">
+      <div id="signup-title" class="popup-title">
         Login with Email
       </div>
       <div class="signup-by-creating">
         <div>
           <form id="email-login-form" action="/login" method="POST" enctype="application/json">
-            <input id="account" name="account" class="signup-input-box" type="text" placeholder="example@example.com"/>
-            <input id="password" name="password" class="signup-input-box" type="password" placeholder="password"/>
-            <input id="email-login" class="signup-input-box signup-input-submit" type="button" value="Login"/>
+            <input id="account" name="account" class="input-box" type="text" placeholder="example@example.com"/>
+            <input id="password" name="password" class="input-box" type="password" placeholder="password"/>
+            <input id="email-login" class="input-box input-submit" type="button" value="Login"/>
           </form> 
         </div>
       </div>
-      <div id="signup-title" class="signup-title">
+      <div id="signup-title" class="popup-title">
         Signup with Email
       </div>
       <div class="signup-by-creating">
         <div>
           <form id="email-signup-form" action="/signup" method="POST" enctype="application/json">
-            <input id="account" name="account" class="signup-input-box" type="text" placeholder="example@example.com"/>
-            <input id="password" name="password" class="signup-input-box" type="password" placeholder="password"/>
-            <input id="email-signup" class="signup-input-box signup-input-submit" type="button" value="Signup"/>
+            <input id="account" name="account" class="input-box" type="text" placeholder="example@example.com"/>
+            <input id="password" name="password" class="input-box" type="password" placeholder="password"/>
+            <input id="email-signup" class="input-box input-submit" type="button" value="Signup"/>
           </form> 
         </div>
       </div>

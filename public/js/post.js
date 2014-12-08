@@ -2,14 +2,14 @@ function bindPost (map) {
     var that = this;
     var address = document.getElementById('address');
     var geoCodingResult = {};
-    console.log('focusout');
+    //console.log('focusout');
     address.addEventListener('blur', function (e) {
         if (address.value) {
             var addressString = "address=" + address.value;
             getAjax("/getGeoCoding", addressString, function (XHR, status) {
                 if (XHR.readyState === 4 && XHR.status == 200) {
                     geoCodingResult = JSON.parse(XHR.response);
-                    console.log(geoCodingResult);
+                    //console.log(geoCodingResult);
                     if (geoCodingResult.status === "NOTFOUND") {
                         alert(geoCodingResult.message);
                     } else {
@@ -33,6 +33,10 @@ function bindPost (map) {
 
     var createGroupForm    = document.getElementById('create-group');
     var submitButton       = document.getElementById('submit-button');
+
+    createGroupForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+    });
 
     submitButton.addEventListener('click', function (e) {
         getAjax("/status", "", function(XHR, status) {

@@ -51,7 +51,7 @@ router.get('/', function (req, res, next) {
 	var queryString = getSearchQueryString(query, day, time, offset, false);
 	console.log(queryString);
 	if (!query) {
-		res.render('region', {data: {
+		res.render('search', {data: {
 			user: req.user
 		}});
 		return;
@@ -74,7 +74,7 @@ console.log(queryString);
 					return;
 				}
 				if (fullSearchGroups.length == 0) {
-					res.render('region', {data: {
+					res.render('search', {data: {
 						user: req.user,
 						q: query
 					}});
@@ -116,7 +116,7 @@ router.get('/:country_short/:state_short', function (req, res, next) {
 					return;
 				}
 				if (fullSearchGroups.length == 0) {
-					res.render('region', {data: {
+					res.render('search', {data: {
 						user: req.user,
 						q: query
 					}});
@@ -265,7 +265,7 @@ console.log(queryString);
 		data.country_short = country_short? country_short : null;
 		data.state_short   = state_short? decodeURIComponent(state_short) : null;
 		data.q = query;
-		res.render('region', {data : data});
+		res.render('search', {data : data});
 	});
 }
 
