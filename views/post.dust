@@ -6,11 +6,11 @@
     <link rel="stylesheet" type="text/css" href="/css/global.css">
     <link rel="stylesheet" type="text/css" href="/css/home.css">
     <link rel="stylesheet" type="text/css" href="/css/google-map.css">
+    <link rel="stylesheet" type="text/css" href="/css/layout.css">
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/post.css">
     <link rel="stylesheet" type="text/css" href="/css/filter.css">
     <link rel="stylesheet" type="text/css" href="/css/group.css">
-    <link rel="stylesheet" type="text/css" href="/css/layout.css">
     <link rel="stylesheet" type="text/css" href="/css/basic.css">
     <link rel="stylesheet" type="text/css" href="/css/member.css">
     
@@ -19,112 +19,205 @@
   {>"templates/title-favicon"/}
   <body onload="">
     {>"templates/top-banner"/}
-    <div class="main-container">
-      <div class="post-group clear-float">
-        <div class="col-half pb-50">
-          <div class="post-group-section description-item">
-            <h2>登錄你的跑團！</h2>
-          </div>
+    <div class="main-container" id="step-by-step-container">
+      <div class="col-8 horizontal-align-center progress-container">
+        <span class="progress-icon-container">
+          <span class="progress-icon-title">Sign up</span>
+          <span class="progress-icon in-progress">1</span>
+        </span>
+        
+        {?data.user}
+        <span class="progress-line done"></span>
+        <span class="progress-icon-container">
+          <span class="progress-icon-title">Sign up group</span>
+          <span class="progress-icon in-progress">2</span>
+        </span>
+        {:else}
+        <span class="progress-line not-done"></span>
+        <span class="progress-icon-container">
+          <span class="progress-icon-title">Sign up group</span>
+          <span class="progress-icon next-step">2</span>
+        </span>
+        {/data.user}
+      </div>
+      {?data.user}
+      <div class="post-group step-by-step-item clear-float">
+        <div class="col-8 pb-50">
           <form id="create-group" action="/post/group" method="POST" enctype="multipart/form-data">
             <div class="post-group-section clear-float">
               <span class="input-title col-4">跑團名稱<em>*</em></span>
-              <input id="group-name" class="post-input-box col-8" type="text" name="group_name" placeholder="愛跑步"/>
+              <input id="group-name" class="post-input-box round-corner-input-box col-half" type="text" name="group_name" placeholder="愛跑步"/>
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">跑步地址/位置<em>*</em></span>
-              <input id="address" class="post-input-box col-8" type="text" name="address"placeholder="中正紀念堂"/>
+              <input id="address" class="post-input-box round-corner-input-box col-half" type="text" name="address"placeholder="中正紀念堂"/>
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">電話<em>*</em></span>
-              <input id="contact" class="post-input-box col-8" type="text" name="contact" placeholder="0000-000-000"/>
+              <input id="contact" class="post-input-box round-corner-input-box col-half" type="text" name="contact" placeholder="0000-000-000"/>
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">Email<em>*</em></span>
-              <input id="email" class="post-input-box col-8" type="text" name="email" placeholder="example@bananaplan.com"/>
+              <input id="email" class="post-input-box round-corner-input-box col-half" type="text" name="email" placeholder="example@bananaplan.com"/>
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">描述您的跑團</span>
-              <textarea id="description" class="post-input-box col-8 description" type="text" name="description" row="40" col="3" placeholder="描述您的跑團"></textarea>
+              <textarea id="description" class="post-input-box round-corner-input-box col-half description" type="text" name="description" row="40" col="3" placeholder="描述您的跑團"></textarea>
               <!--input id="description" class="post-input-box col-8 description" type="text" name="description"/-->
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">網站</span>
-              <input id="website" class="post-input-box col-8" type="text" name="website" placeholder="www.example.com"/>
+              <input id="website" class="post-input-box round-corner-input-box col-half" type="text" name="website" placeholder="www.example.com"/>
             </div>
             
             <div class="post-group-section clear-float">
               <span class="input-title col-4">費用</span>
-              <input id="payment" class="post-input-box col-8" type="text" name="payment" placeholder="費用資訊，空白為免費"/>
+              <input id="payment" class="post-input-box round-corner-input-box col-half" type="text" name="payment" placeholder="費用資訊，空白為免費"/>
             </div>
             <div class="post-group-section clear-float">
-              <input id="lat" class="post-input-box col-8 display-none" type="text" name="lat"/>
-              <input id="lng" class="post-input-box col-8 display-none" type="text" name="lng"/>
-              <input id="city" class="post-input-box col-8 display-none" type="text" name="city"/>
-              <input id="county" class="post-input-box col-8 display-none" type="text" name="county"/>
-              <input id="state" class="post-input-box col-8 display-none" type="text" name="state"/>
-              <input id="state_short" class="post-input-box col-8 display-none" type="text" name="state_short"/>
-              <input id="country" class="post-input-box col-8 display-none" type="text" name="country"/>
-              <input id="country_short" class="post-input-box col-8 display-none" type="text" name="country_short"/>
+              <input id="lat" class="post-input-box col-8 d-n" type="text" name="lat"/>
+              <input id="lng" class="post-input-box col-8 d-n" type="text" name="lng"/>
+              <input id="city" class="post-input-box col-8 d-n" type="text" name="city"/>
+              <input id="county" class="post-input-box col-8 d-n" type="text" name="county"/>
+              <input id="state" class="post-input-box col-8 d-n" type="text" name="state"/>
+              <input id="state_short" class="post-input-box col-8 d-n" type="text" name="state_short"/>
+              <input id="country" class="post-input-box col-8 d-n" type="text" name="country"/>
+              <input id="country_short" class="post-input-box col-8 d-n" type="text" name="country_short"/>
             </div>
             <div class="post-group-section clear-float">
               <span class="input-title col-4">封面照片<em>*</em></span>
-              <input id="cover-photo" class="col-8 " type="file" name="cover_photo" accept="image/*"/><span class="hint">上限為1mb<span>
-            </div>
-            <div id="schedule-container" class="post-group-section clear-float">
-              <span class="input-title col-4">團跑行程</span>
-              <div id="schedule-selector" class="col-8 fl-r">
-                <select id="day" name="day" class="post-input-box day-selector">
-                  <option value="0">禮拜日</option>
-                  <option value="1">禮拜一</option>
-                  <option value="2">禮拜二</option>
-                  <option value="3">禮拜三</option>
-                  <option value="4">禮拜四</option>
-                  <option value="5">禮拜五</option>
-                  <option value="6">禮拜六</option>
-                </select>
-                <select id="ampm" name="ampm" class="post-input-box time-selector nm-left nm-right">
-                  <option value="0">am</option>
-                  <option value="1">pm</option>
-                </select>
-                <select id="hour" name="hour" class="post-input-box time-selector">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8" selected>8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                </select>:
-                <select id="minute" name="minute" class="post-input-box time-selector">
-                  <option value="0">00</option>
-                  <option value="15">15</option>
-                  <option value="30">30</option>
-                  <option value="45">45</option>
-                </select>
-                <button id="delete-time-slot" class="input-button input-delete-button fl-r clickable display-none">x</button>
+              <div class="col-half">
+                <input id="cover-photo" type="file" name="cover_photo" accept="image/*"/><span class="hint">上限為1mb<span>
               </div>
             </div>
-            <div class="post-group-section clear-float">
-              <button id="add-time-slot" class="input-button input-add-button col-8 fl-r clickable">+</button>
+            <div id="" class="post-group-section clear-float">
+              <span class="input-title col-4">團跑行程</span>
+              <div id="schedule-container" class="col-half">
+                <div id="schedule-selector" class="col-all">
+                  <select id="day" name="day" class="post-input-box round-corner-input-box day-selector">
+                    <option value="0">禮拜日</option>
+                    <option value="1">禮拜一</option>
+                    <option value="2">禮拜二</option>
+                    <option value="3">禮拜三</option>
+                    <option value="4">禮拜四</option>
+                    <option value="5">禮拜五</option>
+                    <option value="6">禮拜六</option>
+                  </select>
+                  <select id="ampm" name="ampm" class="post-input-box round-corner-input-box time-selector nm-left nm-right">
+                    <option value="0">am</option>
+                    <option value="1">pm</option>
+                  </select>
+                  <select id="hour" name="hour" class="post-input-box round-corner-input-box time-selector">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8" selected>8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>:
+                  <select id="minute" name="minute" class="post-input-box round-corner-input-box time-selector">
+                    <option value="0">00</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                    <option value="45">45</option>
+                  </select>
+                  <button id="delete-time-slot" class="input-delete-button clickable d-n">x</button>
+                </div>
+              </div>
+              <button id="add-time-slot" class="input-add-button clickable">+</button>
             </div>
+            <div class="post-group-section clear-float">
+              <span class="input-title col-4">哪些功能你比較想要？（選擇兩種）</span>
+              <div class="col-8">
+                <span class="post-group-section checkbox-item">
+                  <input id="social" class="feature-checkbox" name="social" type="checkbox"/><label for="social">Social (finding runners/groups nearby.)</label>
+                </span>
+                <span class="post-group-section checkbox-item">
+                  <input id="record" class="feature-checkbox" name="record" type="checkbox"/><label for="record">Record (recording stats and show it on both PC and mobile.)</label>
+                </span>
+                <span class="post-group-section checkbox-item">
+                  <input id="groupmanagemant" class="feature-checkbox" name="groupmanagemant" type="checkbox"/><label for="groupmanagemant">Group Management (event notification, group page, post and share.)</label>
+                </span>
+                <span class="post-group-section checkbox-item">
+                  <input id="information" class="feature-checkbox" name="information" type="checkbox"/><label for="information">Information (contest, fitness information, experience from other members.)</label>
+                </span>
+                <span class="post-group-section checkbox-item">
+                  <input id="competition" class="feature-checkbox" name="competition" type="checkbox"/><label for="competition">Competition (competing with other group members)</label>
+                </span>
+                <span class="post-group-section checkbox-item">
+                  <input id="coupon" class="feature-checkbox" name="coupon" type="checkbox"/><label for="coupon">Coupon (earning shoes or sport equipment coupon by running)</label>
+                </span>
+              </div>
+            </div>
+            <!--div class="post-group-section clear-float">
+              <button id="add-time-slot" class="input-button input-add-button col-8 fl-r clickable">+</button>
+            </div-->
           </form>
+        </div>
+        <div class="col-4">
+          <!--div class="post-group-section description-item"-->
+          <div class="post-map">
+            <div id="map-canvas" class="map-canvas"></div>
+          </div>
           <div class="post-group-section clear-float">
-            <button id="submit-button" class="input-button clickable col-8 fl-r">送出!</button>
+            <button id="no-group" class="runup-grey-button no-group w-100">I don't have group</button>
+            <p class="no-group-description">*Can't get 3 months free premium if you choose this</p>
           </div>
         </div>
-        <div class="col-half">
-          <div class="map">
-            <div id="map-canvas" class="map-canvas"></div>
+        <!--/div-->
+      </div>
+      <div class="row">
+        <div class="post-group col-8 horizontal-align-center">
+          <div class="post-group-section clear-float">
+            <button id="submit-button" class="runup-grey-button clickable fl-r">送出</button>
           </div>
         </div>
       </div>
+      {:else}
+      <div class="signup-login step-by-step-item clear-float">
+        <div class="col-half horizontal-align-center">
+          <div class="signup-login-section">
+            此帳號將擁有社團控制權
+          </div>
+          <div class="signup-login-section">
+            <form id="post-email-signup-form" method="POST">
+              <div class="post-group-section clear-float">
+                <span class="input-title col-4">Email帳號</span>
+                <input id="account" class="col-half post-input-box  round-corner-input-box" type="text" name="account" placeholder="example@123.com"/>
+              </div>
+              <div class="post-group-section clear-float">
+                <span class="input-title col-4">密碼</span>
+                <input id="password" class="col-half post-input-box  round-corner-input-box" type="password" name="password" placeholder="密碼"/>
+              </div>
+              <div class="post-group-section clear-float">
+                <span class="input-title col-4">請確認密碼</span>
+                <input id="confirm-password" class="col-half post-input-box  round-corner-input-box" type="password" name="confirm-password" placeholder="請確認密碼"/>
+              </div>
+              <div class="post-group-section clear-float">
+                <button id="email-signup" class="email-signup runup-grey-button">SignUp</button>
+              </div>
+            </form>
+              <div class="separator">
+                <hr class="horizontal-line col-4 fl-n d-ib"/><span class="px-10">或者</span><hr class="horizontal-line col-4 fl-n d-ib"/>
+              </div>
+              <div class="post-group-section clear-float">
+                <input id="fb-signup" class="col-half fl-n fb-signup" type="button" value="Signup with Facebook"/>
+              </div>
+              <div class="post-group-section clear-float">
+                <input id="agreeterms" type="checkbox" name="agreeterms"/>
+                <label for="agreeterms" class="agreeterms">我同意Running Area使用條款</label>
+              </div>
+          </div>
+        </div>
+      </div>
+      {/data.user}
     </div>
-
     {>"templates/signup-options"/}
   </body>
   <script type="text/javascript" src="/js/google-map.js"></script>
@@ -132,10 +225,16 @@
   <script type="text/javascript" src="/js/common.js"></script>
   <script type="text/javascript" src="/js/signup.js"></script>
   <script type="text/javascript" src="/js/fb-login.js"></script>
+  <!--script type="text/javascript" src="/js/step-by-step.js"></script-->
+  {?data.user}
   <script type="text/javascript" src="/js/post.js"></script>
+  {:else}
+  <script type="text/javascript" src="/js/post-signup.js"></script>
+  {/data.user}
+  
   {#data.warning}
     <script type="text/javascript">
       alert("{data.warning}");
     </script>
   {/data.warning}
-</html>
+</html></html>

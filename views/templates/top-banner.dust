@@ -3,7 +3,7 @@
   {?data.user}
   <ul id="user" class="push-to-right user">
   {:else}
-  <ul id="user" class="push-to-right user display-none">
+  <ul id="user" class="push-to-right user d-n">
   {/data.user}
     <li id="user-icon">
         <span class="round-face border-icon top-banner-user-head-image">
@@ -14,26 +14,26 @@
           {/data.user.picture}
         </span>
     </li>
-    <li id="logout" class="runup-green-box clickable logout">
+    <li id="logout" class="runup-grey-border-box logout">
         登出
     </li>
   </ul>
 
   {?data.user}
-  <ul id="auth" class="push-to-right auth display-none">
+  <ul id="auth" class="push-to-right auth d-n">
   {:else}
   <ul id="auth" class="push-to-right auth">
   {/data.user}
-    <!--li id="signup" class="runup-green-box clickable signup">
+    <!--li id="signup" class="runup-green-box signup">
         註冊
     </li-->
-    <li id="login" class="runup-green-box clickable login">
+    <li id="login" class="runup-grey-border-box login">
         登入
     </li>
   </ul>
 
   <ul class="push-to-right">
-    <li class="runup-green-box post spread-link-container clickable">
+    <li class="runup-grey-border-box post spread-link-container">
       <a id="post-group" class="spread-link" href="/post"></a>
       登錄您的跑團
     </li>

@@ -28,7 +28,7 @@
                     memberList.insertBefore(memberIcon, memberList.firstChild);
                     console.log(memberHeadIconContainer);
 
-                    joinButton.className += " display-none";
+                    joinButton.className += " d-n";
 
                     alert("恭喜你加入成功! :D");
                 } else if (response.status === 1) {

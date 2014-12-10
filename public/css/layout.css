@@ -14,6 +14,14 @@
   padding-right: 10px;
 }
 
+.col-3 {
+  position: relative;
+  float: left;
+  width: 25%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .col-half {
   position: relative;
   float: left;

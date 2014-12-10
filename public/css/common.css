@@ -16,6 +16,17 @@
   box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.2)
 }
 
+.horizontal-line {
+  border: none;
+  border-bottom: 1px solid #979797;
+}
+
+.horizontal-align-center {
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+}
+
 .top-banner-user-head-image {
   width: 32px;
   height: 32px;
@@ -78,6 +89,7 @@ input.red-bottom-line {
   min-height: 200px;
   margin-bottom: 30px;
   position: relative;
+  top: 70px;
 }
 
 .main-container:after {
@@ -109,8 +121,38 @@ input.red-bottom-line {
   border-radius: 5px;
 }
 
+.runup-grey-border-box {
+  border-radius: 8px;
+  border: 2px solid #CCCCCC;
+  font-family: HelveticaNeue-Thin;
+  font-size: 16px;
+  color: #CCCCCC;
+  line-height: 29px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.runup-grey-border-box:hover {
+  cursor: pointer;
+  border: 2px solid #808080;
+  color: #808080;
+}
+
 .runup-red-box a {
   color: white;
+}
+
+.runup-grey-button {
+  border-radius: 8px;
+  background-color: #EEEEEE;
+  border: 1px solid #808080;
+  font-family: HelveticaNeue-Thin;
+  font-size: 16px;
+  color: #808080;
+  line-height: 29px;
+  padding-left: 50px;
+  padding-right: 50px;
+  cursor: pointer;
 }
 
 .focus-page {
@@ -159,6 +201,22 @@ input.red-bottom-line {
   font-size: 16px;
   border: 1px solid #DEDEDE;
   padding-left: 10px;
+}
+
+.round-corner-input-box {
+  height: 36px;
+  padding-left: 10px;
+  border: 1px solid #8e8e8e;
+  font-size: 16px;
+  border-radius: 7px;
+}
+
+.underline-input-box {
+  height: 36px;
+  padding-top: 6px;
+  border: none;
+  border-bottom: 1px solid #a9a9a9;
+  font-size: 20px;
 }
 
 .input-submit {

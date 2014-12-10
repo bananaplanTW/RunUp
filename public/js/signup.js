@@ -57,7 +57,7 @@
 
                     //replace the login/signup button with head icon
                     var user = document.getElementById("user");
-                    var userClass = user.className.replace(" display-none", "");
+                    var userClass = user.className.replace(" d-n", "");
                     user.setAttribute('class', userClass);
 
                     // setting user head image
@@ -67,7 +67,7 @@
 
                     // hiding signup/login button
                     var auth = document.getElementById("auth");
-                    var authClass = auth.className + " display-none";
+                    var authClass = auth.className + " d-n";
                     auth.setAttribute('class', authClass);
 
                     location.reload();
@@ -116,7 +116,7 @@
 
                     //replace the login/signup button with head icon
                     var user = document.getElementById("user");
-                    var userClass = user.className.replace(" display-none", "");
+                    var userClass = user.className.replace(" d-n", "");
                     user.setAttribute('class', userClass);
 
                     // setting user head image
@@ -126,7 +126,7 @@
 
                     // hiding signup/login button
                     var auth = document.getElementById("auth");
-                    var authClass = auth.className + " display-none";
+                    var authClass = auth.className + " d-n";
                     auth.setAttribute('class', authClass);
 
                     location.reload();

@@ -13,6 +13,7 @@ function bindPost (map) {
                     if (geoCodingResult.status === "NOTFOUND") {
                         alert(geoCodingResult.message);
                     } else {
+                        google.maps.event.trigger(map, 'resize');
                         bindFormInputs(geoCodingResult);
                         var latlng = new google.maps.LatLng(geoCodingResult.lat, geoCodingResult.lng);
                         if (!that.marker) {
@@ -24,6 +25,7 @@ function bindPost (map) {
                             marker.setPosition(latlng);
                         }
                         map.setCenter(latlng);
+                        
                     }
                     
                 }
@@ -112,6 +114,8 @@ function bindPost (map) {
             }
         });
     });
+    
+    
 };
 
 function bindFormInputs (geoCodingResult) {
@@ -143,7 +147,7 @@ function bindFormInputs (geoCodingResult) {
         var newScheduleSelector = scheduleSelector.cloneNode(true);
         var deleteTimeSlotButton = newScheduleSelector.querySelector('#delete-time-slot');
         addClassName.call(newScheduleSelector, 'mt-10');
-        removeClassName.call(deleteTimeSlotButton, "display-none");
+        removeClassName.call(deleteTimeSlotButton, "d-n");
 
         deleteTimeSlotButton.addEventListener('click', function (e) {
             e.preventDefault();
@@ -154,6 +158,53 @@ function bindFormInputs (geoCodingResult) {
         
     });
 })();
+
+function LimitCheckbox () {
+    this.featureCheckboxes;
+    this.length;
+    this.totalChecked;
+    this.checkLimit = 2;
+}
+
+LimitCheckbox.prototype.update = function () {
+    if (this.totalChecked === this.checkLimit - 1) {
+        // unlock other checkout boxes
+        for (var i = 0; i < this.length; i ++) {
+            if (!this.featureCheckboxes[i].checked) {
+                this.featureCheckboxes[i].disabled = false;
+            }
+        }
+    } else if (this.totalChecked === this.checkLimit) {
+        // lock other checkout boxes
+        for (var i = 0; i < this.length; i ++) {
+            if (!this.featureCheckboxes[i].checked) {
+                this.featureCheckboxes[i].disabled = true;
+            }
+        }
+    }
+}
+
+var limitCheckbox = new LimitCheckbox();
+
+(function bindFeatureCheckbox (limitCheckbox) {
+    var featureCheckboxes = document.getElementsByClassName ("feature-checkbox");
+    var length = featureCheckboxes.length;
+    for (var i = 0; i < length; i ++) {
+        featureCheckboxes[i].addEventListener('change', function (e) {
+            if (this.checked) {
+                limitCheckbox.totalChecked ++;
+            } else {
+                limitCheckbox.totalChecked --;
+            }
+            limitCheckbox.update();
+        });
+    }
+
+    limitCheckbox.featureCheckboxes = featureCheckboxes;
+    limitCheckbox.length = length;
+    limitCheckbox.totalChecked = 0;
+
+})(limitCheckbox);
 
 google.maps.event.addDomListener(window, 'load', function () {
     var latlng = new google.maps.LatLng(25.0173405, 121.5397518);
@@ -173,3 +224,108 @@ google.maps.event.addDomListener(window, 'load', function () {
         bindPost.call(this, map);
     });
 });
+/*
+// initialize facebook login
+(function bindFBLogin () {
+    var FBsignup = document.getElementById('fb-signup');
+    FBsignup.addEventListener('click', function (e) {
+        FB.login(function (response) {
+            console.log(response);
+            if (response.status === 'connected') {
+                redirectToLogin();
+            } else {
+                //do nothing
+            }
+        }, {scope: 'public_profile,user_friends,email'});
+    });
+
+    var logout = document.getElementById('logout');
+    logout.addEventListener('click', function (e) {
+        getAjax('/logout', null, function (XHR, status) {
+            if (XHR.readyState === 4 && XHR.status === 200) {
+                location.reload();
+            }
+        })
+
+        var user = document.getElementById("user");
+        var userClass = user.className + " d-n";
+        user.setAttribute('class', userClass);
+
+        var auth = document.getElementById("auth");
+        var authClass = auth.className.replace(" d-n", "");
+        auth.setAttribute('class', authClass);
+    });
+})();
+
+(function bindEmailSignup () {
+    var emailSignup = document.getElementById('email-signup');
+    emailSignup.addEventListener('click', function(e) {
+        var emailSignupForm = document.getElementById("post-email-signup-form");
+        var isPass = true;
+        if (!emailSignupForm['account'].value) {
+            addClassName.call(emailSignupForm['account'], "red-bottom-line");
+            isPass = false;
+        } else if (!emailRegex.test(emailSignupForm['account'].value)) {
+            addClassName.call(emailSignupForm['account'], "red-bottom-line");
+            isPass = false;
+        } else {
+            removeClassName.call(emailSignupForm['account'], "red-bottom-line");
+        }
+
+        if (!emailSignupForm['password'].value) {
+            addClassName.call(emailSignupForm['password'], "red-bottom-line");
+            isPass = false;
+        } else {
+            removeClassName.call(emailSignupForm['password'], "red-bottom-line");
+        }
+
+        if (!emailSignupForm['confirm-password'].value) {
+            addClassName.call(emailSignupForm['confirm-password'], "red-bottom-line");
+            isPass = false;
+        } else if (emailSignupForm['confirm-password'].value !== emailSignupForm['password'].value) {
+            addClassName.call(emailSignupForm['password'], "red-bottom-line");
+            addClassName.call(emailSignupForm['confirm-password'], "red-bottom-line");
+            isPass = false;
+        } else {
+            removeClassName.call(emailSignupForm['confirm-password'], "red-bottom-line");
+        }
+
+        if (isPass) {
+            //emailSignupForm.submit();
+            var data = {
+                account : emailSignupForm['account'].value,
+                password : emailSignupForm['password'].value
+            };
+            postAjax('/signup', JSON.stringify(data), function (XHR, status) {
+                if (XHR.readyState === 4 && XHR.status === 200) {
+                    var body = document.getElementsByTagName("body")[0];
+                    var bodyClass = body.className.replace(" no-scroll", "");
+                    body.setAttribute('class', bodyClass); 
+                    document.getElementById("signup-popup-container").style.display = "none";
+
+                    //replace the login/signup button with head icon
+                    var user = document.getElementById("user");
+                    var userClass = user.className.replace(" d-n", "");
+                    user.setAttribute('class', userClass);
+
+                    // setting user head image
+                    var headImage = user.querySelector('img.head-image');
+                    var userData = JSON.parse(XHR.response);
+                    headImage.setAttribute('src', userData.picture);
+
+                    // hiding signup/login button
+                    var auth = document.getElementById("auth");
+                    var authClass = auth.className + " d-n";
+                    auth.setAttribute('class', authClass);
+
+                    location.reload();
+                } else if (XHR.readyState === 4 && XHR.status === 601) {
+                    // account already been taken
+                    alert("Account has been taken!");
+                }
+            });
+        } else {
+            e.preventDefault();
+        }
+    });
+})();*/

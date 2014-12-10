@@ -3,7 +3,7 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         jshint: {
             route: {
-                src: ['**/*.js']
+                src: ['lib/*.js','models/*.js','modules/*.js','public/*.js','routes/*.js','server/*.js','lib/*.js']
             }
         },
         watch: {

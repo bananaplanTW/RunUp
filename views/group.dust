@@ -112,8 +112,8 @@
               <pre>{data.description}</pre>
             </div>
           </div>
-          <div class="row join-button-container display-table">
-            <div class="display-table-cell vertical-align-middle text-align-center">
+          <div class="row join-button-container d-t">
+            <div class="d-t-c va-m ta-c">
               {#data.is_member}
               
               {:else}

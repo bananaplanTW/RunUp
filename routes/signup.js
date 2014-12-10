@@ -31,6 +31,7 @@ console.log("signup");
                     return;
                 }
                 queryString = util.format(insertSettingsQuery, body.account, body.account);
+                console.log(queryString);
                 moduleLogin.execute(queryString, function (error, __rows) {
                     if (error) {
                         console.log(error);

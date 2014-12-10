@@ -61,7 +61,7 @@ label:before {
   bottom: 1px;
   background-color: #fafafa;
   box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px 0px rgba(255, 255, 255, 0.8);
-
+  border-radius: 5px;
 }
 
 input[type=checkbox] {
@@ -72,7 +72,7 @@ input[type=checkbox]:checked + label:before {
   content: '\2713';
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
   font-size: 24px;
-  color: #ff5a5f;
+  color: #ff9999;
   text-align: center;
   line-height: 13px;
 }
@@ -86,7 +86,7 @@ pre {
 
 .top-banner {
   background-color: white;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 20px 10px 100px;
 }
 
 .top-banner:after {

@@ -1,6 +1,10 @@
+.main-container {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
 .post-group {
 	position: relative;
-	top: 70px;
 }
 
 .post-group-section {
@@ -8,11 +12,7 @@
 }
 
 .post-input-box {
-  height: 36px;
-  padding-top: 6px;
-  border: none;
-  border-bottom: 1px solid #a9a9a9;
-  font-size: 20px;
+  /*height: 40px;*/
 }
 
 .post-input-box:focus {
@@ -20,9 +20,51 @@
   border-bottom: 1px solid #0AD7A9;
 }
 
+.signup-login {
+  position: relative;
+}
+
+.signup-login-section {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.signup-input-box {
+  width: 400px;
+}
+
+.proceeding-button {
+  font-family: Futura-CondensedMedium;
+}
+
+.fb-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.fb-signup {
+  padding-left: 40px;
+  height: 36px;
+  font-size: 16px;
+  font-family: Futura-CondensedMedium;
+  color: #4A90E2;
+  border: none;
+  background: white;
+  background-image: url('/assets/images/facebook_icon.png');
+  background-size: 90% 36px;
+  background-position-x: 10px;
+  background-repeat: no-repeat;
+}
+
+.agreeterms {
+  font-family: Futura-CondensedMedium;
+}
+
 .input-title {
+  font-family: Futura-CondensedMedium;
   font-size: 20px;
-  line-height: 40px;
+  line-height: 36px;
+  text-align: right;
 }
 
 .input-button {
@@ -37,27 +79,35 @@
   border-radius: 5px;
 }
 
-button.input-add-button {
-  background-color: #26d6aa;
-  width: 44px;
+.input-add-button, .input-delete-button {
+  background-color: #808080;
+  width: 25px;
+  height: 25px;
   border-radius: 30px;
+  text-align: center;
+  border: none;
+  color: white;
+  font-size: 16px;
+  top: 16px;
+  position: relative;
 }
 
-button.input-delete-button {
-  width: 30px;
+.input-delete-button {
+  /*width: 30px;
   height: 30px;
   padding-left: 0px;
   padding-right: 0px;
   border-radius: 15px;
-  margin-top: 10px;
+  margin-top: 10px;*/
+  top: 0px;
 }
 
 .description {
-  height: 200px;
+  height: 100px;
 }
 .day-selector {
   font-size: 14px;
-  width: 105px;
+  width: 80px;
   margin-top: 10px;
   margin-right: 10px;
 }
@@ -67,4 +117,98 @@ button.input-delete-button {
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.progress-icon-container {
+  width: 42px;
+  display: inline-block;
+}
+
+.progress-icon-title {
+  font-family: Futura-CondensedMedium;
+  font-size: 16px;
+  margin-bottom: 6px;
+  display: inline-block;
+  line-height: 16px;
+}
+
+.progress-icon {
+  display: inline-block;
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
+  background-color: red;
+  line-height: 40px;
+  text-align: center;
+  background: #FF6666;
+  font-family: Futura-CondensedMedium;
+  font-size: 16px;
+  color: #F2F2F2;
+}
+
+.progress-line {
+  border-bottom: 1px solid #979797;
+  display: inline-block;
+  position: relative;
+  top: -4px;
+  width: 65%;
+}
+
+.done {
+  border-bottom-color: #FF6666;
+}
+
+.not-done {
+  border-bottom-color: #979797;
+}
+
+.in-progress {
+  /*color: white;*/
+}
+
+.next-step {
+  /*color: white;*/
+  background-color: #979797;
+}
+
+.progress-container {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.map-canvas {
+  border-radius: 8px;
+}
+
+.post-map {
+  width: 300px;
+  height: 200px;
+  border: 1px solid #979797;
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.no-group {
+  font-family: Futura-CondensedMedium;
+}
+.no-group-description {
+  font-family: Futura-CondensedMedium;
+  color: #808080;
+  margin-top: 10px;
+  text-align: center;
+}
+.checkbox-item {
+  font-family: Futura-CondensedMedium;
+  color: #808080;
+  display: block;
+}
+.separator {
+  margin: 40px 0px 25px 0px;
+}
+
+.email-signup {
+  margin-top: 10px;
+  font-family: Futura-CondensedMedium;
 }
