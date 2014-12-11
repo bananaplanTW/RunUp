@@ -214,3 +214,50 @@
   margin-top: 10px;
   font-family: Futura-CondensedMedium;
 }
+
+.places-list-container {
+  position: relative;
+}
+
+.places-list-box {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  height: inherit;
+  z-index: 1;
+  max-height: 200px;
+  overflow: scroll;
+}
+
+.address-container {
+  padding: 0px;
+}
+
+.places-list {
+  width: 100%;
+}
+
+.place-item {
+  float: none;
+  height: 36px;
+  line-height: 36px;
+  border-bottom: 1px solid #8d8d8d;
+  padding-left: 5px;
+  overflow: hidden;
+}
+
+.place-item:hover {
+  cursor: pointer;
+  background-color: #EEEEEE;
+}
+
+.places-list-close-button {
+  width: 20px;
+  height: 20px;
+  line-height: 17px;
+  display: inline-block;
+  position: absolute;
+  right: -5px;
+  top: -9px;
+  z-index: 2;
+}

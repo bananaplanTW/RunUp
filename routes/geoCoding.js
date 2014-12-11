@@ -49,7 +49,8 @@ router.get("/", function (req, res) {
 					country : null,
 					country_short : null,
 					lat: location.lat.toString(),
-					lng: location.lng.toString()
+					lng: location.lng.toString(),
+					address: jsonData.results[i].formatted_address
 				};
 				for (var j = 0; j < addressComponents.length; j++) {
 					if (addressComponents[j].types[0] === "locality") {

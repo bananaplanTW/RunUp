@@ -16,6 +16,7 @@ function bindPost (map) {
                         google.maps.event.trigger(map, 'resize');
 
                         console.log(geoCodingResult.places);
+                        showAllPossiblePlaces.call(that, geoCodingResult.places, map);
                         /*
                         bindFormInputs(geoCodingResult);
                         var latlng = new google.maps.LatLng(geoCodingResult.lat, geoCodingResult.lng);
@@ -145,8 +146,66 @@ function bindFormInputs (geoCodingResult) {
     country_short.value = geoCodingResult.country_short;
 };
 
-function generateListOfPlaces () {
+function showAllPossiblePlaces (places, map) {
+    var length = places.length;
+    var placesListContainer   = document.getElementById('places-list-container');
+    var placesListCloseButton = document.getElementById('places-list-close-button');
+    var placesList            = document.getElementById('places-list');
+    
+    removeClassName.call(placesListContainer, "d-n");
 
+    // initialize the map
+    var latlng = new google.maps.LatLng(places[0].lat, places[0].lng);
+    if (!this.marker) {
+        this.marker = new google.maps.Marker({
+                            position: latlng
+                        });
+        marker.setMap(map);
+    } else {
+        marker.setPosition(latlng);
+    }
+    map.setCenter(latlng);
+    bindFormInputs(places[0]);
+
+    // set up click listener for each item
+    for (var i = 0; i < length; i ++) {
+        placesList.appendChild(generateListForPlace.call(this, places[i], map));
+    }
+
+    placesList.addEventListener("click", function (e) {
+        placesList.innerHTML = "";
+        addClassName.call(placesListContainer, "d-n");
+    });
+
+    placesListCloseButton.addEventListener("click", function (e) {
+        placesList.innerHTML = "";
+        addClassName.call(placesListContainer, "d-n");
+    })
+}
+
+function generateListForPlace (place, map) {
+    var that = this;
+    var listTemplate        = document.createElement("LI");
+
+    addClassName.call(listTemplate, "place-item");
+    listTemplate.innerHTML = place.address;
+
+    listTemplate.addEventListener("mouseenter", function (e) {
+        var latlng = new google.maps.LatLng(place.lat, place.lng);
+        if (!that.marker) {
+            that.marker = new google.maps.Marker({
+                                position: latlng
+                            });
+            marker.setMap(map);
+        } else {
+            marker.setPosition(latlng);
+        }
+        map.setCenter(latlng);
+
+        bindFormInputs(place);
+    });
+
+    return listTemplate;
 }
 
 (function bindAddTimeSlotButton () {

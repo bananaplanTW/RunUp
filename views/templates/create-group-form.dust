@@ -7,7 +7,18 @@
       </div>
       <div class="post-group-section clear-float">
         <span class="input-title col-4">{data.i18n.create.address}<em>*</em></span>
-        <input id="address" class="post-input-box round-corner-input-box col-half" type="text" name="address"placeholder="{data.i18n.create.addresssample}"/>
+        <div class="address-container col-half">
+          <input id="address" class="post-input-box round-corner-input-box w-100" type="text" name="address"placeholder="{data.i18n.create.addresssample}"/>
+
+          <div id="places-list-container" class="places-list-container d-n">
+            <span id="places-list-close-button" class="places-list-close-button input-delete-button clickable">x</span>
+            <div class="places-list-box col-half round-corner-input-box ">
+              <ul id="places-list" class="places-list">
+              </ul>
+            </div>
+          </div>
+
+        </div>
       </div>
       <div class="post-group-section clear-float">
         <span class="input-title col-4">{data.i18n.create.contact}</span>
@@ -122,4 +133,5 @@
       <p class="no-group-description">*{data.i18n.create.nopremium}</p>
     </div>
   </div>
-</div>>
+</div>
+

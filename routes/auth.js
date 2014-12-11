@@ -12,7 +12,6 @@ router.use(function (req, res, next) {
     //req.geo.country = "US";
 
     console.log("session:", req.session.user);
-    console.log(geo);
     if (req.session.user) {
     	// user data is here
     	var queryString = util.format(selectUserQuery, req.session.user);
