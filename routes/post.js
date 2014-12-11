@@ -32,7 +32,7 @@ var instertGroupMemberQueryString = "INSERT INTO group_member (member_id, group_
 var instertGroupScheduleQueryString = "INSERT INTO group_schedule (group_id, day, hour, minute, ampm) VALUES ";
 var instertGroupScheduleValues = "(%s, %s, %s, %s, %s)";
 
-var insertSurveyQueryString = "INSERT INTO survey (account";
+var insertSurveyQueryString = "INSERT INTO survey (account, email, group_id";
 
 router.get("/", function (req, res) {
 	var i18n;
@@ -73,7 +73,8 @@ console.log(groupInfo);
 	    						res.render("post");
 	    						return;
 	    					}
-	    					console.log(groupData);
+
+	    					insertSurvey(req.user.account, groupInfo.email, groupData.insertId, groupInfo.survey);
 	    					updateGroupMemberAndScheduleInfo (userId, groupData.insertId, groupInfo, function (_error, rows) {
 	    						if (error) {
 	    							console.log(error);
@@ -102,13 +103,13 @@ console.log(groupInfo);
 	    	});
 	    });
 
-		insertSurvey(req.user.account, groupInfo.survey);
+		
 	} else {
 		res.render("post");
 	}
 });
 
-function insertSurvey (account, survey) {
+function insertSurvey (account, email, gid, survey) {
 	if (typeof(survey) === "string") {
 		survey = [survey];
 	}
@@ -118,7 +119,7 @@ function insertSurvey (account, survey) {
 	for (var i = 0; i < length; i ++) {
 		queryString += (", " + survey[i]);
 	}
-	queryString += ") VALUES (\"" + account + "\", ";
+	queryString += ") VALUES (\"" + account + "\", \"" + email + "\", " + gid + ",";
 	for (var i = 0; i < length; i ++) {
 		queryString += "true, ";
 	}
@@ -155,7 +156,7 @@ function savePhotoToImageServer (files, callback) {
 function createGroup (groupInfo, countryId, stateId, countyId, cityId, userId, coverPhotoName, callback) {
 	var groupName   = encodeURIComponent(groupInfo.group_name);
 	var groupId     = encodeURIComponent(groupInfo.group_name.toLowerCase());
-	var contact     = encodeURIComponent(groupInfo.contact);
+	var contact     = typeof(groupInfo.contact) === 'undefined' ? "N/A": encodeURIComponent(groupInfo.contact);
 	var email       = encodeURIComponent(groupInfo.email);
 	var website     = typeof(groupInfo.website) === 'undefined'? "N/A" : encodeURIComponent(groupInfo.website);
 	var address     = encodeURIComponent(groupInfo.address);

@@ -1,19 +1,19 @@
 var mysql = require('mysql');
 
 var ModelMysql = function () {
-    /*
+    
     this.conn = mysql.createConnection({
                     host: 'db.bitnamiapp.com',
                     user: 'root',
                     database: 'musicrun',
                     password: 'Sunflower123'
-                });*/
-    this.conn = mysql.createConnection({
+                });
+    /*this.conn = mysql.createConnection({
                     host: 'localhost',
                     user: 'root',
                     database: 'running_area',
                     password: 'Sunflower123'
-                });
+                });*/
     this.conn.connect(function (error) {
         if (error) {
             console.error(error);
