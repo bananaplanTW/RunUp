@@ -2,40 +2,22 @@ function bindPost (map) {
     var that = this;
     var address = document.getElementById('address');
     var geoCodingResult = {};
-    //console.log('focusout');
-    address.addEventListener('blur', function (e) {
-        if (address.value) {
-            var addressString = "address=" + address.value;
-            getAjax("/getGeoCoding", addressString, function (XHR, status) {
-                if (XHR.readyState === 4 && XHR.status == 200) {
-                    geoCodingResult = JSON.parse(XHR.response);
-                    //console.log(geoCodingResult);
-                    if (geoCodingResult.status === "NOTFOUND") {
-                        alert(geoCodingResult.message);
-                    } else {
-                        google.maps.event.trigger(map, 'resize');
 
-                        console.log(geoCodingResult.places);
-                        showAllPossiblePlaces.call(that, geoCodingResult.places, map);
-                        /*
-                        bindFormInputs(geoCodingResult);
-                        var latlng = new google.maps.LatLng(geoCodingResult.lat, geoCodingResult.lng);
-                        if (!that.marker) {
-                            that.marker = new google.maps.Marker({
-                                                position: latlng
-                                            });
-                            marker.setMap(map);
-                        } else {
-                            marker.setPosition(latlng);
-                        }
-                        map.setCenter(latlng);*/
-                        
+    var searchTimeout;
+    address.onkeypress = function () {
+        if (searchTimeout != undefined) clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(function () {
+            if (address.value) {
+                getPlaces(address.value, function (error, places) {
+                    if (error) {
+                        return;
                     }
-                    
-                }
-            });
-        }
-    });
+                    google.maps.event.trigger(map, 'resize');
+                    showAllPossiblePlaces.call(that, places, map);
+                });
+            }
+        }, 500);
+    };
 
     var createGroupForm    = document.getElementById('create-group');
     var submitButton       = document.getElementById('submit-button');
@@ -127,6 +109,29 @@ function bindPost (map) {
     });
 };
 
+function getPlaces(address, callback) {
+    // your code here
+    //if (address.value) {
+        var addressString = "address=" + address;
+        getAjax("/getGeoCoding", addressString, function (XHR, status) {
+            if (XHR.readyState === 4 && XHR.status == 200) {
+                geoCodingResult = JSON.parse(XHR.response);
+                //console.log(geoCodingResult);
+                if (geoCodingResult.status === "NOTFOUND") {
+                    alert(geoCodingResult.message);
+                    callback(true, null);
+                } else {
+                    //google.maps.event.trigger(map, 'resize');
+                    console.log(geoCodingResult.places);
+                    callback(null, geoCodingResult.places)
+                    //showAllPossiblePlaces.call(that, geoCodingResult.places, map);
+                }
+                
+            }
+        });
+    //}
+}
+
 function bindFormInputs (geoCodingResult) {
     var lat           = document.getElementById('lat');
     var lng           = document.getElementById('lng');
@@ -151,8 +156,6 @@ function showAllPossiblePlaces (places, map) {
     var placesListContainer   = document.getElementById('places-list-container');
     var placesListCloseButton = document.getElementById('places-list-close-button');
     var placesList            = document.getElementById('places-list');
-    
-    removeClassName.call(placesListContainer, "d-n");
 
     // initialize the map
     var latlng = new google.maps.LatLng(places[0].lat, places[0].lng);
@@ -167,20 +170,25 @@ function showAllPossiblePlaces (places, map) {
     map.setCenter(latlng);
     bindFormInputs(places[0]);
 
-    // set up click listener for each item
-    for (var i = 0; i < length; i ++) {
-        placesList.appendChild(generateListForPlace.call(this, places[i], map));
+    // set up click listener for each item, if there're more than 1 results
+    if (length > 1) {
+        placesList.innerHTML = "";
+        removeClassName.call(placesListContainer, "d-n");
+
+        for (var i = 0; i < length; i ++) {
+            placesList.appendChild(generateListForPlace.call(this, places[i], map));
+        }
+
+        placesList.addEventListener("click", function (e) {
+            placesList.innerHTML = "";
+            addClassName.call(placesListContainer, "d-n");
+        });
+
+        placesListCloseButton.addEventListener("click", function (e) {
+            placesList.innerHTML = "";
+            addClassName.call(placesListContainer, "d-n");
+        });
     }
-
-    placesList.addEventListener("click", function (e) {
-        placesList.innerHTML = "";
-        addClassName.call(placesListContainer, "d-n");
-    });
-
-    placesListCloseButton.addEventListener("click", function (e) {
-        placesList.innerHTML = "";
-        addClassName.call(placesListContainer, "d-n");
-    })
 }
 
 function generateListForPlace (place, map) {
@@ -295,108 +303,4 @@ google.maps.event.addDomListener(window, 'load', function () {
         bindPost.call(this, map);
     });
 });
-/*
-// initialize facebook login
-(function bindFBLogin () {
-    var FBsignup = document.getElementById('fb-signup');
-    FBsignup.addEventListener('click', function (e) {
-        FB.login(function (response) {
-            console.log(response);
-            if (response.status === 'connected') {
-                redirectToLogin();
-            } else {
-                //do nothing
-            }
-        }, {scope: 'public_profile,user_friends,email'});
-    });
 
-    var logout = document.getElementById('logout');
-    logout.addEventListener('click', function (e) {
-        getAjax('/logout', null, function (XHR, status) {
-            if (XHR.readyState === 4 && XHR.status === 200) {
-                location.reload();
-            }
-        })
-
-        var user = document.getElementById("user");
-        var userClass = user.className + " d-n";
-        user.setAttribute('class', userClass);
-
-        var auth = document.getElementById("auth");
-        var authClass = auth.className.replace(" d-n", "");
-        auth.setAttribute('class', authClass);
-    });
-})();
-
-(function bindEmailSignup () {
-    var emailSignup = document.getElementById('email-signup');
-    emailSignup.addEventListener('click', function(e) {
-        var emailSignupForm = document.getElementById("post-email-signup-form");
-        var isPass = true;
-        if (!emailSignupForm['account'].value) {
-            addClassName.call(emailSignupForm['account'], "red-bottom-line");
-            isPass = false;
-        } else if (!emailRegex.test(emailSignupForm['account'].value)) {
-            addClassName.call(emailSignupForm['account'], "red-bottom-line");
-            isPass = false;
-        } else {
-            removeClassName.call(emailSignupForm['account'], "red-bottom-line");
-        }
-
-        if (!emailSignupForm['password'].value) {
-            addClassName.call(emailSignupForm['password'], "red-bottom-line");
-            isPass = false;
-        } else {
-            removeClassName.call(emailSignupForm['password'], "red-bottom-line");
-        }
-
-        if (!emailSignupForm['confirm-password'].value) {
-            addClassName.call(emailSignupForm['confirm-password'], "red-bottom-line");
-            isPass = false;
-        } else if (emailSignupForm['confirm-password'].value !== emailSignupForm['password'].value) {
-            addClassName.call(emailSignupForm['password'], "red-bottom-line");
-            addClassName.call(emailSignupForm['confirm-password'], "red-bottom-line");
-            isPass = false;
-        } else {
-            removeClassName.call(emailSignupForm['confirm-password'], "red-bottom-line");
-        }
-
-        if (isPass) {
-            //emailSignupForm.submit();
-            var data = {
-                account : emailSignupForm['account'].value,
-                password : emailSignupForm['password'].value
-            };
-            postAjax('/signup', JSON.stringify(data), function (XHR, status) {
-                if (XHR.readyState === 4 && XHR.status === 200) {
-                    var body = document.getElementsByTagName("body")[0];
-                    var bodyClass = body.className.replace(" no-scroll", "");
-                    body.setAttribute('class', bodyClass); 
-                    document.getElementById("signup-popup-container").style.display = "none";
-
-                    //replace the login/signup button with head icon
-                    var user = document.getElementById("user");
-                    var userClass = user.className.replace(" d-n", "");
-                    user.setAttribute('class', userClass);
-
-                    // setting user head image
-                    var headImage = user.querySelector('img.head-image');
-                    var userData = JSON.parse(XHR.response);
-                    headImage.setAttribute('src', userData.picture);
-
-                    // hiding signup/login button
-                    var auth = document.getElementById("auth");
-                    var authClass = auth.className + " d-n";
-                    auth.setAttribute('class', authClass);
-
-                    location.reload();
-                } else if (XHR.readyState === 4 && XHR.status === 601) {
-                    // account already been taken
-                    alert("Account has been taken!");
-                }
-            });
-        } else {
-            e.preventDefault();
-        }
-    });
-})();*/

@@ -94,7 +94,7 @@ router.get("/", function (req, res) {
 			});
 			var result = {
 				status : "NOTFOUND",
-				message : "找不到地址"
+				message : "Address not found"
 			};
 			res.write(JSON.stringify(result));
 			res.end();
