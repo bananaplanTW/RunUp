@@ -11,71 +11,45 @@
   {>"templates/title-favicon"/}
   <body>
     {>"templates/top-banner"/}
-    <!--div class="teaser">
-      <img src="/assets/images/cover.jpg">
-    </div-->
-    <!--div class="search-area">
-      <form class="search-box" action="/search">
-        <input id="search-input-box" type="text" class="search-input-box" placeholder="輸入跑團關鍵字" name="q"/>
-        <input type="submit" class="search-submit-button" value="搜尋跑團"/>
-      </form>
-    </div-->
     <div class="teaser clear-float mt-50" style="background-image: url('/assets/images/home_page.png')">
-      <!--img src="/assets/images/home_page.png"/-->
       <div class="teaser-introduction">
-        <p class="teaser-title">RUN ALONE?</p>
-        <p class="teaser-title">Let's GROUP!</p>
-        <a class="teaser-button runup-red-box clickable" href="/post">登錄跑團</a>
-        <p class="teaser-subtitle">Signup now and you will get 2 month free premium when we launch (expect in March)</p>
+        <p class="teaser-title">{data.i18n.home.runalone}</p>
+        <p class="teaser-title">{data.i18n.home.letsgroup}</p>
+        <a class="teaser-button runup-red-box clickable" href="/post">{data.i18n.home.registeryourgroup}</a>
+        <p class="teaser-subtitle">{data.i18n.home.teasorsubtitle}</p>
       </div>
-      
     </div>
     <div class="sub-teaser clear-float">
-      <img src="/assets/images/statistic.png">
+      <div class="sub-teaser-introduction">
+        <p class="teaser-title dark-gray">{data.i18n.home.groupinfo}</p>
+      </div>
+      <img src="/assets/images/search_post.png">
     </div>
     <div class="sub-teaser clear-float">
+      <div class="sub-teaser-introduction">
+        <p class="teaser-title">{data.i18n.home.notification}</p>
+      </div>
       <img src="/assets/images/mobile_app.png">
     </div>
     <div class="sub-teaser clear-float">
+      <div class="sub-teaser-introduction">
+        <p class="teaser-title dark-gray">{data.i18n.home.management}</p>
+      </div>
+      <img src="/assets/images/statistic.png">
+    </div>
+    <div class="sub-teaser clear-float">
+      <div class="sub-teaser-introduction">
+        <p class="teaser-title">{data.i18n.home.coupon}</p>
+      </div>
       <img src="/assets/images/coupon.png">
     </div>
 
     <div class="sub-teaser clear-float">
       <img src="/assets/images/footer.png">
-      <div class="sub-teaser-introduction">
-        <a class="teaser-button runup-red-box clickable" href="/post">登錄跑團</a>
+      <div class="teaser-introduction">
+        <a class="teaser-button runup-red-box clickable" href="/post">{data.i18n.home.registeryourgroup}</a>
       </div>
     </div>
-    <!--div class="main-container">
-      <div class="center-rail">
-        <div class="discover-headline">
-          <h2>選擇喜歡的區域吧！</h2>
-        </div>
-        <div class="row">
-          
-        </div>
-          {#data.states}
-            {@math key=$idx method="mod" operand="3"}
-              {@eq value=0} {!start!}
-                <div class="row">
-                  {>"templates/state-card"/}
-              {/eq}
-              {@eq value=2} {!end!}
-                  {>"templates/state-card"/}
-                </div>
-              {/eq}
-              {@default}
-                  {>"templates/state-card"/}
-              {/default}
-            {/math}
-          {/data.states}
-          {@math key=data.states.length method="mod" operand="3"}
-            {@ne value=0}
-              </div>
-            {/ne}
-          {/math}
-      </div>
-    </div-->
     {>"templates/footer"/}
     {>"templates/signup-options"/}
   </body>

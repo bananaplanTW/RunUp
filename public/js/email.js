@@ -27,17 +27,17 @@
     	var message = "";
     	console.log("Adf");
     	if (!emailForm['name'].value) {
-    		message += "請讓我們知道如何稱呼您\n";
+    		message += "Please provide the name\n";
     		isPass = false;
     	}
 
     	if (!emailForm['email'].value) {
-    		message += "請填入您的聯絡email\n";
+    		message += "Please provide email\n";
     		isPass = false;
     	}
 
     	if (!emailForm['comment'].value) {
-    		message += "請留下建議，讓我們知道如何改善！謝謝！\n";
+    		message += "Please leave your comment so that we know how to improve our product to provide better service!\n";
     		isPass = false;
     	}
 
@@ -57,7 +57,7 @@
 
 			        emailContainer.style.display = "none";
 			        body.setAttribute('class', bodyClass);
-			        alert("謝謝您的回饋！");
+			        alert("Thanks for your comment!");
 			    }
     		});	
     	}

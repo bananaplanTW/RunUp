@@ -1,0 +1,79 @@
+{
+	"topbanner": {
+		"registeryourgroup": "Register your group",
+		"login": "Login",
+		"logout": "Logout"
+	},
+	"footer": {
+		"contact": "Contact us"
+	},
+	"home" : {
+		"runalone": "Run ALONE?",
+		"letsgroup": "Let's GROUP!",
+		"registeryourgroup": "Register your group",
+		"teasorsubtitle": "Signup now and you will get 2 month free premium when we launch (expect in March)",
+		"groupinfo": "Checking Group Information Online",
+		"notification": "Notification & Socialization",
+		"management": "Simple Management of Group Statistic",
+		"coupon": "Coupon"
+	},
+	"signup": {
+		"signup": "Sign up",
+		"or": "OR",
+		"sugnupgroup": "Sign up group",
+		"accountright": "This account will have right to control the group",
+		"email": "Email Account",
+		"password": "Password",
+		"confirmpassword": "Confirm Password",
+		"fbsignup": "Signup with Facebook",
+		"agreement": "I agree terms and policy of Running Area once I register"
+	},
+	"create": {
+		"name": "Group Name",
+		"address": "Address/Location",
+		"contact": "Phone",
+		"email": "Email",
+		"description": "Group Description",
+		"website": "Website",
+		"payment": "Payment",
+		"cover": "Cover Photo",
+		"schedule": "Schedule",
+		"surveytitle" : "Which function is important to you? (please pick 2)",
+		"nogroup": "I don't have group",
+		"nopremium": "Can't get 3 months free premium if you choose this",
+		"done": "Done",
+		"namesample": "Love Run",
+		"addresssample": "Grand Canyon",
+		"contactsample": "000-0000-000",
+		"paymentsample": "Payment, blank for free",
+		"coverlimit": "Up to 1 mb",
+		"survey": {
+			"social": "Social (finding runners/groups nearby.)",
+			"record": "Record (recording stats and show it on both PC and mobile.)",
+			"group": "Group Management (event notification, group page, post and share.)",
+			"info": "Information (contest, fitness information, experience from other members.)",
+			"competition": "Competition (competing with other group members)",
+			"coupon": "Coupon (earning shoes or sport equipment coupon by running)"
+		}
+	},
+	"thanks": {
+		"msg": "Thanks for your registration!"
+	},
+	"calendar": {
+		"sun": "Sunday",
+		"mon": "Monday",
+		"tue": "Tuesday",
+		"wed": "Wednesday",
+		"thu": "Thursday",
+		"fri": "Friday",
+		"sat": "Saturday"
+	},
+	"contactus": {
+		"name": "Name",
+		"email": "Email",
+		"comment": "Your comment",
+		"send": "Send",
+		"reset": "Reset",
+		"namesample": "Ex. Bryan"
+	}
+}

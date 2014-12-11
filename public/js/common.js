@@ -10,7 +10,8 @@ function removeClassName (name) {
 		this.className = this.className.replace(name, "");
 	}
 };
-var emailRegex = /.+\@.+\..+/g;
+//var emailRegex = /(\w|\.)+@\w+\.\w+/g;///.+@.+\..+/g;
+var emailRegex = new RegExp("(\\w|\\.)+\\@\\w+\\.\\w+");///.+@.+\..+/g;
 var MyQueryString = {
 	parse : function (queryString) {
 		var result = {};

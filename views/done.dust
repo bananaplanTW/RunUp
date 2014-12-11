@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/css/basic.css">
+    <link rel="stylesheet" type="text/css" href="/css/layout.css">
+    <link rel="stylesheet" type="text/css" href="/css/email.css">
+    <link rel="stylesheet" type="text/css" href="/css/signup_login.css">
+  </head>
+  {>"templates/title-favicon"/}
+  <body>
+    {>"templates/top-banner"/}
+    <div class="thanks">
+      {data.i18n.thanks.msg}
+    </div>
+    {>"templates/footer"/}
+    {>"templates/signup-options"/}
+  </body>
+  <script>(function() {
+    var _fbq = window._fbq || (window._fbq = []);
+    if (!_fbq.loaded) {
+      var fbds = document.createElement('script');
+      fbds.async = true;
+      fbds.src = '//connect.facebook.net/en_US/fbds.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(fbds, s);
+      _fbq.loaded = true;
+    }
+  })();
+  window._fbq = window._fbq || [];
+  window._fbq.push(['track', '6006983897229', {'value':'0.01','currency':'USD'}]);
+  </script>
+  <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6006983897229&amp;cd[value]=0.01&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
+  <script type="text/javascript" src="/js/home.js"></script>
+  <script type="text/javascript" src="/js/ajax.js"></script>
+  <script type="text/javascript" src="/js/common.js"></script>
+  <script type="text/javascript" src="/js/signup.js"></script>
+  <script type="text/javascript" src="/js/fb-login.js"></script>
+  <script type="text/javascript" src="/js/email.js"></script>
+</html>

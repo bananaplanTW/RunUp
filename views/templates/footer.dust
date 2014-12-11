@@ -1,21 +1,21 @@
 <div class="footer col-all">
   <div class="copy-right-container">
     <p class="copy-right">Copyrights reserved by Banana Plan LLC.</p>
-    <p class="email clickable" id="email">與我們聯繫</p>
+    <p class="email clickable" id="email">{data.i18n.footer.contact}</p>
   </div>
 </div>
 <div id="email-container" class="focus-page">
 	<div class="popup-container">
 		<form id="email-form" class="email-popup popup"  method="post" enctype="text/plain">
-			<div class="popup-title email-title">名字</div>
-			<input class="input-box email-input-box" type="text" name="name" placeholder="ex. 小柴">
-			<div class="popup-title email-title">您的email</div>
-			<input class="input-box email-input-box" type="text" name="email" placeholder="email">
-			<div class="popup-title email-title">您的意見</div>
+			<div class="popup-title email-title">{data.i18n.contactus.name}</div>
+			<input class="input-box email-input-box" type="text" name="name" placeholder="{data.i18n.contactus.namesample}">
+			<div class="popup-title email-title">{data.i18n.contactus.email}</div>
+			<input class="input-box email-input-box" type="text" name="email" placeholder="{data.i18n.contactus.email}">
+			<div class="popup-title email-title">{data.i18n.contactus.comment}</div>
 			<textarea class="input-box email-input-box email-comment" type="text" name="comment"></textarea>
 			<div>
-				<input id="email-submit" class="popup-title email-title email-input-submit input-submit" type="button" value="Send">
-				<input class="popup-title email-title email-input-submit input-submit" type="reset" value="Reset">
+				<input id="email-submit" class="popup-title email-title email-input-submit input-submit" type="button" value="{data.i18n.contactus.send}">
+				<input class="popup-title email-title email-input-submit input-submit" type="reset" value="{data.i18n.contactus.reset}">
 			</div>
 		</form>
 	</div>

@@ -1,0 +1,37 @@
+<div class="signup-login step-by-step-item clear-float">
+  <div class="col-half horizontal-align-center">
+    <div class="signup-login-section">
+      {data.i18n.signup.accountright}
+    </div>
+    <div class="signup-login-section">
+      <form id="post-email-signup-form" method="POST">
+        <div class="post-group-section clear-float">
+          <span class="input-title col-4">{data.i18n.signup.email}</span>
+          <input id="account" class="col-half post-input-box  round-corner-input-box" type="text" name="account" placeholder="example@123.com"/>
+        </div>
+        <div class="post-group-section clear-float">
+          <span class="input-title col-4">{data.i18n.signup.password}</span>
+          <input id="password" class="col-half post-input-box  round-corner-input-box" type="password" name="password" placeholder="{data.i18n.signup.password}"/>
+        </div>
+        <div class="post-group-section clear-float">
+          <span class="input-title col-4">{data.i18n.signup.confirmpassword}</span>
+          <input id="confirm-password" class="col-half post-input-box  round-corner-input-box" type="password" name="confirm-password" placeholder="{data.i18n.signup.confirmpassword}"/>
+        </div>
+        <div class="post-group-section clear-float">
+          <button id="email-signup" class="email-signup runup-grey-button">{data.i18n.signup.signup}</button>
+        </div>
+      </form>
+        <div class="separator">
+          <hr class="horizontal-line col-4 fl-n d-ib"/><span class="px-10">{data.i18n.signup.or}</span><hr class="horizontal-line col-4 fl-n d-ib"/>
+        </div>
+        <div class="post-group-section clear-float">
+          <input id="fb-signup" class="col-half fl-n fb-signup" type="button" value="{data.i18n.signup.fbsignup}"/>
+        </div>
+        <div class="post-group-section clear-float">
+          <!--input id="agreeterms" type="checkbox" name="agreeterms"/>
+          <label for="agreeterms" class="agreeterms">我同意Running Area使用條款</label-->
+          <span class="agreeterms">{data.i18n.signup.agreement}</span>
+        </div>
+    </div>
+  </div>
+</div>

@@ -2,34 +2,33 @@
   <div class="col-8 pb-50">
     <form id="create-group" action="/post/group" method="POST" enctype="multipart/form-data">
       <div class="post-group-section clear-float">
-        <span class="input-title col-4">跑團名稱<em>*</em></span>
-        <input id="group-name" class="post-input-box round-corner-input-box col-half" type="text" name="group_name" placeholder="愛跑步"/>
+        <span class="input-title col-4">{data.i18n.create.name}<em>*</em></span>
+        <input id="group-name" class="post-input-box round-corner-input-box col-half" type="text" name="group_name" placeholder="{data.i18n.create.namesample}"/>
       </div>
       <div class="post-group-section clear-float">
-        <span class="input-title col-4">跑步地址/位置<em>*</em></span>
-        <input id="address" class="post-input-box round-corner-input-box col-half" type="text" name="address"placeholder="中正紀念堂"/>
+        <span class="input-title col-4">{data.i18n.create.address}<em>*</em></span>
+        <input id="address" class="post-input-box round-corner-input-box col-half" type="text" name="address"placeholder="{data.i18n.create.addresssample}"/>
       </div>
       <div class="post-group-section clear-float">
-        <span class="input-title col-4">電話<em>*</em></span>
-        <input id="contact" class="post-input-box round-corner-input-box col-half" type="text" name="contact" placeholder="0000-000-000"/>
+        <span class="input-title col-4">{data.i18n.create.contact}</span>
+        <input id="contact" class="post-input-box round-corner-input-box col-half" type="text" name="contact" placeholder="{data.i18n.create.contactsample}"/>
       </div>
       <div class="post-group-section clear-float">
-        <span class="input-title col-4">Email<em>*</em></span>
+        <span class="input-title col-4">{data.i18n.create.email}<em>*</em></span>
         <input id="email" class="post-input-box round-corner-input-box col-half" type="text" name="email" placeholder="example@bananaplan.com"/>
       </div>
       <div class="post-group-section clear-float">
-        <span class="input-title col-4">描述您的跑團</span>
-        <textarea id="description" class="post-input-box round-corner-input-box col-half description" type="text" name="description" row="40" col="3" placeholder="描述您的跑團"></textarea>
-        <!--input id="description" class="post-input-box col-8 description" type="text" name="description"/-->
+        <span class="input-title col-4">{data.i18n.create.description}</span>
+        <textarea id="description" class="post-input-box round-corner-input-box col-half description" type="text" name="description" row="40" col="3" placeholder="{data.i18n.create.description}"></textarea>
       </div>
       <div class="post-group-section clear-float">
-        <span class="input-title col-4">網站</span>
+        <span class="input-title col-4">{data.i18n.create.website}</span>
         <input id="website" class="post-input-box round-corner-input-box col-half" type="text" name="website" placeholder="www.example.com"/>
       </div>
       
       <div class="post-group-section clear-float">
-        <span class="input-title col-4">費用</span>
-        <input id="payment" class="post-input-box round-corner-input-box col-half" type="text" name="payment" placeholder="費用資訊，空白為免費"/>
+        <span class="input-title col-4">{data.i18n.create.payment}</span>
+        <input id="payment" class="post-input-box round-corner-input-box col-half" type="text" name="payment" placeholder="{data.i18n.create.paymentsample}"/>
       </div>
       <div class="post-group-section clear-float">
         <input id="lat" class="post-input-box col-8 d-n" type="text" name="lat"/>
@@ -42,23 +41,23 @@
         <input id="country_short" class="post-input-box col-8 d-n" type="text" name="country_short"/>
       </div>
       <div class="post-group-section clear-float">
-        <span class="input-title col-4">封面照片<em>*</em></span>
+        <span class="input-title col-4">{data.i18n.create.cover}</span>
         <div class="col-half">
-          <input id="cover-photo" type="file" name="cover_photo" accept="image/*"/><span class="hint">上限為1mb<span>
+          <input id="cover-photo" type="file" name="cover_photo" accept="image/*"/><span class="hint">{data.i18n.create.coverlimit}<span>
         </div>
       </div>
       <div id="" class="post-group-section clear-float">
-        <span class="input-title col-4">團跑行程</span>
+        <span class="input-title col-4">{data.i18n.create.schedule}</span>
         <div id="schedule-container" class="col-half">
           <div id="schedule-selector" class="col-all">
             <select id="day" name="day" class="post-input-box round-corner-input-box day-selector">
-              <option value="0">禮拜日</option>
-              <option value="1">禮拜一</option>
-              <option value="2">禮拜二</option>
-              <option value="3">禮拜三</option>
-              <option value="4">禮拜四</option>
-              <option value="5">禮拜五</option>
-              <option value="6">禮拜六</option>
+              <option value="0">{data.i18n.calendar.sun}</option>
+              <option value="1">{data.i18n.calendar.mon}</option>
+              <option value="2">{data.i18n.calendar.tue}</option>
+              <option value="3">{data.i18n.calendar.wed}</option>
+              <option value="4">{data.i18n.calendar.thu}</option>
+              <option value="5">{data.i18n.calendar.fri}</option>
+              <option value="6">{data.i18n.calendar.sat}</option>
             </select>
             <select id="ampm" name="ampm" class="post-input-box round-corner-input-box time-selector nm-left nm-right">
               <option value="0">am</option>
@@ -90,42 +89,37 @@
         <button id="add-time-slot" class="input-add-button clickable">+</button>
       </div>
       <div class="post-group-section clear-float">
-        <span class="input-title col-4">哪些功能你比較想要？（選擇兩種）</span>
+        <span class="input-title col-4">{data.i18n.create.surveytitle}</span>
         <div class="col-8">
           <span class="post-group-section checkbox-item">
-            <input id="social" class="feature-checkbox" name="social" type="checkbox"/><label for="social">Social (finding runners/groups nearby.)</label>
+            <input id="social" class="feature-checkbox" name="survey" value="social" type="checkbox"/><label for="social">{data.i18n.create.survey.social}</label>
           </span>
           <span class="post-group-section checkbox-item">
-            <input id="record" class="feature-checkbox" name="record" type="checkbox"/><label for="record">Record (recording stats and show it on both PC and mobile.)</label>
+            <input id="record" class="feature-checkbox" name="survey" value="record" type="checkbox"/><label for="record">{data.i18n.create.survey.record}</label>
           </span>
           <span class="post-group-section checkbox-item">
-            <input id="groupmanagemant" class="feature-checkbox" name="groupmanagemant" type="checkbox"/><label for="groupmanagemant">Group Management (event notification, group page, post and share.)</label>
+            <input id="groupmanagement" class="feature-checkbox" name="survey" value="groupmanagement" type="checkbox"/><label for="groupmanagement">{data.i18n.create.survey.group}</label>
           </span>
           <span class="post-group-section checkbox-item">
-            <input id="information" class="feature-checkbox" name="information" type="checkbox"/><label for="information">Information (contest, fitness information, experience from other members.)</label>
+            <input id="information" class="feature-checkbox" name="survey" value="information" type="checkbox"/><label for="information">{data.i18n.create.survey.info}</label>
           </span>
           <span class="post-group-section checkbox-item">
-            <input id="competition" class="feature-checkbox" name="competition" type="checkbox"/><label for="competition">Competition (competing with other group members)</label>
+            <input id="competition" class="feature-checkbox" name="survey" value="competition" type="checkbox"/><label for="competition">{data.i18n.create.survey.competition}</label>
           </span>
           <span class="post-group-section checkbox-item">
-            <input id="coupon" class="feature-checkbox" name="coupon" type="checkbox"/><label for="coupon">Coupon (earning shoes or sport equipment coupon by running)</label>
+            <input id="coupon" class="feature-checkbox" name="survey" value="coupon" type="checkbox"/><label for="coupon">{data.i18n.create.survey.coupon}</label>
           </span>
         </div>
       </div>
-      <!--div class="post-group-section clear-float">
-        <button id="add-time-slot" class="input-button input-add-button col-8 fl-r clickable">+</button>
-      </div-->
     </form>
   </div>
   <div class="col-4">
-    <!--div class="post-group-section description-item"-->
     <div class="post-map">
       <div id="map-canvas" class="map-canvas"></div>
     </div>
     <div class="post-group-section clear-float">
-      <button id="no-group" class="runup-grey-button no-group w-100">I don't have group</button>
-      <p class="no-group-description">*Can't get 3 months free premium if you choose this</p>
+      <button id="no-group" class="runup-grey-button no-group w-100" onclick="location.href='\done'">{data.i18n.create.nogroup}</button>
+      <p class="no-group-description">*{data.i18n.create.nopremium}</p>
     </div>
   </div>
-  <!--/div-->
-</div>
+</div>>

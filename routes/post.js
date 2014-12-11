@@ -32,10 +32,19 @@ var instertGroupMemberQueryString = "INSERT INTO group_member (member_id, group_
 var instertGroupScheduleQueryString = "INSERT INTO group_schedule (group_id, day, hour, minute, ampm) VALUES ";
 var instertGroupScheduleValues = "(%s, %s, %s, %s, %s)";
 
+var insertSurveyQueryString = "INSERT INTO survey (account";
+
 router.get("/", function (req, res) {
+	var i18n;
 	var data = {};
+	var i18n;
+	if (req.geo.country === "TW") {
+		i18n = require('../i18n/tw');
+	} else {
+		i18n = require('../i18n/us');	
+	}
+	data.i18n = i18n;
 	data.user = req.user;
-	console.log(data);
     res.render("post", {data : data});    
 });
 
@@ -43,16 +52,17 @@ router.post("/group", function (req, res) {
     var groupInfo = req.body;
     if (req.user) {
     	console.log(req.files);
-	    if (req.files.cover_photo.overLimit) {
+		var userId = req.user.id;
+	    var coverPhotoName = req.files.cover_photo ? req.files.cover_photo.name : "cover.png";
+
+	    if (req.files.cover_photo && req.files.cover_photo.overLimit) {
 	    	var data = {
 	    		warning: "照片大小請小於1mb"
 	    	};
 	    	res.render("post", {data: data});
 	    	return;
 	    }
-
-		var userId = req.user.id;
-	    var coverPhotoName = req.files.cover_photo.name;
+console.log(groupInfo);
 	    getCountry(groupInfo, function (countryId) {
 	    	getState(groupInfo, countryId, function (stateId) {
 	    		getCounty(groupInfo, stateId, countryId, function (countyId) {
@@ -69,14 +79,21 @@ router.post("/group", function (req, res) {
 	    							console.log(error);
 	    						}
 	    						constructSearchIndexTable.update();
-	    						savePhotoToImageServer(req.files, function (__error, result) {
-	    							if (__error) {
-	    								res.redirect("/g/" + groupData.groupId);
-	    								console.log(__error);
-	    								return;
-	    							}
-	    							res.redirect("/g/" + groupData.groupId);
-	    						});
+
+	    						if (req.files.cover_photo) {
+		    						savePhotoToImageServer(req.files, function (__error, result) {
+		    							if (__error) {
+		    								//res.redirect("/g/" + groupData.groupId);
+		    								res.redirect("/done");
+		    								console.log(__error);
+		    								return;
+		    							}
+		    							//res.redirect("/g/" + groupData.groupId);
+		    							res.redirect("/done");
+		    						});
+		    					} else {
+		    						res.redirect("/done");
+		    					}
 	    						
 	    					})
 	    				});
@@ -84,10 +101,38 @@ router.post("/group", function (req, res) {
 	    		});
 	    	});
 	    });
+
+		insertSurvey(req.user.account, groupInfo.survey);
 	} else {
 		res.render("post");
 	}
 });
+
+function insertSurvey (account, survey) {
+	if (typeof(survey) === "string") {
+		survey = [survey];
+	}
+
+	var length = survey.length;
+	var queryString = insertSurveyQueryString;
+	for (var i = 0; i < length; i ++) {
+		queryString += (", " + survey[i]);
+	}
+	queryString += ") VALUES (\"" + account + "\", ";
+	for (var i = 0; i < length; i ++) {
+		queryString += "true, ";
+	}
+	queryString = queryString.slice(0, queryString.length - 2) + ")";
+console.log(queryString);
+	ModuleMysql.execute(queryString, function (error, rows) {
+		if (error) {
+			console.log(error);
+			return;
+		}
+		console.log(rows);
+	});
+}
+
 
 function savePhotoToImageServer (files, callback) {
 	var formData = {

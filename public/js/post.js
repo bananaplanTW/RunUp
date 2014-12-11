@@ -14,6 +14,9 @@ function bindPost (map) {
                         alert(geoCodingResult.message);
                     } else {
                         google.maps.event.trigger(map, 'resize');
+
+                        console.log(geoCodingResult.places);
+                        /*
                         bindFormInputs(geoCodingResult);
                         var latlng = new google.maps.LatLng(geoCodingResult.lat, geoCodingResult.lng);
                         if (!that.marker) {
@@ -24,7 +27,7 @@ function bindPost (map) {
                         } else {
                             marker.setPosition(latlng);
                         }
-                        map.setCenter(latlng);
+                        map.setCenter(latlng);*/
                         
                     }
                     
@@ -52,7 +55,7 @@ function bindPost (map) {
                     if (!createGroupElements['group-name'].value) {
                         addClassName.call(createGroupElements['group-name'], "red-bottom-line");
                         isPass = false;
-                        message += "請填入跑團名稱\n";
+                        message += "Group name\n";
                     } else {
                         removeClassName.call(createGroupElements['group-name'], "red-bottom-line");
                     }
@@ -60,11 +63,11 @@ function bindPost (map) {
                     if (!createGroupElements['address'].value) {
                         addClassName.call(createGroupElements['address'], "red-bottom-line");
                         isPass = false;
-                        message += "請填入地址\n";
+                        message += "Address\n";
                     } else {
                         removeClassName.call(createGroupElements['address'], "red-bottom-line");
                     }
-
+/*
                     if (!createGroupElements['lat'].value && !createGroupElements['lng'].value) {
                         addClassName.call(createGroupElements['address'], "red-bottom-line");
                         isPass = false;
@@ -80,19 +83,21 @@ function bindPost (map) {
                     } else {
                         removeClassName.call(createGroupElements['contact'], "red-bottom-line");
                     }
-
+*/
                     if (!createGroupElements['email'].value) {
                         addClassName.call(createGroupElements['email'], "red-bottom-line");
                         isPass = false;
-                        message += "請填入email\n";
+                        message += "Email\n";
                     } else if (!emailRegex.test(createGroupElements['email'].value)) {
+                        console.log(emailRegex);
+                        console.log(createGroupElements['email'].value);
                         addClassName.call(createGroupElements['email'], "red-bottom-line");
                         isPass = false;
-                        message += "請檢查email格式\n";
+                        message += "Please check Email format\n";
                     } else {
                         removeClassName.call(createGroupElements['email'], "red-bottom-line");
                     }
-
+/*
                     if (!createGroupElements['cover-photo'].value) {
                         addClassName.call(createGroupElements['cover-photo'], "red-bottom-line");
                         isPass = false;
@@ -100,11 +105,16 @@ function bindPost (map) {
                     } else {
                         removeClassName.call(createGroupElements['cover-photo'], "red-bottom-line");
                     }
+*/
+                    if (limitCheckbox.totalChecked === 0) {
+                        isPass = false;
+                        message += "Please at least pick one feature that you love, so that we can provide better service for you\n";
+                    }
 
                     if (isPass) {
                         createGroupForm.submit();
                     } else {
-                        alert("請檢查: \n" + message);
+                        alert("Please provide: \n" + message);
                     }
                 } else {
                     // need to login
@@ -114,8 +124,6 @@ function bindPost (map) {
             }
         });
     });
-    
-    
 };
 
 function bindFormInputs (geoCodingResult) {
@@ -136,6 +144,10 @@ function bindFormInputs (geoCodingResult) {
     country.value       = geoCodingResult.country;
     country_short.value = geoCodingResult.country_short;
 };
+
+function generateListOfPlaces () {
+
+}
 
 (function bindAddTimeSlotButton () {
     var scheduleContainer = document.getElementById('schedule-container');

@@ -24,6 +24,7 @@ var express = require('express'),
     region = require('../routes/region'),
     search = require('../routes/search'),
     post = require('../routes/post'),
+    done = require('../routes/done'),
     geoCoding = require('../routes/geoCoding'),
     group = require('../routes/group'),
     error = require('../routes/error'),
@@ -72,6 +73,7 @@ app.use('/join', join);
 app.use('/search', search);
 app.use('/s', search);
 app.use('/post', bodyParser.urlencoded(), post);
+app.use('/done', done);
 app.use('/getGeoCoding', geoCoding);
 app.use(home);
 app.use('/g', group);

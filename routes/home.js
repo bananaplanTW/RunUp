@@ -14,9 +14,19 @@ router.get('/', function (req, res) {
 		for (var i = 0; i < rows.length; i ++) {
 			rows[i].state_origin = decodeURIComponent(rows[i].state_origin);
 		}
+
+		console.log(req);
+		var i18n;
+		if (req.geo.country === "TW") {
+			i18n = require('../i18n/tw');
+		} else {
+			i18n = require('../i18n/us');	
+		}
+
 		var data = {};
 		data.states = rows;
 		data.user = req.user;
+		data.i18n = i18n;
 		console.log(data.user);
 		res.render('home2', {data : data});
 	});

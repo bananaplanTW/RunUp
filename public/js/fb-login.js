@@ -62,6 +62,7 @@ function redirectToLogin () {
         } else {
             response.picture = null;
         }
+        response.id = "facebook." + response.id;
         // post to login
         postAjax('/fblogin', JSON.stringify(response), function (XHR, status) {
             if (XHR.readyState === 4 && XHR.status === 200) {

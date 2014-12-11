@@ -1,5 +1,5 @@
 body {
-  font-family: Circular, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: Futura-CondensedMedium;/*Circular, 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
   line-height: 12px;
   padding: 0px;
   margin: 0px;
@@ -47,7 +47,8 @@ label {
   cursor: pointer;
   position: relative;
   padding-left: 25px;
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 16px;
 }
 
 label:before {

@@ -57,6 +57,7 @@
 }
 
 .agreeterms {
+  font-size: 14px;
   font-family: Futura-CondensedMedium;
 }
 
@@ -198,6 +199,7 @@
   color: #808080;
   margin-top: 10px;
   text-align: center;
+  line-height: 16px;
 }
 .checkbox-item {
   font-family: Futura-CondensedMedium;

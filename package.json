@@ -30,7 +30,8 @@
     "multer": "*",
     "bcryptjs": "*",
     "request": "*",
-    "nodemailer" : "*"
+    "nodemailer" : "*",
+    "geoip-lite": "*"
   }
 }
 
