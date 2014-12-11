@@ -4,16 +4,22 @@ function bindPost (map) {
     var geoCodingResult = {};
 
     var searchTimeout;
-    address.onkeypress = function () {
+    address.onkeydown = function () {
         if (searchTimeout != undefined) clearTimeout(searchTimeout);
         searchTimeout = setTimeout(function () {
+            // reset places list before calling backend
+            var placesList = document.getElementById('places-list');
+            var placesListContainer = document.getElementById('places-list-container');
+            addClassName.call(placesListContainer, "d-n");
+            placesList.innerHTML = "";
+
             if (address.value) {
                 getPlaces(address.value, function (error, places) {
                     if (error) {
                         return;
                     }
                     google.maps.event.trigger(map, 'resize');
-                    showAllPossiblePlaces.call(that, places, map);
+                    showAllPossiblePlaces.call(that, places, map, address);
                 });
             }
         }, 500);
@@ -110,27 +116,21 @@ function bindPost (map) {
 };
 
 function getPlaces(address, callback) {
-    // your code here
-    //if (address.value) {
-        var addressString = "address=" + address;
-        getAjax("/getGeoCoding", addressString, function (XHR, status) {
-            if (XHR.readyState === 4 && XHR.status == 200) {
-                geoCodingResult = JSON.parse(XHR.response);
-                //console.log(geoCodingResult);
-                if (geoCodingResult.status === "NOTFOUND") {
-                    alert(geoCodingResult.message);
-                    callback(true, null);
-                } else {
-                    //google.maps.event.trigger(map, 'resize');
-                    console.log(geoCodingResult.places);
-                    callback(null, geoCodingResult.places)
-                    //showAllPossiblePlaces.call(that, geoCodingResult.places, map);
-                }
-                
+    var addressString = "address=" + address;
+    getAjax("/getGeoCoding", addressString, function (XHR, status) {
+        if (XHR.readyState === 4 && XHR.status == 200) {
+            geoCodingResult = JSON.parse(XHR.response);
+            //console.log(geoCodingResult);
+            if (geoCodingResult.status === "NOTFOUND") {
+                alert(geoCodingResult.message);
+                callback(true, null);
+            } else {
+                callback(null, geoCodingResult.places)
             }
-        });
-    //}
-}
+            
+        }
+    });
+};
 
 function bindFormInputs (geoCodingResult) {
     var lat           = document.getElementById('lat');
@@ -151,7 +151,7 @@ function bindFormInputs (geoCodingResult) {
     country_short.value = geoCodingResult.country_short;
 };
 
-function showAllPossiblePlaces (places, map) {
+function showAllPossiblePlaces (places, map, address) {
     var length = places.length;
     var placesListContainer   = document.getElementById('places-list-container');
     var placesListCloseButton = document.getElementById('places-list-close-button');
@@ -176,7 +176,7 @@ function showAllPossiblePlaces (places, map) {
         removeClassName.call(placesListContainer, "d-n");
 
         for (var i = 0; i < length; i ++) {
-            placesList.appendChild(generateListForPlace.call(this, places[i], map));
+            placesList.appendChild(generateListForPlace.call(this, places[i], map, address));
         }
 
         placesList.addEventListener("click", function (e) {
@@ -191,7 +191,7 @@ function showAllPossiblePlaces (places, map) {
     }
 }
 
-function generateListForPlace (place, map) {
+function generateListForPlace (place, map, address) {
     var that = this;
     var listTemplate        = document.createElement("LI");
 
@@ -211,6 +211,7 @@ function generateListForPlace (place, map) {
         map.setCenter(latlng);
 
         bindFormInputs(place);
+        address.value = place.address;
     });
 
     return listTemplate;
@@ -268,7 +269,11 @@ var limitCheckbox = new LimitCheckbox();
 (function bindFeatureCheckbox (limitCheckbox) {
     var featureCheckboxes = document.getElementsByClassName ("feature-checkbox");
     var length = featureCheckboxes.length;
+    var totalChecked = 0;
     for (var i = 0; i < length; i ++) {
+        if (featureCheckboxes[i].checked) {
+            totalChecked ++;
+        }
         featureCheckboxes[i].addEventListener('change', function (e) {
             if (this.checked) {
                 limitCheckbox.totalChecked ++;
@@ -281,7 +286,8 @@ var limitCheckbox = new LimitCheckbox();
 
     limitCheckbox.featureCheckboxes = featureCheckboxes;
     limitCheckbox.length = length;
-    limitCheckbox.totalChecked = 0;
+    limitCheckbox.totalChecked = totalChecked;
+    limitCheckbox.update();
 
 })(limitCheckbox);
 
@@ -303,4 +309,6 @@ google.maps.event.addDomListener(window, 'load', function () {
         bindPost.call(this, map);
     });
 });
+
+
 
